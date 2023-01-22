@@ -1,4 +1,6 @@
-﻿using PantallaGestionUsuarios.Utils;
+﻿using PantallaGestionUsuarios.Api;
+using PantallaGestionUsuarios.Models;
+using PantallaGestionUsuarios.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +20,13 @@ using System.Windows.Shapes;
 namespace PantallaGestionUsuarios.Views
 {
     /// <summary>
-    /// Lógica de interacción para PostUser.xaml
+    /// Lógica de interacción para PostPublication.xaml
     /// </summary>
-    public partial class PostUser : Window
+    public partial class PostPublication : Window
     {
-        public PostUser()
+        public PostPublication()
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             publicationsButton.Click += GoToPublications;
             commentsButton.Click += GoToComments;
@@ -53,28 +55,27 @@ namespace PantallaGestionUsuarios.Views
             Utilities.GoToUsers(sender, e);
             this.Close();
         }
-        private async void CreateUser(object sender, RoutedEventArgs e)
+        private async void CreatePublication(object sender, RoutedEventArgs e)
         {
             using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
-                    id_usuario = "2221", // Prueba
-                    password = passwordBox.passwordBox.Password,
                     nombre = nombreBox.textBox.Text,
-                    email = emailBox.textBox.Text,
-                    apellidos = apellidosBox.textBox.Text,
-                    fecha = fechaBox.textBox.Text,
-                    web = webBox.textBox.Text,
-                    nick = nickBox.textBox.Text,
-                    rol = rolBox.textBox.Text,
+                    categoria = categoriaBox.textBox.Text,
+                    distancia = float.Parse(distancaiBox.textBox.Text),
+                    dificultad = dificultadBox.textBox.Text,
+                    duracion = float.Parse(duracionBox.textBox.Text),
+                    descripcion = descripcionBox.textBox.Text,
+                    foto = fotoBox.textBox.Text,
+                    privacidad = privacidadBox.textBox.Text,
+                    empresa = empresaBox.textBox.Text,
+                    url = urlBox.textBox.Text,
                 }),
                 Encoding.UTF8,
                 "application/json");
-
-            await UserProcessor.PostUser(jsonContent);
-            Utils.Utilities.GoToUsers(sender, e);
+            await PublicationsProcessor.PostPublication(jsonContent);
+            Utils.Utilities.GoToPublications(sender, e);
             this.Close();
-
         }
     }
 }

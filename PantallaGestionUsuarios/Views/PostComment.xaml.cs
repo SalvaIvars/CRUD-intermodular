@@ -1,4 +1,6 @@
-﻿using PantallaGestionUsuarios.Utils;
+﻿using PantallaGestionUsuarios.Api;
+using PantallaGestionUsuarios.Models;
+using PantallaGestionUsuarios.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +20,11 @@ using System.Windows.Shapes;
 namespace PantallaGestionUsuarios.Views
 {
     /// <summary>
-    /// Lógica de interacción para PostUser.xaml
+    /// Lógica de interacción para PostComment.xaml
     /// </summary>
-    public partial class PostUser : Window
+    public partial class PostComment : Window
     {
-        public PostUser()
+        public PostComment()
         {
             InitializeComponent();
 
@@ -53,28 +55,24 @@ namespace PantallaGestionUsuarios.Views
             Utilities.GoToUsers(sender, e);
             this.Close();
         }
-        private async void CreateUser(object sender, RoutedEventArgs e)
+        private async void CreateComment(object sender, RoutedEventArgs e)
         {
             using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
-                    id_usuario = "2221", // Prueba
-                    password = passwordBox.passwordBox.Password,
-                    nombre = nombreBox.textBox.Text,
-                    email = emailBox.textBox.Text,
-                    apellidos = apellidosBox.textBox.Text,
                     fecha = fechaBox.textBox.Text,
-                    web = webBox.textBox.Text,
-                    nick = nickBox.textBox.Text,
-                    rol = rolBox.textBox.Text,
+                    mensaje = mensajeBox.textBox.Text,
+                    id_usuario = idusuarioBox.textBox.Text,
+                    id_publicacion = idpublicacionBox.textBox.Text,
                 }),
                 Encoding.UTF8,
                 "application/json");
 
-            await UserProcessor.PostUser(jsonContent);
-            Utils.Utilities.GoToUsers(sender, e);
+            await CommentsProcessor.PostComment(jsonContent);
+            Utils.Utilities.GoToComments(sender, e);
             this.Close();
 
         }
     }
 }
+

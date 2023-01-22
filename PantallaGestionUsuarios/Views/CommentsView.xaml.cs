@@ -78,23 +78,25 @@ namespace PantallaGestionUsuarios.Views
 
         private async void CreateUser(object sender, RoutedEventArgs e)
         {
-            await CommentsProcessor.PostComment();
-            CreateTable(sender, e);
+            PostComment win = new PostComment();
+            win.Show();
+            this.Close();
         }
 
-        public async void DeleteUser(object sender, RoutedEventArgs e)
+        public async void DeleteComment(object sender, RoutedEventArgs e)
         {
             CommentsModel publication = (CommentsModel)commentsDataGrid.SelectedItem;
             await CommentsProcessor.DeleteComment(publication._id);
             CreateTable(sender, e);
         }
 
-        public async void UpdateUser(object sender, RoutedEventArgs e)
+        public async void UpdateComment(object sender, RoutedEventArgs e)
         {
-            CommentsModel publication = (CommentsModel)commentsDataGrid.SelectedItem;
+            CommentsModel comment = (CommentsModel)commentsDataGrid.SelectedItem;
 
-            await CommentsProcessor.DeleteComment(publication._id);
-            CreateTable(sender, e);
+            PutFormComments win = new PutFormComments(comment);
+            win.Show();
+            this.Close();
         }
     }
 }

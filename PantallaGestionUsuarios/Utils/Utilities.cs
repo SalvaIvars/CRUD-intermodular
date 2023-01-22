@@ -41,5 +41,23 @@ namespace PantallaGestionUsuarios.Utils
             RegisterView win = new RegisterView();
             win.Show();
         }
+
+        public static void GoToPostPublication(object sender, RoutedEventArgs e)
+        {
+            PostPublication win = new PostPublication();
+            win.Show();
+        }
+
+        public static void GoToPostUser(object sender, RoutedEventArgs e)
+        {
+            PostUser win = new PostUser();
+            win.Show();
+        }
+
+        public static void GoToPostComment(object sender, RoutedEventArgs e)
+        {
+            PostComment win = new PostComment();
+            win.Show();
+        }
     }
 }

@@ -79,10 +79,7 @@ namespace PantallaGestionUsuarios.Views
 
         private async void CreateUser(object sender, RoutedEventArgs e)
         {
-            UserModel user = (UserModel)usersDataGrid.SelectedItem;
-
-            PostUser win = new PostUser(user);
-            win.Show();
+            Utilities.GoToPostUser(sender, e);
             this.Close();
         }
 

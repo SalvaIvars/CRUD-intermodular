@@ -77,8 +77,8 @@ namespace PantallaGestionUsuarios.Views
 
         private async void CreatePublication(object sender, RoutedEventArgs e)
         {
-            await PublicationsProcessor.PostPublication();
-            CreateTable(sender, e);
+            Utilities.GoToPostPublication(sender, e);
+            this.Close();
         }
 
         public async void DeletePublication(object sender, RoutedEventArgs e)

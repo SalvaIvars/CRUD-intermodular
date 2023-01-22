@@ -12,7 +12,7 @@ namespace PantallaGestionUsuarios.Api
 {
     public class PublicationsProcessor
     {
-        public static async Task<PublicationModel> LoadPublication(string id = "") // Publicación de prueba
+        public static async Task<PublicationModel> LoadPublication(string id = "") 
         {
             string url = "http://localhost:8080/publications/";
 
@@ -57,27 +57,11 @@ namespace PantallaGestionUsuarios.Api
             }
         }
 
-        // PRUEBA
-        public static async Task PostPublication()
+
+        public static async Task PostPublication(StringContent jsonContent)
         {
             string url = "http://localhost:8080/publications";
-            using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
-                {
-                    id_usuario = "212",
-                    fecha = "20/01/2023",
-                    nombre = "caminata por la montaña",
-                    categoria = "Caminata",
-                    distancia = 12.3f,
-                    duracion = 1.4f,
-                    descripcion = "fasdfasd fasd fasdf",
-                    foto = "www.fasfsdfasdf.jpg",
-                    privacidad = "private",
-                    empresa = "empresa",
-                    url = "url"
-                }),
-                Encoding.UTF8,
-                "application/json");
+
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {

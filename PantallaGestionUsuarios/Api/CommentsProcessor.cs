@@ -58,19 +58,9 @@ namespace PantallaGestionUsuarios.Api
         }
 
         // PRUEBA
-        public static async Task PostComment()
+        public static async Task PostComment(StringContent jsonContent)
         {
             string url = "http://localhost:8080/comments";
-            using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
-                {
-                    fecha = "22/02/2022",
-                    mensaje = "mensaje",
-                    id_usuario = "1",
-                    id_publicacion = "2"
-                }),
-                Encoding.UTF8,
-                "application/json");
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
@@ -83,6 +73,28 @@ namespace PantallaGestionUsuarios.Api
         }
 
 
+        public static async Task UpdateComment(string id, StringContent jsonConent)
+        {
+            string url = "http://localhost:8080/comments/";
+
+            url += id;
+
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))
+            {
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Update Publication");
+                }
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                }
+
+            }
+        }
         public static async Task DeleteComment(string id = "")
         {
             string url = "http://localhost:8080/comments/";
