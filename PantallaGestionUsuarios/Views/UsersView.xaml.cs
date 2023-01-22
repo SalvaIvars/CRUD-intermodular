@@ -20,7 +20,6 @@ namespace PantallaGestionUsuarios.Views
     /// </summary>
     public partial class UsersView : Window
     {
-
         public UsersView()
         {
             InitializeComponent();
@@ -29,9 +28,32 @@ namespace PantallaGestionUsuarios.Views
             ApiHelper.AddToken();
 
 
-            publicationsButton.Click += Utilities.GoToPublications;
-            commentsButton.Click += Utilities.GoToComments;
-            usersButton.Click += Utilities.GoToUsers;
+            publicationsButton.Click += GoToPublications;
+            commentsButton.Click += GoToComments;
+            usersButton.Click += GoToUsers;
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+        private void GoToPublications(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToPublications(sender, e);
+            this.Close();
+        }
+        private void GoToComments(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToComments(sender, e);
+            this.Close();
+        }
+        private void GoToUsers(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToUsers(sender, e);
+            this.Close();
         }
 
         private async void CreateTable(object sender, RoutedEventArgs e)
@@ -57,8 +79,11 @@ namespace PantallaGestionUsuarios.Views
 
         private async void CreateUser(object sender, RoutedEventArgs e)
         {
-            await UserProcessor.PostUser();
-            CreateTable(sender, e);
+            UserModel user = (UserModel)usersDataGrid.SelectedItem;
+
+            PostUser win = new PostUser(user);
+            win.Show();
+            this.Close();
         }
 
         public async void DeleteUser(object sender, RoutedEventArgs e)
@@ -68,12 +93,13 @@ namespace PantallaGestionUsuarios.Views
             CreateTable(sender, e);
         }
 
-        public async void UpdateUser(object sender, RoutedEventArgs e)
+        public void UpdateUser(object sender, RoutedEventArgs e)
         {
             UserModel user = (UserModel)usersDataGrid.SelectedItem;
 
-            await UserProcessor.DeleteUser(user._id);
-            CreateTable(sender, e);
+            PutFormUsers win = new PutFormUsers(user);
+            win.Show();
+            this.Close();
         }
     }
 }

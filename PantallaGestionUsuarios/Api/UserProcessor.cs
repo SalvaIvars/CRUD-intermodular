@@ -48,18 +48,11 @@ namespace PantallaGestionUsuarios
                 }
             }
         }
-        public static async Task<UserModel> LoadUser(string id="") // Usuario de prueba
+        public static async Task<UserModel> LoadUser(string id="") 
         {
             string url = "http://localhost:8080/usuarios/";
 
-            if (id.Length != 0)
-            {
-                url += id;
-            }
-            else
-            {
-                url += "63c8fcc76adacd7589776a74";
-            }
+            url += id;
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -93,20 +86,9 @@ namespace PantallaGestionUsuarios
             }
         }
 
-        // PRUEBA
-        public static async Task PostUser()
+        public static async Task PostUser(StringContent jsonContent)
         {
             string url = "http://localhost:8080/auth/signup";
-            using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
-                {
-                    id_usuario = "21",
-                    nombre="postc#2",
-                    email="emailc#",
-                    password="postc#"
-                }),
-                Encoding.UTF8,
-                "application/json");
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
@@ -118,15 +100,55 @@ namespace PantallaGestionUsuarios
             }
         }
 
+        public static async Task<bool> SignUp(StringContent jsonContent)
+        {
+            string url = "http://localhost:8080/auth/signup";
+
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    token = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                else 
+                {
+                    MessageBox.Show("error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    MessageBox.Show(response.RequestMessage.ToString());
+                    return false;
+                }
+            }
+        }
+
+        public static async Task UpdateUser(string id, StringContent jsonConent)
+        {
+            string url = "http://localhost:8080/usuarios/";
+
+            url += id;
+
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))
+            {
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Update User");
+                }
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                }
+
+            }
+        }
+
 
         public static async Task DeleteUser(string id="")
         {
             string url = "http://localhost:8080/usuarios/";
-
-            if (id.Length == 0)
-            {
-                return;
-            }
 
             url += id;
 
@@ -140,5 +162,6 @@ namespace PantallaGestionUsuarios
 
             }
         }
+
     }
 }

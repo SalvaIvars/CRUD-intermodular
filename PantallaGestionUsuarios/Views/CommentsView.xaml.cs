@@ -26,9 +26,32 @@ namespace PantallaGestionUsuarios.Views
         public CommentsView()
         {
             InitializeComponent();
-            publicationsButton.Click += Utilities.GoToPublications;
-            commentsButton.Click += Utilities.GoToComments;
-            usersButton.Click += Utilities.GoToUsers;
+            publicationsButton.Click += GoToPublications;
+            commentsButton.Click += GoToComments;
+            usersButton.Click += GoToUsers;
+        }
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void GoToPublications(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToPublications(sender, e);
+            this.Close();
+        }
+        private void GoToComments(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToComments(sender, e);
+            this.Close();
+        }
+        private void GoToUsers(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToUsers(sender, e);
+            this.Close();
         }
 
         private async void CreateTable(object sender, RoutedEventArgs e)

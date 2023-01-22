@@ -26,11 +26,33 @@ namespace PantallaGestionUsuarios.Views
         public PublicationsView()
         {
             InitializeComponent();
-            publicationsButton.Click += Utilities.GoToPublications;
-            commentsButton.Click += Utilities.GoToComments;
-            usersButton.Click += Utilities.GoToUsers;
+            publicationsButton.Click += GoToPublications;
+            commentsButton.Click += GoToComments;
+            usersButton.Click += GoToUsers;
+        }
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
 
+        private void GoToPublications(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToPublications(sender, e);
+            this.Close();
+        }
+        private void GoToComments(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToComments(sender, e);
+            this.Close();
+        }
+        private void GoToUsers(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToUsers(sender, e);
+            this.Close();
+        }
         private async void CreateTable(object sender, RoutedEventArgs e)
         {
             var publications = await PublicationsProcessor.LoadAllPublications();
@@ -53,25 +75,28 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        private async void CreateUser(object sender, RoutedEventArgs e)
+        private async void CreatePublication(object sender, RoutedEventArgs e)
         {
             await PublicationsProcessor.PostPublication();
             CreateTable(sender, e);
         }
 
-        public async void DeleteUser(object sender, RoutedEventArgs e)
+        public async void DeletePublication(object sender, RoutedEventArgs e)
         {
             PublicationModel publication = (PublicationModel)publicationsDataGrid.SelectedItem;
             await PublicationsProcessor.DeletePublication(publication._id);
             CreateTable(sender, e);
         }
 
-        public async void UpdateUser(object sender, RoutedEventArgs e)
+        public void UpdatePublication(object sender, RoutedEventArgs e)
         {
+
             PublicationModel publication = (PublicationModel)publicationsDataGrid.SelectedItem;
 
-            await PublicationsProcessor.DeletePublication(publication._id);
-            CreateTable(sender, e);
+            PutFormPublications win = new PutFormPublications(publication);
+            win.Show();
+            this.Close();
+
         }
     }
 }

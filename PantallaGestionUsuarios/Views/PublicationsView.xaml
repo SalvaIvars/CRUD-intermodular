@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
         Loaded="CreateTable"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+                WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -18,7 +18,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
-    <Border Background="#eff2f7" CornerRadius="30">
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -93,18 +93,13 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Search Textbox -->
-                <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Visibility="{Binding ElementName=txtSearch, Converter={StaticResource BoolToVis} }" Margin="20 0" VerticalAlignment="Center" Foreground="#E5D9B6" IsHitTestVisible="False" Panel.ZIndex="1" Text="Buscar..."/>
-                    <TextBox x:Name="txtSearch" Style="{StaticResource textboxSearch}"/>
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15"  VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#E5D9B6" HorizontalAlignment="Right"/>
-                </Grid>
+
 
                 <!-- Page Title -->
                 <TextBlock Text="Publications" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- Add Button -->
-                <Button Style="{StaticResource addButton}" Click="CreateUser">
+                <Button Style="{StaticResource addButton}" Click="CreatePublication">
                     <StackPanel Orientation="Horizontal">
                         <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
                         <TextBlock Text="Add New Publication"/>
@@ -121,10 +116,10 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Style="{StaticResource gridEdditButton}" Click="UpdateUser">
+                                        <Button Style="{StaticResource gridEdditButton}" Click="UpdatePublication">
                                             <Icon:PackIconMaterial Kind="PencilOutline"  Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
-                                        <Button Style="{StaticResource gridRemoveButton}" Click="DeleteUser">
+                                        <Button Style="{StaticResource gridRemoveButton}" Click="DeletePublication">
                                             <Icon:PackIconMaterial Kind="DeleteOutline" Style="{StaticResource gridButtonIcon}"/>
                                         </Button>
                                     </StackPanel>

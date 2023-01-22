@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
         Loaded="CreateTable"
         mc:Ignorable="d"
+        
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -16,7 +17,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
     </Window.Resources>
 
-    <Border Background="#eff2f7" CornerRadius="30">
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -90,13 +91,6 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-
-                <!-- Search Textbox -->
-                <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Visibility="{Binding ElementName=txtSearch, Converter={StaticResource BoolToVis} }" Margin="20 0" VerticalAlignment="Center" Foreground="#E5D9B6" IsHitTestVisible="False" Panel.ZIndex="1" Text="Buscar..."/>
-                    <TextBox x:Name="txtSearch" Style="{StaticResource textboxSearch}"/>
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15"  VerticalAlignment="Center" Margin="0 0 15 0" Foreground="#E5D9B6" HorizontalAlignment="Right"/>
-                </Grid>
 
                 <!-- Page Title -->
                 <TextBlock Text="Comments" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>

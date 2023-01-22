@@ -89,6 +89,28 @@ namespace PantallaGestionUsuarios.Api
             }
         }
 
+        public static async Task UpdatePublication(string id, StringContent jsonConent)
+        {
+            string url = "http://localhost:8080/publications/";
+
+            url += id;
+
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))
+            {
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Update Publication");
+                }
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                }
+
+            }
+        }
 
         public static async Task DeletePublication(string id = "")
         {

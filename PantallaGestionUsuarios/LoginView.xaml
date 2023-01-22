@@ -4,15 +4,125 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
+        
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800">
-    <Grid>
-        <Label Content="Login" HorizontalAlignment="Left" Margin="352,64,0,0" VerticalAlignment="Top" Height="37" Width="58"/>
-        <TextBlock HorizontalAlignment="Left" Margin="202,189,0,0" TextWrapping="Wrap" Text="Usuario" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="202,235,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,188,0,0" TextWrapping="Wrap" x:Name="userBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Center" Margin="0,243,0,0" TextWrapping="Wrap" x:Name="passwordBox" VerticalAlignment="Top" Width="120" />
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Margin="0,356,0,0" VerticalAlignment="Top" Click="Login"/>
+   WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        ResizeMode="NoResize"
+        Height="720" Width="1080">
 
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#3AA9AD" Offset="0" />
+            <GradientStop Color="#3AADA1" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Margin="0,0,0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3AA9AD" Offset="0" />
+                    <GradientStop Color="#3AADA1" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Canvas>
+                <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" />
+                <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" />
+                <Ellipse Margin="250 450 0 0" Width="40" Height="40" Fill="#4EB1B6" />
+                <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6" />
+            </Canvas>
+
+        </Border>
+
+        <Border Grid.Column="2" Margin="0,0,0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#3AA9AD" Offset="0" />
+                    <GradientStop Color="#3AADA1" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Canvas>
+                <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" />
+                <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" />
+                <Ellipse Margin="250 450 0 0" Width="40" Height="40" Fill="#4EB1B6" />
+                <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6" />
+            </Canvas>
+
+        </Border>
+
+        <Border Grid.Column="1" BorderThickness="5" BorderBrush="DarkSeaGreen" Background="AliceBlue" CornerRadius="0" Margin="0,50,0,50">
+            <StackPanel Grid.Column="1" Margin="20,60,20,0" Background="AliceBlue">
+
+                <Border Height="150" Width="150" Margin="15">
+                    <Image Height="150" Width="150" HorizontalAlignment="Center" Source="./Images/logo.png"></Image>
+                </Border>
+
+                <Border Name ="bordeCampoUsuario" Height="50" BorderBrush="Silver" BorderThickness="2" CornerRadius="4" Margin="0,25,0,10">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Width="25" Height="25" Background="Transparent" BorderThickness="0">
+                            <Icon:PackIconMaterial Kind="Head" Width="15" Height="15"/>
+                        </Button>
+
+
+                        <TextBox x:Name="userBox" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold" BorderThickness="0" ></TextBox>
+
+                    </Grid>
+
+                </Border>
+
+                <Border Name ="bordeCampoPassword" Height="50" BorderBrush="Silver" BorderThickness="2" CornerRadius="4" Margin="0,0,0,5">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <Button Width="25" Height="25" Background="Transparent" BorderThickness="0">
+                            <Icon:PackIconMaterial Kind="Lock" Width="15" Height="15"/>
+                        </Button>
+
+                        <Button Cursor="Hand" x:Name="BotonMostrarContra" Grid.Column="2" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Height="25" Width="25" Click="showPassword">
+                            <Icon:PackIconMaterial Kind="Eye" Width="15" Height="15"/>
+                        </Button>
+                        <PasswordBox x:Name="passwordBox" BorderThickness="0" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold"></PasswordBox>
+
+                     </Grid>
+                </Border>
+
+                <Label x:Name="MensajeError" Content= "" FontStyle="Italic" FontStretch="ExtraCondensed" Foreground="Red" HorizontalAlignment="Center" Visibility="Collapsed"></Label>
+
+                <Button Cursor="Hand" Background="DodgerBlue" BorderThickness="0" Content="Iniciar Sesion" Foreground="White" Height="50" Margin="0,5,0,0" Click="Login"/>
+
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+            <Hyperlink TextDecorations="None">
+                Olvidaste tu Contraseña?
+            </Hyperlink>
+                </TextBlock>
+
+                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"> 
+            Aún no tiene una cuenta? <Hyperlink TextDecorations="None" Click="goToRegister">Registrese Ahora</Hyperlink>
+                </TextBlock>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

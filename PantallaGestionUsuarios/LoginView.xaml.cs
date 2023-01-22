@@ -29,20 +29,29 @@ namespace PantallaGestionUsuarios.Views
 
         public async void Login(object sender, RoutedEventArgs e)
         {
-
-            if (userBox.Text.Length == 0 || passwordBox.Text.Length == 0) {
-
+            if (userBox.Text.Length == 0 || passwordBox.Password.Length == 0) {
                 MessageBox.Show("Escriba su nombre de usuario y contraseña");
                 return;
             }
 
-            bool result = await UserProcessor.SingIn(userBox.Text, passwordBox.Text);
+            bool result = await UserProcessor.SingIn(userBox.Text, passwordBox.Password);
 
             if (result)
             {
                 Utilities.GoToUsers(sender, e);
                 this.Close();
             }
+        }
+
+        public void goToRegister(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToRegister(sender, e);
+            this.Close();
+        }
+
+        public void showPassword(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
