@@ -75,12 +75,6 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        private async void CreatePublication(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToPostPublication(sender, e);
-            this.Close();
-        }
-
         public async void DeletePublication(object sender, RoutedEventArgs e)
         {
             PublicationModel publication = (PublicationModel)publicationsDataGrid.SelectedItem;

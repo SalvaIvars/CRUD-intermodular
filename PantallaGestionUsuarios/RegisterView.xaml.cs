@@ -51,7 +51,6 @@ namespace PantallaGestionUsuarios
             using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
-                    id_usuario= "12312",
                     nombre = nombreBox.textBox.Text,
                     email = emailBox.textBox.Text,
                     password = passwordBox.passwordBox.Password,

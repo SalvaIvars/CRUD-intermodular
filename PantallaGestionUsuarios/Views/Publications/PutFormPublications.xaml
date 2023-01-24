@@ -92,7 +92,7 @@
                 <TextBlock Text="Update Publication" Grid.Row="2" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- Add Button -->
-                <StackPanel Orientation="Horizontal" Height="21">
+                <StackPanel Orientation="Horizontal" Height="71">
 
                 </StackPanel>
 
@@ -102,7 +102,7 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40 10 0 0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40 40 0 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="200" MaxWidth="200"/>
@@ -117,8 +117,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="Nombre" Style="{StaticResource textPost}"/>
@@ -129,8 +128,7 @@
                             <TextBlock Grid.Row="5" Text="Descripción" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="6" Text="Foto" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="7" Text="Privacidad" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="8" Text="Empresa" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="9" Text="Url" Style="{StaticResource textPost}"/>
+
 
                             <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre... "/>
                             <Controls:PersonalTextBox x:Name="categoriaBox"  Grid.Column="1" Grid.Row="1" Hint="Apellidos..."/>
@@ -140,11 +138,10 @@
                             <Controls:PersonalTextBox x:Name="descripcionBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..."/>
                             <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/>
                             <Controls:PersonalTextBox x:Name="privacidadBox"  Grid.Column="1" Grid.Row="7" Hint="Privacidad..."/>
-                            <Controls:PersonalTextBox x:Name="empresaBox" Grid.Column="1" Grid.Row="8" Hint="Empresa..."/>
-                            <Controls:PersonalTextBox x:Name="urlBox" Grid.Column="1" Grid.Row="9" Hint="Url..."/>
 
 
-                            <Button Click="SendPublication" Content="Save" Margin="380,8,-380,58" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.RowSpan="2" Grid.Row="4" Width="200" MaxWidth="200"/>
+
+                            <Button Click="SendPublication" Content="Save" Margin="382,37,-382,29" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.RowSpan="2" Grid.Row="3" Width="200" MaxWidth="200"/>
 
                         </Grid>
                     </Grid>

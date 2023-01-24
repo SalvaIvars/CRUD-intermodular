@@ -95,14 +95,6 @@
                 <!-- Page Title -->
                 <TextBlock Text="Comments" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
-                <!-- Add Button -->
-                <Button Style="{StaticResource addButton}" Click="CreateUser">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
-                        <TextBlock Text="Add New Publication"/>
-                    </StackPanel>
-                </Button>
-
                 <!-- Separator -->
                 <Separator Height="1" Grid.Row="3" Background="#E5D9B6" Margin="0 0 0 10"/>
 

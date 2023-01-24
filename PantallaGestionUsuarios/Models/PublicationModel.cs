@@ -18,7 +18,5 @@ namespace PantallaGestionUsuarios.Models
         public string descripcion { get; set; }
         public string foto { get; set; }
         public string privacidad { get; set; }
-        public string empresa { get; set; }
-        public string url { get; set; }
     }
 }

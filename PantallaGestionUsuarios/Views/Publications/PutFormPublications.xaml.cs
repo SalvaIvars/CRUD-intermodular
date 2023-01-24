@@ -69,8 +69,6 @@ namespace PantallaGestionUsuarios.Views
             descripcionBox.textBox.Text = publication.descripcion;
             fotoBox.textBox.Text = publication.foto;
             privacidadBox.textBox.Text = publication.privacidad;
-            empresaBox.textBox.Text = publication.empresa;
-            urlBox.textBox.Text = publication.url;
         }
 
         public async void SendPublication(object sender, RoutedEventArgs e)
@@ -87,8 +85,6 @@ namespace PantallaGestionUsuarios.Views
                     descripcion = descripcionBox.textBox.Text,
                     foto = fotoBox.textBox.Text,
                     privacidad = privacidadBox.textBox.Text,
-                    empresa = empresaBox.textBox.Text,
-                    url = urlBox.textBox.Text
             }),
                 Encoding.UTF8,
                 "application/json");
