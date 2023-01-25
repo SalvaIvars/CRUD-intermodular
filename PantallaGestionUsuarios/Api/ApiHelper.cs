@@ -13,6 +13,7 @@ namespace PantallaGestionUsuarios
     {
         public static HttpClient ApiClient { get; set; }
         public static string token = "prueba";
+        public static string refreshToken = "";
 
         public static void InitializeClient()
         {

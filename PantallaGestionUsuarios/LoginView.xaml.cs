@@ -29,6 +29,7 @@ namespace PantallaGestionUsuarios.Views
 
         public async void Login(object sender, RoutedEventArgs e)
         {
+
             if (userBox.Text.Length == 0 || passwordBox.Password.Length == 0) {
                 MessageBox.Show("Escriba su nombre de usuario y contraseña");
                 return;

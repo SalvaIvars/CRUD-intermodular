@@ -1,4 +1,5 @@
-﻿using PantallaGestionUsuarios.Models;
+﻿using Newtonsoft.Json;
+using PantallaGestionUsuarios.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,14 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    CommentsModel[] comments = await response.Content.ReadAsAsync<CommentsModel[]>();
+                    CommentsResponse.Rootobject userResponse = await response.Content.ReadAsAsync<CommentsResponse.Rootobject>();
+                    CommentsModel[] comments = new CommentsModel[userResponse.data.Length];
+
+                    for (int i = 0; i < comments.Length; i++)
+                    {
+                        comments[i] = JsonConvert.DeserializeObject<CommentsModel>(JsonConvert.SerializeObject(userResponse.data[i]));
+                    }
+
                     return comments;
                 }
                 else

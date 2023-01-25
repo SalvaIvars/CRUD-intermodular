@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using PantallaGestionUsuarios.Api;
+using PantallaGestionUsuarios.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -6,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace PantallaGestionUsuarios
 {
@@ -13,10 +17,16 @@ namespace PantallaGestionUsuarios
     {
 
         private static string token { get; set; }
+        private static string refreshToken { get; set; }
 
         public static string ObtainToken()
         {
             return token;
+        }
+
+        public static string ObtainRefreshToken()
+        {
+            return refreshToken;
         }
         public static async Task<bool> SingIn(string username, string password)
         {
@@ -37,7 +47,9 @@ namespace PantallaGestionUsuarios
 
                 if (response.IsSuccessStatusCode)
                 {
-                    token = await response.Content.ReadAsStringAsync();
+                    LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>(); 
+                    token = loginResponse.accessToken;
+                    refreshToken = loginResponse.refreshToken;
                     return true;
                 }
                 else
@@ -53,7 +65,6 @@ namespace PantallaGestionUsuarios
             string url = "http://localhost:8080/usuarios/";
 
             url += id;
-
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
@@ -75,8 +86,14 @@ namespace PantallaGestionUsuarios
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode) {
+                    UserResponse.Rootobject userResponse = await response.Content.ReadAsAsync<UserResponse.Rootobject>();
+                    UserModel[] users = new UserModel[userResponse.data.Length];
 
-                    UserModel[] users = await response.Content.ReadAsAsync<UserModel[]>();
+                    for(int i = 0; i < users.Length; i++)
+                    {
+                        users[i] = JsonConvert.DeserializeObject<UserModel>(JsonConvert.SerializeObject(userResponse.data[i]));
+                    }
+
                     return users;
                 }
                 else

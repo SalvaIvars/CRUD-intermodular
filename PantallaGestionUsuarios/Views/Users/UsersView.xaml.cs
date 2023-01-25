@@ -24,7 +24,9 @@ namespace PantallaGestionUsuarios.Views
         {
             InitializeComponent();
             string token = UserProcessor.ObtainToken();
+            string refreshToken = UserProcessor.ObtainToken();
             ApiHelper.token = token.Substring(1,token.Length-2); // delete " "
+            ApiHelper.refreshToken = refreshToken.Substring(1, refreshToken.Length-2);
             ApiHelper.AddToken();
 
 
@@ -70,7 +72,7 @@ namespace PantallaGestionUsuarios.Views
 
             foreach (DataGridColumn col in usersDataGrid.Columns)
             {
-                if (col.Header.ToString() == "_id" || col.Header.ToString() == "password")
+                if (col.Header.ToString() == "_id" || col.Header.ToString() == "password" || col.Header.ToString() == "foto")
                 {
                     col.Visibility = Visibility.Collapsed;
                 }
