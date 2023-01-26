@@ -12,8 +12,6 @@ namespace PantallaGestionUsuarios
     public class ApiHelper
     {
         public static HttpClient ApiClient { get; set; }
-        public static string token = "prueba";
-        public static string refreshToken = "";
 
         public static void InitializeClient()
         {
@@ -22,11 +20,9 @@ namespace PantallaGestionUsuarios
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public static void AddToken()
+        public static void addTokens()
         {
-            ApiClient.DefaultRequestHeaders.Accept.Clear();
-            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer ", Application.Current.Properties["accessToken"].ToString());
         }
     }
 }

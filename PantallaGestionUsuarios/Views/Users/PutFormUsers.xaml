@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
-        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
+        xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
                 WindowStyle="None"
         AllowsTransparency="True"
@@ -138,9 +139,10 @@
                             <Controls:PersonalTextBox x:Name="webBox"  Grid.Column="1" Grid.Row="7" Hint="Web..."/>
 
 
-                            <Button Click="SendUser" Content="Save" Margin="252,8,-347,58" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Width="160" MaxWidth="160"/>
+                            <Button Click="SendUser" Content="Save" Margin="324,37,-284,29" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Width="160" MaxWidth="160"/>
 
                         </Grid>
+                        <Image x:Name="userImage" HorizontalAlignment="Left" Height="189" Margin="563,30,0,0" VerticalAlignment="Top" Width="188"/>
                     </Grid>
                 </Grid>
 

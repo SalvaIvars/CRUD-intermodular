@@ -23,12 +23,7 @@ namespace PantallaGestionUsuarios.Views
         public UsersView()
         {
             InitializeComponent();
-            string token = UserProcessor.ObtainToken();
-            string refreshToken = UserProcessor.ObtainToken();
-            ApiHelper.token = token.Substring(1,token.Length-2); // delete " "
-            ApiHelper.refreshToken = refreshToken.Substring(1, refreshToken.Length-2);
-            ApiHelper.AddToken();
-
+            ApiHelper.addTokens();
 
             publicationsButton.Click += GoToPublications;
             commentsButton.Click += GoToComments;

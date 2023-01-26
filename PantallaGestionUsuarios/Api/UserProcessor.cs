@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -15,19 +16,6 @@ namespace PantallaGestionUsuarios
 {
     public class UserProcessor
     {
-
-        private static string token { get; set; }
-        private static string refreshToken { get; set; }
-
-        public static string ObtainToken()
-        {
-            return token;
-        }
-
-        public static string ObtainRefreshToken()
-        {
-            return refreshToken;
-        }
         public static async Task<bool> SingIn(string username, string password)
         {
             string url = "http://localhost:8080/auth/signin";
@@ -47,9 +35,9 @@ namespace PantallaGestionUsuarios
 
                 if (response.IsSuccessStatusCode)
                 {
-                    LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>(); 
-                    token = loginResponse.accessToken;
-                    refreshToken = loginResponse.refreshToken;
+                    LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
+                    Application.Current.Properties["accessToken"] = loginResponse.accessToken;
+                    Application.Current.Properties["refreshToken"] = loginResponse.refreshToken;
                     return true;
                 }
                 else
@@ -126,7 +114,7 @@ namespace PantallaGestionUsuarios
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    token = await response.Content.ReadAsStringAsync();
+                    Application.Current.Properties["accessToken"] = await response.Content.ReadAsStringAsync();
                     return true;
                 }
                 else 

@@ -24,6 +24,8 @@ namespace PantallaGestionUsuarios
         public RegisterView()
         {
             InitializeComponent();
+            ApiHelper.InitializeClient();
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
