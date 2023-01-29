@@ -10,6 +10,7 @@ namespace PantallaGestionUsuarios.Models.Response
     {
         public string status { get; set; }
         public string accessToken { get; set; }
-        public string refreshToken { get; set; }
+        public string id { get; set; }
+
     }
 }

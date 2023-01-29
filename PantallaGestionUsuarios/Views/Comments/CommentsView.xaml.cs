@@ -26,9 +26,7 @@ namespace PantallaGestionUsuarios.Views
         public CommentsView()
         {
             InitializeComponent();
-            publicationsButton.Click += GoToPublications;
-            commentsButton.Click += GoToComments;
-            usersButton.Click += GoToUsers;
+
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {

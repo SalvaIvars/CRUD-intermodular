@@ -16,6 +16,7 @@ namespace PantallaGestionUsuarios
 {
     public class UserProcessor
     {
+        public static string userId { get; set; }
         public static async Task<bool> SingIn(string username, string password)
         {
             string url = "http://localhost:8080/auth/signin";
@@ -37,7 +38,7 @@ namespace PantallaGestionUsuarios
                 {
                     LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
                     Application.Current.Properties["accessToken"] = loginResponse.accessToken;
-                    Application.Current.Properties["refreshToken"] = loginResponse.refreshToken;
+                    userId = loginResponse.id;
                     return true;
                 }
                 else
@@ -57,7 +58,10 @@ namespace PantallaGestionUsuarios
             {
                 if (response.IsSuccessStatusCode)
                 {
+                    MessageBox.Show("UserProccess: " + id);
+                    MessageBox.Show("UserProccess: " + url);
                     UserModel user = await response.Content.ReadAsAsync<UserModel>();
+                    MessageBox.Show("UserProcessor: " + user.nombre);
                     return user;
                 }
                 else
@@ -136,11 +140,6 @@ namespace PantallaGestionUsuarios
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))
             {
-
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Update User");
-                }
                 if (!response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Error");

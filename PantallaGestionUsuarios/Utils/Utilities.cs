@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 
 namespace PantallaGestionUsuarios.Utils
 {
     public static class Utilities
     {
-
         public static void GoToPublications(object sender, RoutedEventArgs e)
         {
             PublicationsView win = new PublicationsView();
@@ -42,12 +44,10 @@ namespace PantallaGestionUsuarios.Utils
             win.Show();
         }
 
-
         public static void GoToPostUser(object sender, RoutedEventArgs e)
         {
             PostUser win = new PostUser();
             win.Show();
         }
-
     }
 }

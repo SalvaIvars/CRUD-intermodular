@@ -26,9 +26,6 @@ namespace PantallaGestionUsuarios.Views
         {
             InitializeComponent();
 
-            publicationsButton.Click += GoToPublications;
-            commentsButton.Click += GoToComments;
-            usersButton.Click += GoToUsers;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,24 +35,33 @@ namespace PantallaGestionUsuarios.Views
                 this.DragMove();
             }
         }
-        private void GoToPublications(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToPublications(sender, e);
-            this.Close();
-        }
-        private void GoToComments(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToComments(sender, e);
-            this.Close();
-        }
-        private void GoToUsers(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToUsers(sender, e);
-            this.Close();
-        }
+
         private async void CreateUser(object sender, RoutedEventArgs e)
         {
-            using StringContent jsonContent = new(
+            // nombre, email, password
+            bool canUpdate = true;
+            if (nombreBox.textBox.Text.Length == 0)
+            {
+                canUpdate = false;
+                nombreBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                nombreBox.textBox.BorderThickness = new Thickness(1.5f);
+
+            }
+            if (emailBox.textBox.Text.Length == 0)
+            {
+                canUpdate = false;
+                emailBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                emailBox.textBox.BorderThickness = new Thickness(1.5f);
+            }
+            if(passwordBox.passwordBox.Password.Length == 0)
+            {
+                canUpdate=false;
+                passwordBox.passwordBox.BorderBrush = Brushes.Red;
+                passwordBox.passwordBox.BorderThickness = new Thickness(1.5f);
+            }
+            if (canUpdate)
+            {
+                using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
                     password = passwordBox.passwordBox.Password,
@@ -63,17 +69,40 @@ namespace PantallaGestionUsuarios.Views
                     email = emailBox.textBox.Text,
                     apellidos = apellidosBox.textBox.Text,
                     fecha = fechaBox.textBox.Text,
-                    web = webBox.textBox.Text,
                     nick = nickBox.textBox.Text,
                     rol = rolBox.textBox.Text,
                 }),
                 Encoding.UTF8,
                 "application/json");
 
-            await UserProcessor.PostUser(jsonContent);
-            Utils.Utilities.GoToUsers(sender, e);
-            this.Close();
+                await UserProcessor.PostUser(jsonContent);
+                Utils.Utilities.GoToUsers(sender, e);
+                this.Close();
+            }
+        }
 
+        private void nombreBoxTextChange(object sender, TextChangedEventArgs args)
+        {
+            if (nombreBox.textBox.Text.Length > 0)
+            {
+                nombreBox.textBox.BorderThickness = new Thickness(0);
+            }
+        }
+
+        private void emailBoxTextChange(object sender, TextChangedEventArgs args)
+        {
+            if (emailBox.textBox.Text.Length > 0)
+            {
+                emailBox.textBox.BorderThickness = new Thickness(0);
+            }
+        }
+
+        private void passwordBoxTextChange(Object sender, RoutedEventArgs argss)
+        {
+            if (passwordBox.passwordBox.Password.Length > 0)
+            {
+                passwordBox.passwordBox.BorderThickness = new Thickness(0);
+            }
         }
     }
 }

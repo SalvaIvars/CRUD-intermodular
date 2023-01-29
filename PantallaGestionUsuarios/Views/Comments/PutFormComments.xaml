@@ -12,7 +12,7 @@
         Title="PutFormUsers" Height="720" Width="1080"
         Loaded="FillData">
 
-    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
+    <Border Background="#eff2f7" CornerRadius="30">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -31,48 +31,7 @@
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
 
-                <Border Grid.Row="1" Background="#A4BE7B" CornerRadius="0 50 0 30">
-                    <DockPanel>
-
-                        <!-- Menu Titles -->
-                        <TextBlock Text="WikiLoc" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-
-                        <!-- Menu Separator -->
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#E5D9B6"></Separator>
-
-                        <!-- Menu Buttons -->
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" x:Name="usersButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="NaturePeople" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Users"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="publicationsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Road" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Publications"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="commentsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Text" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Commentaries"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
-                            </StackPanel>
-                        </Button>
-
-                    </DockPanel>
-                </Border>
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
             <!-- Main Section -->
@@ -119,10 +78,10 @@
                             <TextBlock Grid.Row="2" Text="id_usuario" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="3" Text="id_publicacion" Style="{StaticResource textPost}"/>
 
-                            <Controls:PersonalTextBox x:Name="fechaBox" Grid.Column="1" Grid.Row="0" Hint="Fecha... "/>
-                            <Controls:PersonalTextBox x:Name="mensajeBox"  Grid.Column="1" Grid.Row="1" Hint="Mensaje..."/>
-                            <Controls:PersonalTextBox x:Name="idusuarioBox" Grid.Column="1" Grid.Row="2" Hint="Id_usuario..."/>
-                            <Controls:PersonalTextBox x:Name="idpublicacionBox"  Grid.Column="1" Grid.Row="3" Hint="Id_publicacion..."/>
+                            <Controls:PersonalTextBox x:Name="fechaBox" Grid.Column="1" Grid.Row="0" Hint="Fecha... " TextBox.TextChanged="fechaBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="mensajeBox"  Grid.Column="1" Grid.Row="1" Hint="Mensaje..." TextBox.TextChanged="mensajeBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="idusuarioBox" Grid.Column="1" Grid.Row="2" Hint="Id_usuario..." TextBox.TextChanged="idUsuarioBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="idpublicacionBox"  Grid.Column="1" Grid.Row="3" Hint="Id_publicacion..." TextBox.TextChanged="idPublicacionBoxTextChange"/>
 
 
                             <Button Click="SendComment" Content="Save" Margin="316,8,-276,116" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Width="160" MaxWidth="160"/>

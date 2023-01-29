@@ -16,7 +16,7 @@ namespace PantallaGestionUsuarios.Models
         public string dificultad { get; set; }
         public float duracion { get; set; }
         public string descripcion { get; set; }
-        public string foto { get; set; }
+        public string[] foto { get; set; }
         public string privacidad { get; set; }
     }
 }

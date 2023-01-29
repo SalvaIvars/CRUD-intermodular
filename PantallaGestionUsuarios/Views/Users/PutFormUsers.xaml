@@ -33,48 +33,7 @@
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
 
-                <Border Grid.Row="1" Background="#A4BE7B" CornerRadius="0 50 0 30">
-                    <DockPanel>
-
-                        <!-- Menu Titles -->
-                        <TextBlock Text="WikiLoc" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-
-                        <!-- Menu Separator -->
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#E5D9B6"></Separator>
-
-                        <!-- Menu Buttons -->
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" x:Name="usersButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="NaturePeople" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Users"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="publicationsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Road" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Publications"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="commentsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Text" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Commentaries"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
-                            </StackPanel>
-                        </Button>
-
-                    </DockPanel>
-                </Border>
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
             <!-- Main Section -->
@@ -103,7 +62,7 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100 30 0 0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="200" MaxWidth="200"/>
@@ -117,7 +76,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
+
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="Nombre" Style="{StaticResource textPost}"/>
@@ -127,22 +86,19 @@
                             <TextBlock Grid.Row="4" Text="Fecha" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="5" Text="Rol" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="6" Text="Foto" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="7" Text="Web" Style="{StaticResource textPost}"/>
 
-                            <Controls:PersonalTextBox  x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre... "/>
+                            <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre..." TextBox.TextChanged="nombreBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="apellidosBox"  Grid.Column="1" Grid.Row="1" Hint="Apellidos..."/>
-                            <Controls:PersonalTextBox x:Name="emailBox" Grid.Column="1" Grid.Row="2" Hint="Email..."/>
+                            <Controls:PersonalTextBox x:Name="emailBox" Grid.Column="1" Grid.Row="2" Hint="Email..." TextBox.TextChanged="emailBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="nickBox"  Grid.Column="1" Grid.Row="3" Hint="Nick..."/>
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..."/>
                             <Controls:PersonalTextBox x:Name="rolBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..."/>
                             <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/>
-                            <Controls:PersonalTextBox x:Name="webBox"  Grid.Column="1" Grid.Row="7" Hint="Web..."/>
 
-
-                            <Button Click="SendUser" Content="Save" Margin="324,37,-284,29" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" Width="160" MaxWidth="160"/>
+                            <Button Click="SendUser" Content="Save" Margin="343,8,-303,58" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="3" Width="160" MaxWidth="160" Grid.RowSpan="2"/>
 
                         </Grid>
-                        <Image x:Name="userImage" HorizontalAlignment="Left" Height="189" Margin="563,30,0,0" VerticalAlignment="Top" Width="188"/>
+                        <Image x:Name="profilePictureImage" Source="../../Images/defaultProfilePicture.png" HorizontalAlignment="Left" Height="183" Margin="563,30,0,0" VerticalAlignment="Top" Width="179"/>
                     </Grid>
                 </Grid>
 

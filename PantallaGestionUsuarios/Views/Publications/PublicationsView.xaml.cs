@@ -26,9 +26,6 @@ namespace PantallaGestionUsuarios.Views
         public PublicationsView()
         {
             InitializeComponent();
-            publicationsButton.Click += GoToPublications;
-            commentsButton.Click += GoToComments;
-            usersButton.Click += GoToUsers;
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -38,21 +35,7 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        private void GoToPublications(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToPublications(sender, e);
-            this.Close();
-        }
-        private void GoToComments(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToComments(sender, e);
-            this.Close();
-        }
-        private void GoToUsers(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToUsers(sender, e);
-            this.Close();
-        }
+
         private async void CreateTable(object sender, RoutedEventArgs e)
         {
             var publications = await PublicationsProcessor.LoadAllPublications();
@@ -68,7 +51,7 @@ namespace PantallaGestionUsuarios.Views
 
             foreach (DataGridColumn col in publicationsDataGrid.Columns)
             {
-                if (col.Header.ToString() == "_id" || col.Header.ToString() == "id_usuario")
+                if (col.Header.ToString() == "_id" || col.Header.ToString() == "id_usuario" || col.Header.ToString() == "foto")
                 {
                     col.Visibility = Visibility.Collapsed;
                 }

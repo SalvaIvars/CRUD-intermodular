@@ -17,7 +17,6 @@ namespace PantallaGestionUsuarios
         public string nick { get; set; }
         public string password { get; set; }
         public string foto { get; set; }
-        public string web { get; set; }
         public string rol { get; set; } 
     }
 }

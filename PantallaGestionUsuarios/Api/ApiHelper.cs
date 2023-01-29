@@ -12,7 +12,7 @@ namespace PantallaGestionUsuarios
     public class ApiHelper
     {
         public static HttpClient ApiClient { get; set; }
-
+        public static UserModel ActiveUser { get; set; }
         public static void InitializeClient()
         {
             ApiClient = new HttpClient();
@@ -22,7 +22,7 @@ namespace PantallaGestionUsuarios
 
         public static void addTokens()
         {
-            ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer ", Application.Current.Properties["accessToken"].ToString());
+            ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["accessToken"].ToString());
         }
     }
 }

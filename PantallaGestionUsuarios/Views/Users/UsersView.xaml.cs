@@ -25,9 +25,6 @@ namespace PantallaGestionUsuarios.Views
             InitializeComponent();
             ApiHelper.addTokens();
 
-            publicationsButton.Click += GoToPublications;
-            commentsButton.Click += GoToComments;
-            usersButton.Click += GoToUsers;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -53,6 +50,12 @@ namespace PantallaGestionUsuarios.Views
             this.Close();
         }
 
+        private void logOut(object sender, RoutedEventArgs e)
+        {
+            Utilities.GoToLogin(sender, e);
+            this.Close();
+        }
+
         private async void CreateTable(object sender, RoutedEventArgs e)
         {
             var users = await UserProcessor.LoadAllUsers();
@@ -63,18 +66,18 @@ namespace PantallaGestionUsuarios.Views
             }
 
             var content = new ObservableCollection<UserModel>(userList);
-            usersDataGrid.ItemsSource = content;
+            dataGrid.ItemsSource = content;
 
-            foreach (DataGridColumn col in usersDataGrid.Columns)
+            foreach (DataGridColumn col in dataGrid.Columns)
             {
-                if (col.Header.ToString() == "_id" || col.Header.ToString() == "password" || col.Header.ToString() == "foto")
+                if (col.Header.ToString() == "_id" || col.Header.ToString() == "password" || col.Header.ToString() == "foto" )
                 {
                     col.Visibility = Visibility.Collapsed;
                 }
             }
         }
 
-        private async void CreateUser(object sender, RoutedEventArgs e)
+        private void CreateUser(object sender, RoutedEventArgs e)
         {
             Utilities.GoToPostUser(sender, e);
             this.Close();
@@ -82,14 +85,14 @@ namespace PantallaGestionUsuarios.Views
 
         public async void DeleteUser(object sender, RoutedEventArgs e)
         {
-            UserModel user = (UserModel)usersDataGrid.SelectedItem;
+            UserModel user = (UserModel)dataGrid.SelectedItem;
             await UserProcessor.DeleteUser(user._id);
             CreateTable(sender, e);
         }
 
         public void UpdateUser(object sender, RoutedEventArgs e)
         {
-            UserModel user = (UserModel)usersDataGrid.SelectedItem;
+            UserModel user = (UserModel)dataGrid.SelectedItem;
 
             PutFormUsers win = new PutFormUsers(user);
             win.Show();

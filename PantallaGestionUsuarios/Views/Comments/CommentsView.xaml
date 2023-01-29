@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
+        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         Loaded="CreateTable"
         mc:Ignorable="d"
         
@@ -36,48 +36,7 @@
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
 
-                <Border Grid.Row="1" Background="#A4BE7B" CornerRadius="0 50 0 30">
-                    <DockPanel>
-
-                        <!-- Menu Titles -->
-                        <TextBlock Text="WikiLoc" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-
-                        <!-- Menu Separator -->
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#E5D9B6"></Separator>
-
-                        <!-- Menu Buttons -->
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" x:Name="usersButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="NaturePeople" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Users"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="publicationsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Road" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Publications"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="commentsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Text" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Commentaries"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
-                            </StackPanel>
-                        </Button>
-
-                    </DockPanel>
-                </Border>
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
             <!-- Main Section -->

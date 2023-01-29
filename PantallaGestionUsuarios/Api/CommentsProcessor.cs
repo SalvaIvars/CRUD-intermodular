@@ -90,11 +90,6 @@ namespace PantallaGestionUsuarios.Api
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))
             {
-
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Update Publication");
-                }
                 if (!response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Error");

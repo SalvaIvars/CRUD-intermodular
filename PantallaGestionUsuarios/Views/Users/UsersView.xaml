@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
+        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
         Loaded="CreateTable"          WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -18,6 +18,7 @@
 
     <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
@@ -35,48 +36,7 @@
                     <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
                 </Button>
 
-                <Border Grid.Row="1" Background="#A4BE7B" CornerRadius="0 50 0 30">
-                    <DockPanel>
-
-                        <!-- Menu Titles -->
-                        <TextBlock Text="WikiLoc" Foreground="White" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" TextAlignment="Center" Margin="5 25 0 10"/>
-
-                        <!-- Menu Separator -->
-                        <Separator Margin="25" DockPanel.Dock="Top" Height="0.8" Background="#E5D9B6"></Separator>
-
-                        <!-- Menu Buttons -->
-                        <StackPanel DockPanel.Dock="Top">
-                            <Button Style="{StaticResource menuButton}" x:Name="usersButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="NaturePeople" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Users"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="publicationsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Road" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Publications"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Style="{StaticResource menuButton}" x:Name="commentsButton">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Text" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Commentaries"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <Button Style="{StaticResource menuButton}" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Margin="15 0 15 20">
-                            <StackPanel Orientation="Horizontal">
-                                <Icon:PackIconMaterial Kind="Logout" Style="{StaticResource menuButtonIcon}"/>
-                                <TextBlock Text="Logout"/>
-                            </StackPanel>
-                        </Button>
-
-                    </DockPanel>
-                </Border>
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
             <!-- Main Section -->
@@ -109,7 +69,7 @@
 
                 <!-- Datagrid -->
                 
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="usersDataGrid" IsReadOnly="True">
+                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="dataGrid" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
