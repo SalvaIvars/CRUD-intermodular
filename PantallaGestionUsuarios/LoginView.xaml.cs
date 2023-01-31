@@ -37,17 +37,11 @@ namespace PantallaGestionUsuarios.Views
 
             bool result = await UserProcessor.SingIn(userBox.Text, passwordBox.Password);
 
-            if (result)
-            {
+            if (result) {
+                ApiHelper.addTokens();
                 Utilities.GoToUsers(sender, e);
                 this.Close();
             }
-        }
-
-        public void goToRegister(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToRegister(sender, e);
-            this.Close();
         }
 
         public void showPassword(object sender, RoutedEventArgs e)

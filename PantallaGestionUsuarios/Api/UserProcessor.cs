@@ -16,20 +16,19 @@ namespace PantallaGestionUsuarios
 {
     public class UserProcessor
     {
-        public static string userId { get; set; }
         public static async Task<bool> SingIn(string username, string password)
         {
             string url = "http://localhost:8080/auth/signin";
 
             using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
+                JsonSerializer.Serialize(new    
                 {
                     nombre = username.TrimEnd(),
                     password = password.TrimEnd(),
                 }),
                 Encoding.UTF8,
                 "application/json");
-
+                
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
@@ -38,7 +37,6 @@ namespace PantallaGestionUsuarios
                 {
                     LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
                     Application.Current.Properties["accessToken"] = loginResponse.accessToken;
-                    userId = loginResponse.id;
                     return true;
                 }
                 else
@@ -58,10 +56,8 @@ namespace PantallaGestionUsuarios
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("UserProccess: " + id);
-                    MessageBox.Show("UserProccess: " + url);
+
                     UserModel user = await response.Content.ReadAsAsync<UserModel>();
-                    MessageBox.Show("UserProcessor: " + user.nombre);
                     return user;
                 }
                 else

@@ -33,12 +33,6 @@ namespace PantallaGestionUsuarios.Controls
 
         public async void LoadUserPhoto(object sender, RoutedEventArgs e)
         {
-            UserModel user = await UserProcessor.LoadUser(UserProcessor.userId);
-            MessageBox.Show(user.ToString());
-            ApiHelper.ActiveUser = user;
-            MessageBox.Show("User foto: " + user.foto);
-            MessageBox.Show("User nombre: " + user.nombre);
-            Base64ToImage(user.foto);
         }
 
         public void Base64ToImage(string base64String)

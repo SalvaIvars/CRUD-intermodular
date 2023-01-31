@@ -37,13 +37,6 @@ namespace PantallaGestionUsuarios.Utils
             CommentsView win = new CommentsView();
             win.Show();
         }
-
-        public static void GoToRegister(object sender, RoutedEventArgs e)
-        {
-            RegisterView win = new RegisterView();
-            win.Show();
-        }
-
         public static void GoToPostUser(object sender, RoutedEventArgs e)
         {
             PostUser win = new PostUser();

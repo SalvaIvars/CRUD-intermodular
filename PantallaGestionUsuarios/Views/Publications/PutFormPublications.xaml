@@ -102,11 +102,14 @@
 
                         </Grid>
                         <Image x:Name="routePicture" HorizontalAlignment="Left" Height="182" Margin="512,32,0,0" VerticalAlignment="Top" Width="180"/>
-                        <Button x:Name="leftButton" HorizontalAlignment="Left" Margin="378,65,0,0" VerticalAlignment="Top" Click="buttonLeftClick" Height="125" Width="108" BorderThickness="0" Background="Transparent">
-                            <Image x:Name="leftImage"></Image>
+                        <Button x:Name="leftButton" HorizontalAlignment="Left" Margin="404,65,0,0" VerticalAlignment="Top" Click="buttonLeftClick" Height="125" Width="108" BorderThickness="0" Background="Transparent">
+                            <Image x:Name="leftImage">
+
+                            </Image>
                         </Button>
-                        <Button x:Name="rightButton" HorizontalAlignment="Left" Margin="712,65,0,0" VerticalAlignment="Top" Click="buttonRightClick"  Height="125" Width="108" BorderThickness="0" Background="Transparent">
-                            <Image x:Name="rightImage"></Image>
+                        <Button x:Name="rightButton" HorizontalAlignment="Left" Margin="693,65,0,0" VerticalAlignment="Top" Click="buttonRightClick"  Height="125" Width="108" BorderThickness="0" Background="Transparent">
+                            <Image x:Name="rightImage">
+                            </Image>
                         </Button>
                     </Grid>
                 </Grid>

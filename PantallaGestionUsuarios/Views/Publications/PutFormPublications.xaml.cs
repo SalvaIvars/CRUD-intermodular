@@ -85,6 +85,35 @@ namespace PantallaGestionUsuarios.Views
             return bi;
         }
 
+        public FormatConvertedBitmap Base64ToImageGrey(string base64String)
+        {
+            if (base64String == null)
+            {
+                leftButton.Visibility = Visibility.Collapsed;
+                rightButton.Visibility = Visibility.Collapsed;
+                return null;
+            }
+
+            byte[] binaryData = Convert.FromBase64String(base64String);
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = new MemoryStream(binaryData);
+
+            bi.EndInit();
+
+            FormatConvertedBitmap grayBitmap = new FormatConvertedBitmap();
+
+            grayBitmap.BeginInit();
+
+            grayBitmap.Source = bi;
+
+            grayBitmap.DestinationFormat = PixelFormats.Gray8;
+
+            grayBitmap.EndInit();
+
+            return grayBitmap;  
+        }
 
 
         public async void SendPublication(object sender, RoutedEventArgs e)
@@ -145,8 +174,8 @@ namespace PantallaGestionUsuarios.Views
                     centralImageN = publication.foto.Length - 1;
                     rightImageN = 0;
                     routePicture.Source = Base64ToImage(publication.foto[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.foto[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.foto[rightImageN]);
+                    leftImage.Source = Base64ToImageGrey(publication.foto[leftImageN]);
+                    rightImage.Source = Base64ToImageGrey(publication.foto[rightImageN]);
 
                 }
                 else if (centralImageN == 1)
@@ -155,8 +184,8 @@ namespace PantallaGestionUsuarios.Views
                     centralImageN = centralImageN - 1;
                     rightImageN = 1;
                     routePicture.Source = Base64ToImage(publication.foto[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.foto[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.foto[rightImageN]);
+                    leftImage.Source = Base64ToImageGrey(publication.foto[leftImageN]);
+                    rightImage.Source = Base64ToImageGrey(publication.foto[rightImageN]);
 
                 }
                 else if (centralImageN == publication.foto.Length-2)

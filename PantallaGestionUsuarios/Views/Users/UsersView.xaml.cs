@@ -23,7 +23,6 @@ namespace PantallaGestionUsuarios.Views
         public UsersView()
         {
             InitializeComponent();
-            ApiHelper.addTokens();
 
         }
 
