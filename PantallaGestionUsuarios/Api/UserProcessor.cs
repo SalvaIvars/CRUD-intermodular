@@ -56,8 +56,10 @@ namespace PantallaGestionUsuarios
             {
                 if (response.IsSuccessStatusCode)
                 {
-
-                    UserModel user = await response.Content.ReadAsAsync<UserModel>();
+                    UserResponse.Datum res = await response.Content.ReadAsAsync<UserResponse.Datum>();
+                    MessageBox.Show("RES: " + res.nombre);
+                    UserModel user = new UserModel(res._id, res.id_usuario, res.nombre, res.email, res.password, res.rol, res.apellidos, res.fecha, res.nick, res.foto);
+                    MessageBox.Show("user: " + user.nombre);
                     return user;
                 }
                 else

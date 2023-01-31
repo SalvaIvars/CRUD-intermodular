@@ -36,8 +36,8 @@ namespace PantallaGestionUsuarios.Views
         {
             fechaBox.textBox.Text = comment.fecha;
             mensajeBox.textBox.Text = comment.mensaje;
-            idusuarioBox.textBox.Text = comment.id_usuario;
-            idpublicacionBox.textBox.Text = comment.id_publicacion;
+            idusuarioBox.textBox.Text = comment.id_usuario.ToString();
+            idpublicacionBox.textBox.Text = comment.id_publicacion.ToString();
         }
 
         public async void SendComment(object sender, RoutedEventArgs e)
@@ -76,8 +76,8 @@ namespace PantallaGestionUsuarios.Views
 
                         fecha = fechaBox.textBox.Text,
                         mensaje = mensajeBox.textBox.Text,
-                        id_usuario = idusuarioBox.textBox.Text,
-                        id_publicacion = idpublicacionBox.textBox.Text,
+                        id_usuario = int.Parse(idusuarioBox.textBox.Text),
+                        id_publicacion = int.Parse(idpublicacionBox.textBox.Text),
                     }),
                     Encoding.UTF8,
                     "application/json");

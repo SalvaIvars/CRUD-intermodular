@@ -89,11 +89,11 @@
 
 
                             <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre... " TextBox.TextChanged="nombreBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="categoriaBox"  Grid.Column="1" Grid.Row="1" Hint="Apellidos..."/>
-                            <Controls:PersonalTextBox x:Name="distancaiBox" Grid.Column="1" Grid.Row="2" Hint="Email..." TextBox.TextChanged="distanciaBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="dificultadBox"  Grid.Column="1" Grid.Row="3" Hint="Nick..."/>
-                            <Controls:PersonalTextBox x:Name="duracionBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..." TextBox.TextChanged="duracionBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="descripcionBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..." TextBox.TextChanged="descripcionBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="categoriaBox"  Grid.Column="1" Grid.Row="1" Hint="Categorías..."/>
+                            <Controls:PersonalTextBox x:Name="distancaiBox" Grid.Column="1" Grid.Row="2" Hint="Distancia..." TextBox.TextChanged="distanciaBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="dificultadBox"  Grid.Column="1" Grid.Row="3" Hint="Dificultad..."/>
+                            <Controls:PersonalTextBox x:Name="duracionBox"  Grid.Column="1" Grid.Row="4" Hint="Duración..." TextBox.TextChanged="duracionBoxTextChange"/>
+                            <Controls:PersonalTextBox x:Name="descripcionBox"  Grid.Column="1" Grid.Row="5" Hint="Descripción..." TextBox.TextChanged="descripcionBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="privacidadBox"  Grid.Column="1" Grid.Row="6" Hint="Privacidad..."/>
 
 

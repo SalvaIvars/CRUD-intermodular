@@ -48,9 +48,9 @@ namespace PantallaGestionUsuarios.Views
         {
             nombreBox.textBox.Text = publication.nombre;
             categoriaBox.textBox.Text = publication.categoria;
-            distancaiBox.textBox.Text = publication.distancia.ToString();
+            distancaiBox.textBox.Text = publication.distancia;
             dificultadBox.textBox.Text = publication.dificultad;
-            duracionBox.textBox.Text = publication.duracion.ToString();
+            duracionBox.textBox.Text = publication.duracion;
             descripcionBox.textBox.Text = publication.descripcion;
             privacidadBox.textBox.Text = publication.privacidad;
 

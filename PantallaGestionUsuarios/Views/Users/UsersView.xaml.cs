@@ -76,7 +76,7 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        private void CreateUser(object sender, RoutedEventArgs e)
+        private async void  CreateUser(object sender, RoutedEventArgs e)
         {
             Utilities.GoToPostUser(sender, e);
             this.Close();

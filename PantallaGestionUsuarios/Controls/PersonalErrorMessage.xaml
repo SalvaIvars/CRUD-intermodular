@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="PantallaGestionUsuarios.Controls.PersonalErrorMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PantallaGestionUsuarios.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="350" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Error" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="#232323" FontFamily="Helvetica" FontWeight="SemiBold"/>
+        <TextBlock Grid.Row="1" x:Name="errorMessage" Text="asdfasdfasdfasdfasdfasdfsadfsadfsadfasdfasdfasdfasdfdsfasdfasdfasdfsadfdsf" FontSize="20" TextWrapping="Wrap" 
+                   Foreground="#9c9c9c" HorizontalAlignment="Center" TextAlignment="Justify" Padding="10 20 10 0"/>
+
+        <Separator Grid.Row="1" Margin="0,69,0,10" Grid.RowSpan="2"/>
+        <Button Grid.Row="2" Content="Aceptar" Background="White" FontSize="20" Foreground="#1393dc" BorderThickness="0" FontWeight="SemiBold" Click="CloseWindow"/>
+
+    </Grid>
+</UserControl>

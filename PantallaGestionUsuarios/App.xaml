@@ -7,7 +7,8 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
 
-        <Style x:Key="topButton" TargetType="Button">
+
+         <Style x:Key="topButton" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="Foreground" Value="#6e7783" />
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -158,7 +159,6 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-        <!-- Datagrid -->
         <SolidColorBrush x:Key="{x:Static DataGrid.FocusBorderBrushKey}" Color="#FF000000"/>
         <Style x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -344,7 +344,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <!-- Datagrid -->
+
 
         <Style x:Key="iconApp" TargetType="Icon:PackIconMaterial">
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -414,6 +414,5 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
     </Application.Resources>
 </Application>
