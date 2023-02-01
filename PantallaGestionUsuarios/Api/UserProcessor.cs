@@ -1,6 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using MaterialDesignThemes.Wpf;
+using Newtonsoft.Json;
 using PantallaGestionUsuarios.Api;
+using PantallaGestionUsuarios.Controls;
 using PantallaGestionUsuarios.Models.Response;
+using PantallaGestionUsuarios.Views.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace PantallaGestionUsuarios
@@ -37,11 +41,16 @@ namespace PantallaGestionUsuarios
                 {
                     LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
                     Application.Current.Properties["accessToken"] = loginResponse.accessToken;
+                    string error = " a";
+
+                    //PersonalError e = new PersonalError(error);
+                    //e.ShowDialog();
                     return true;
                 }
                 else
                 {
                     var error = response.Content.ReadAsStringAsync().Result;
+                    //PersonalErrorMessage er = new PersonalErrorMessage(error);
                     MessageBox.Show(error);
                     return false;
                 }
@@ -79,7 +88,7 @@ namespace PantallaGestionUsuarios
                     UserResponse.Rootobject userResponse = await response.Content.ReadAsAsync<UserResponse.Rootobject>();
                     UserModel[] users = new UserModel[userResponse.data.Length];
 
-                    for(int i = 0; i < users.Length; i++)
+                    for (int i = 0; i < users.Length; i++)
                     {
                         users[i] = JsonConvert.DeserializeObject<UserModel>(JsonConvert.SerializeObject(userResponse.data[i]));
                     }

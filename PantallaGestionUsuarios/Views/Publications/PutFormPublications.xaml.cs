@@ -1,6 +1,7 @@
 ﻿using PantallaGestionUsuarios.Api;
 using PantallaGestionUsuarios.Models;
 using PantallaGestionUsuarios.Utils;
+using PantallaGestionUsuarios.Views.Error;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,6 +34,7 @@ namespace PantallaGestionUsuarios.Views
         {
             InitializeComponent();
             this.publication = publication;
+
 
         }
 
@@ -166,7 +168,9 @@ namespace PantallaGestionUsuarios.Views
 
         private void buttonLeftClick(object sender, RoutedEventArgs e)
         {
-            if(publication.foto.Length >= 2)
+
+            bool? Result = new CustomError("Error message from the application.", MessageType.Error, MessageButtons.Ok).ShowDialog();
+            if (publication.foto.Length >= 2)
             {
                 if (centralImageN == 0)
                 {
