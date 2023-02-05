@@ -9,14 +9,14 @@ namespace PantallaGestionUsuarios.Models
     public class PublicationModel
     {
         public string _id { get; set; }
-        public string fecha { get; set; }
-        public string nombre { get; set; }
-        public string categoria { get; set; }
-        public string  distancia { get; set; }
-        public string dificultad { get; set; }
-        public string duracion { get; set; }
-        public string descripcion { get; set; }
-        public string[] foto { get; set; }
-        public string privacidad { get; set; }
+        public string date { get; set; }
+        public string name { get; set; }
+        public string category { get; set; }
+        public string  distance { get; set; }
+        public string difficulty { get; set; }
+        public string duration { get; set; }
+        public string description { get; set; }
+        public string[] photo { get; set; }
+        public string privacy { get; set; }
     }
 }

@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,12 +32,22 @@ namespace PantallaGestionUsuarios.Views
         public async void Login(object sender, RoutedEventArgs e)
         {
 
-            if (userBox.Text.Length == 0 || passwordBox.Password.Length == 0) {
+            if (emailBox.Text.Length == 0 || passwordBox.Password.Length == 0) {
                 MessageBox.Show("Escriba su nombre de usuario y contraseña");
                 return;
             }
 
-            bool result = await UserProcessor.SingIn(userBox.Text, passwordBox.Password);
+
+            using StringContent jsonContent = new(
+                JsonSerializer.Serialize(new
+                {
+                    email = emailBox.Text.TrimEnd(),
+                    password = passwordBox.Password.TrimEnd(),
+                }),
+                Encoding.UTF8,
+                "application/json");
+
+            bool result = await UserProcessor.SingIn(jsonContent);
 
             if (result) {
                 ApiHelper.addTokens();

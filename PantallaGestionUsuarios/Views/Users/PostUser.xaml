@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
+                        WindowStartupLocation="CenterScreen"
         Title="PostUser" Height="720" Width="1080">
 
     <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">

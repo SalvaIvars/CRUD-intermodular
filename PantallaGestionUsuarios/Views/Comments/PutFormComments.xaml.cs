@@ -34,10 +34,10 @@ namespace PantallaGestionUsuarios.Views
 
         private void FillData(object sender, RoutedEventArgs e)
         {
-            fechaBox.textBox.Text = comment.fecha;
-            mensajeBox.textBox.Text = comment.mensaje;
-            idusuarioBox.textBox.Text = comment.id_usuario.ToString();
-            idpublicacionBox.textBox.Text = comment.id_publicacion.ToString();
+            fechaBox.textBox.Text = comment.date;
+            mensajeBox.textBox.Text = comment.message;
+            idusuarioBox.textBox.Text = comment.id_user.ToString();
+            idpublicacionBox.textBox.Text = comment.id_publication.ToString();
         }
 
         public async void SendComment(object sender, RoutedEventArgs e)

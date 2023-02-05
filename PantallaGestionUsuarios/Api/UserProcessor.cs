@@ -1,38 +1,19 @@
-﻿using MaterialDesignThemes.Wpf;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using PantallaGestionUsuarios.Api;
-using PantallaGestionUsuarios.Controls;
 using PantallaGestionUsuarios.Models.Response;
 using PantallaGestionUsuarios.Views.Error;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace PantallaGestionUsuarios
 {
     public class UserProcessor
     {
-        public static async Task<bool> SingIn(string username, string password)
+        public static async Task<bool> SingIn(StringContent jsonContent)
         {
-            string url = "http://localhost:8080/auth/signin";
-
-            using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new    
-                {
-                    nombre = username.TrimEnd(),
-                    password = password.TrimEnd(),
-                }),
-                Encoding.UTF8,
-                "application/json");
-                
+            string url = "http://localhost:8080/auth/signin";    
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
@@ -56,9 +37,10 @@ namespace PantallaGestionUsuarios
                 }
             }
         }
+
         public static async Task<UserModel> LoadUser(string id="") 
         {
-            string url = "http://localhost:8080/usuarios/";
+            string url = "http://localhost:8080/users/";
 
             url += id;
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
@@ -66,9 +48,9 @@ namespace PantallaGestionUsuarios
                 if (response.IsSuccessStatusCode)
                 {
                     UserResponse.Datum res = await response.Content.ReadAsAsync<UserResponse.Datum>();
-                    MessageBox.Show("RES: " + res.nombre);
-                    UserModel user = new UserModel(res._id, res.id_usuario, res.nombre, res.email, res.password, res.rol, res.apellidos, res.fecha, res.nick, res.foto);
-                    MessageBox.Show("user: " + user.nombre);
+                    MessageBox.Show("RES: " + res.name);
+                    UserModel user = new UserModel(res._id, res.id_user, res.name, res.email, res.password, res.rol, res.lastname, res.date, res.nick, res.photo);
+                    MessageBox.Show("user: " + user.name);
                     return user;
                 }
                 else
@@ -80,7 +62,7 @@ namespace PantallaGestionUsuarios
 
         public static async Task<UserModel[]> LoadAllUsers()
         {
-            string url = "http://localhost:8080/usuarios";
+            string url = "http://localhost:8080/users";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -97,7 +79,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    MessageBox.Show(response.ReasonPhrase);
+                    return null;
                 }
             }
         }
@@ -140,7 +123,7 @@ namespace PantallaGestionUsuarios
 
         public static async Task UpdateUser(string id, StringContent jsonConent)
         {
-            string url = "http://localhost:8080/usuarios/";
+            string url = "http://localhost:8080/users/";
 
             url += id;
 
@@ -159,7 +142,7 @@ namespace PantallaGestionUsuarios
 
         public static async Task DeleteUser(string id="")
         {
-            string url = "http://localhost:8080/usuarios/";
+            string url = "http://localhost:8080/users/";
 
             url += id;
 

@@ -9,27 +9,27 @@ namespace PantallaGestionUsuarios
     public class UserModel
     {
         public string _id { get; set; }
-        public int id_usuario { get; set; }
-        public string nombre { get; set; }
-        public string apellidos { get; set; }
+        public int id_user { get; set; }
+        public string name { get; set; }
+        public string lastname { get; set; }
         public string email { get; set; }
-        public string fecha { get; set; }
+        public string date { get; set; }
         public string nick { get; set; }
         public string password { get; set; }
-        public string foto { get; set; }
+        public string photo { get; set; }
         public string rol { get; set; }
 
-        public UserModel(string _id, int id_usuario, string nombre, string apellidos, string email, string fecha, string nick, string password, string foto, string rol)
+        public UserModel(string _id, int id_user, string name, string lastname, string email, string date, string nick, string password, string photo, string rol)
         {
             this._id = _id;
-            this.id_usuario = id_usuario;
-            this.nombre = nombre;
-            this.apellidos = apellidos; 
+            this.id_user = id_user;
+            this.name = name;
+            this.lastname = lastname; 
             this.email = email;
-            this.fecha = fecha;
+            this.date = date;
             this.nick = nick;
             this.password = password;
-            this.foto = foto;
+            this.photo = photo;
             this.rol = rol;
         }
 

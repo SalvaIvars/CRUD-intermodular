@@ -79,7 +79,7 @@
                         </Button>
 
 
-                        <TextBox x:Name="userBox" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold" BorderThickness="0" ></TextBox>
+                        <TextBox x:Name="emailBox" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold" BorderThickness="0" ></TextBox>
 
                     </Grid>
 

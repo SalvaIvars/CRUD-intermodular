@@ -1,20 +1,15 @@
-﻿using PantallaGestionUsuarios.Utils;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System;
 
 namespace PantallaGestionUsuarios.Views
 {
@@ -39,29 +34,13 @@ namespace PantallaGestionUsuarios.Views
          } 
         private void FillData(object sender, RoutedEventArgs e)
         {
-            nombreBox.textBox.Text = user.nombre;
-            apellidosBox.textBox.Text = user.apellidos;
+            nombreBox.textBox.Text = user.name;
+            apellidosBox.textBox.Text = user.lastname;
             emailBox.textBox.Text = user.email;
-            fechaBox.textBox.Text = user.fecha;
+            fechaBox.textBox.Text = user.date;
             nickBox.textBox.Text = user.nick;
             rolBox.textBox.Text = user.rol;
-            Base64ToImage(user.foto);
-        }
 
-        public void Base64ToImage(string base64String)
-        {
-            if(base64String == null)
-            {
-                return;
-            }
-            byte[] binaryData = Convert.FromBase64String(base64String);
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = new MemoryStream(binaryData);
-            bi.EndInit();
-
-            profilePictureImage.Source = bi;
         }
 
         public async void SendUser(object sender, RoutedEventArgs e)

@@ -9,11 +9,10 @@ namespace PantallaGestionUsuarios.Models
     public class CommentsModel
     {
         public string _id { get; set; }
-        public string fecha { get; set; }
-        public string mensaje { get; set; }
-        public int id_usuario { get; set; }
-        public int id_publicacion { get; set; }
-        public string descripcion { get; set; }
+        public string date { get; set; }
+        public string message { get; set; }
+        public int id_user { get; set; }
+        public int id_publication { get; set; }
 
     }
 }

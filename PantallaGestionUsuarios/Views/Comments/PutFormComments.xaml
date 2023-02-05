@@ -8,7 +8,7 @@
                 WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        WindowStartupLocation="Manual"
+                WindowStartupLocation="CenterScreen"
         Title="PutFormUsers" Height="720" Width="1080"
         Loaded="FillData">
 
