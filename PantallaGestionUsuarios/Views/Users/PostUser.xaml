@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
-                        WindowStartupLocation="CenterScreen"
+                        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+                WindowStartupLocation="CenterScreen"
         Title="PostUser" Height="720" Width="1080">
 
     <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
@@ -56,7 +59,7 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100 20 0 0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="200" MaxWidth="200"/>
@@ -89,8 +92,11 @@
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..."/>
                             <Controls:PersonalTextBox x:Name="rolBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..."/>
                             <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/>
-                            <Controls:PersonalPasswordBox x:Name="passwordBox"  Grid.Column="1" Grid.Row="7" HintPassword="Contraseña..." PasswordBox.PasswordChanged="passwordBoxTextChange"/>
+                            <Controls:PersonalPasswordBox x:Name="passwordBox"  Grid.Column="1" Grid.Row="7" HintPassword="Contraseña..." PasswordBox.PasswordChanged="passwordBoxTextChange" MaxWidth="158" MaxHeight="165"/>
 
+                            <Button Background="Transparent" Grid.Column="1" Margin="322,9,-282,9" Grid.RowSpan="3" BorderThickness="0" Click="btnLoad_Click">
+                                <Image  MaxWidth="158" MaxHeight="165" x:Name="profilePicture" Source="../../Images/defaultProfilePicture.png"/>
+                            </Button>
 
                             <Button Click="CreateUser" Content="Save" Margin="322,4,-282,4" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="4" Width="160" MaxWidth="160"/>
 

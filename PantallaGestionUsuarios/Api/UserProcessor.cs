@@ -1,11 +1,14 @@
-﻿using Newtonsoft.Json;
-using PantallaGestionUsuarios.Api;
+﻿using PantallaGestionUsuarios.Api;
 using PantallaGestionUsuarios.Models.Response;
-using PantallaGestionUsuarios.Views.Error;
 using System;
+using System.Drawing;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Text.Json;
+using Newtonsoft.Json;
+using PantallaGestionUsuarios.Views.Error;
 
 namespace PantallaGestionUsuarios
 {
@@ -23,15 +26,11 @@ namespace PantallaGestionUsuarios
                     LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
                     Application.Current.Properties["accessToken"] = loginResponse.accessToken;
                     string error = " a";
-
-                    //PersonalError e = new PersonalError(error);
-                    //e.ShowDialog();
                     return true;
                 }
                 else
                 {
                     var error = response.Content.ReadAsStringAsync().Result;
-                    //PersonalErrorMessage er = new PersonalErrorMessage(error);
                     MessageBox.Show(error);
                     return false;
                 }
@@ -84,6 +83,28 @@ namespace PantallaGestionUsuarios
                 }
             }
         }
+
+        /*public static async Task<bool> PostProfilePicture(string email)
+        {
+            string url = "http://localhost:8080/users/photo";
+
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    Application.Current.Properties["accessToken"] = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    MessageBox.Show(response.RequestMessage.ToString());
+                    return false;
+                }
+            }
+        }*/
 
         public static async Task PostUser(StringContent jsonContent)
         {
