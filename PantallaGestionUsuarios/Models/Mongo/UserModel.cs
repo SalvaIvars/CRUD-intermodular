@@ -9,7 +9,6 @@ namespace PantallaGestionUsuarios
     public class UserModel
     {
         public string _id { get; set; }
-        public int id_user { get; set; }
         public string name { get; set; }
         public string lastname { get; set; }
         public string email { get; set; }
@@ -19,10 +18,9 @@ namespace PantallaGestionUsuarios
         public string photo { get; set; }
         public string rol { get; set; }
 
-        public UserModel(string _id, int id_user, string name, string lastname, string email, string date, string nick, string password, string photo, string rol)
+        public UserModel(string _id, string name, string lastname, string email, string date, string nick, string password, string photo, string rol)
         {
             this._id = _id;
-            this.id_user = id_user;
             this.name = name;
             this.lastname = lastname; 
             this.email = email;

@@ -25,7 +25,15 @@ namespace PantallaGestionUsuarios.Views
             this.user = user;
         }
 
-         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        public async void LoadUserPhoto(object sender, RoutedEventArgs e)
+        {
+            if (user.photo != null && user.photo.Length > 0)
+            {
+                profilePictureImage.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
+            }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
          {
              if (e.ChangedButton == MouseButton.Left)
              {

@@ -40,6 +40,8 @@ namespace PantallaGestionUsuarios.Views
 
             if (result) {
                 ApiHelper.addTokens();
+                UserModel user = await UserProcessor.LoadUser(emailBox.Text);
+                Application.Current.Properties["user"] = user;
                 Utilities.GoToUsers(sender, e);
                 this.Close();
             }

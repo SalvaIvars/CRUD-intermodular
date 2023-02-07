@@ -37,19 +37,18 @@ namespace PantallaGestionUsuarios
             }
         }
 
-        public static async Task<UserModel> LoadUser(string id="") 
+        public static async Task<UserModel> LoadUser(string email) 
         {
+            MessageBox.Show(email);
             string url = "http://localhost:8080/users/";
 
-            url += id;
+            url += email;
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    UserResponse.Datum res = await response.Content.ReadAsAsync<UserResponse.Datum>();
-                    MessageBox.Show("RES: " + res.name);
-                    UserModel user = new UserModel(res._id, res.id_user, res.name, res.email, res.password, res.rol, res.lastname, res.date, res.nick, res.photo);
-                    MessageBox.Show("user: " + user.name);
+                    UserResponse.Rootobject res = await response.Content.ReadAsAsync<UserResponse.Rootobject>();
+                    UserModel user = JsonConvert.DeserializeObject<UserModel>(JsonConvert.SerializeObject(res.data[0]));
                     return user;
                 }
                 else
@@ -83,28 +82,6 @@ namespace PantallaGestionUsuarios
                 }
             }
         }
-
-        /*public static async Task<bool> PostProfilePicture(string email)
-        {
-            string url = "http://localhost:8080/users/photo";
-
-
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
-            {
-                if (response.IsSuccessStatusCode)
-                {
-                    Application.Current.Properties["accessToken"] = await response.Content.ReadAsStringAsync();
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
-                    MessageBox.Show(response.RequestMessage.ToString());
-                    return false;
-                }
-            }
-        }*/
 
         public static async Task PostUser(StringContent jsonContent)
         {

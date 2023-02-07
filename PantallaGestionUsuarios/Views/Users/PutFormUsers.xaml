@@ -87,13 +87,13 @@
                             <TextBlock Grid.Row="5" Text="Rol" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="6" Text="Foto" Style="{StaticResource textPost}"/>
 
-                            <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre..." TextBox.TextChanged="nombreBoxTextChange"/>
+                           <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre..." TextBox.TextChanged="nombreBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="apellidosBox"  Grid.Column="1" Grid.Row="1" Hint="Apellidos..."/>
                             <Controls:PersonalTextBox x:Name="emailBox" Grid.Column="1" Grid.Row="2" Hint="Email..." TextBox.TextChanged="emailBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="nickBox"  Grid.Column="1" Grid.Row="3" Hint="Nick..."/>
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..."/>
                             <Controls:PersonalTextBox x:Name="rolBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..."/>
-                            <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/>
+                            <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/> 
 
                             <Button Click="SendUser" Content="Save" Margin="343,8,-303,58" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="3" Width="160" MaxWidth="160" Grid.RowSpan="2"/>
 
