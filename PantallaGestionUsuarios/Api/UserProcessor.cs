@@ -9,6 +9,8 @@ using System.Windows;
 using System.Text.Json;
 using Newtonsoft.Json;
 using PantallaGestionUsuarios.Views.Error;
+using Microsoft.AspNetCore.Http;
+using System.Net.NetworkInformation;
 
 namespace PantallaGestionUsuarios
 {
@@ -94,6 +96,12 @@ namespace PantallaGestionUsuarios
                     MessageBox.Show(response.ReasonPhrase.ToString());
                 }
             }
+        }
+
+        public static async Task PostPhoto(System.IO.Stream file, string mediaType, string userEmail)
+        {
+            string url = "http://localhost:8080/users/photo";
+            
         }
 
         public static async Task<bool> SignUp(StringContent jsonContent)

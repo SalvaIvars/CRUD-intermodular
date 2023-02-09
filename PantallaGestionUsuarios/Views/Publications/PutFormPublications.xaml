@@ -5,24 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
-        xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
+       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
-                WindowStyle="None"
+        WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-                WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen"
         Title="PutFormPublications" Height="720" Width="1080"
         Loaded="FillData">
     <Window.Resources>
-    <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-        </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-        </Window.Resources>
-            <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -71,32 +70,63 @@
                 <Grid Grid.Row="5">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-
-                        <StackPanel Grid.Column="2">
-                            <TextBox Text="name"/>
-                            <ComboBox Text="Elige"
-  IsEditable="True" Margin="0 20 0 0">
-                                <ComboBoxItem
-    IsSelected="True">
-                                    Software Engineer
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Primera columna -->
+                        <StackPanel Margin="20 20 20 0">
+                            <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem IsSelected="True">
+                                    Escalada
                                 </ComboBoxItem>
                                 <ComboBoxItem>
-                                    HR
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Finance
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Accountant
+                                    Caminata
                                 </ComboBoxItem>
                             </ComboBox>
+                            <ComboBox materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem IsSelected="True">
+                                    Fácil
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Intermedio
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Díficil
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                         </StackPanel>
 
-                                <Button Click="SendPublication" Content="Save" Margin="345,29,-345,37" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="4" Width="200" MaxWidth="200" Grid.RowSpan="2"/>
+                        <!-- Segunda columna -->
+                        <StackPanel Margin="20 20 20 0" Grid.Column="1">
+                            <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem IsSelected="True">
+                                    Escalada
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Caminata
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <ComboBox materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem IsSelected="True">
+                                    Fácil
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Intermedio
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Díficil
+                                </ComboBoxItem>
+                            </ComboBox>
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                        </StackPanel>
+                        <Button Click="SendPublication" Content="Save" Margin="132,185,-88,300" Style="{StaticResource buttonMainGreen}" Grid.Column="2" MaxWidth="200" Grid.ColumnSpan="2"/>
+
                     </Grid>
                 </Grid>
 

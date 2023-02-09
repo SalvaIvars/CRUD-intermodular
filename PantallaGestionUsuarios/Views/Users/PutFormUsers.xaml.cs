@@ -10,6 +10,10 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System;
+using Microsoft.Win32;
+using static System.Net.Mime.MediaTypeNames;
+using System.Runtime.InteropServices;
+using Image = System.Drawing.Image;
 
 namespace PantallaGestionUsuarios.Views
 {
@@ -56,24 +60,83 @@ namespace PantallaGestionUsuarios.Views
                 canUpdate = false;
                 nombreBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
                 nombreBox.textBox.BorderThickness = new Thickness(1.5f);
+            }
 
-
-                if (canUpdate)
+            if (canUpdate)
+            {
+                if (profilePictureImage.Source.ToString() != "defaulProfilePicture.png")
                 {
-                    nombreBox.textBox.BorderThickness = new Thickness(0);
-                    using StringContent jsonContent = new(
-                        JsonSerializer.Serialize(new
-                        {
-                            nombre = nombreBox.textBox.Text,
-                            apellidos = apellidosBox.textBox.Text,
-                            fecha = fechaBox.textBox.Text,
-                        }),
-                        Encoding.UTF8,
-                        "application/json");
-                    await UserProcessor.UpdateUser(user._id, jsonContent);
-                    Utils.Utilities.GoToUsers(sender, e);
-                    this.Close();
+                    var ms = new MemoryStream();
+                    BitmapSource bmp = (BitmapSource)profilePictureImage.Source;
+                    Bitmap bitm = ConvertToBitmap(bmp);
+
+
+                    Image img = (Image)bitm;
+                    var imageStream = ToStream(img, ImageFormat.Png);
+                    await UserProcessor.PostPhoto(imageStream, img.RawFormat.ToString(), user.email);
                 }
+
+                nombreBox.textBox.BorderThickness = new Thickness(0);
+                using StringContent jsonContent = new(
+                    JsonSerializer.Serialize(new
+                    {
+                        nombre = nombreBox.textBox.Text,
+                        apellidos = apellidosBox.textBox.Text,
+                        fecha = fechaBox.textBox.Text,
+                    }),
+                    Encoding.UTF8,
+                    "application/json");
+                await UserProcessor.UpdateUser(user._id, jsonContent);
+                Utils.Utilities.GoToUsers(sender, e);
+                this.Close();
+            }
+        }
+
+        public static ImageFormat ConvertStringToImageFormat(string imageFormat)
+        {
+            switch(imageFormat)
+            {
+                case "png":
+                    return ImageFormat.Png;
+                    break;
+                case "jpeg":
+                    return ImageFormat.Jpeg;
+                default: return ImageFormat.Bmp;
+            }
+        }
+
+        public static Stream ToStream(System.Drawing.Image image, ImageFormat format)
+        {
+            var stream = new System.IO.MemoryStream();
+            MessageBox.Show(format.ToString());
+            image.Save(stream, format);
+            stream.Position = 0;
+            return stream;
+        }
+
+        public static Bitmap ConvertToBitmap(BitmapSource bitmapSource)
+        {
+            var width = bitmapSource.PixelWidth;
+            var height = bitmapSource.PixelHeight;
+            var stride = width * ((bitmapSource.Format.BitsPerPixel + 7) / 8);
+            var memoryBlockPointer = Marshal.AllocHGlobal(height * stride);
+            bitmapSource.CopyPixels(new Int32Rect(0, 0, width, height), memoryBlockPointer, height * stride, stride);
+            var bitmap = new Bitmap(width, height, stride, PixelFormat.Format32bppPArgb, memoryBlockPointer);
+            return bitmap;
+        }
+
+
+
+        private void btnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                profilePictureImage.Source = new BitmapImage(new Uri(op.FileName));
             }
         }
 
