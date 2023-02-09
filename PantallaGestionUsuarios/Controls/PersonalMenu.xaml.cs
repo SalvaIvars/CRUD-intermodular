@@ -30,16 +30,16 @@ namespace PantallaGestionUsuarios.Controls
              usersButton.Click += GoToUsers;
 
         }
-
+/*
         public async void LoadUserPhoto(object sender, RoutedEventArgs e)
         {
-            UserModel user = (UserModel)Application.Current.Properties["user"];
+            UserModel userPhoto = (UserModel)Application.Current.Properties["user"];
 
-            if(user.photo != null && user.photo.Length>0)
+            if(userPhoto.photo != null && userPhoto.photo.Length>0)
                 {
-                profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/"+user.photo));
+                profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/"+ userPhoto.photo));
             }
-        }
+        }*/
 
         public void Base64ToImage(string base64String)
         {

@@ -25,7 +25,6 @@ namespace PantallaGestionUsuarios
                 {
                     LoginResponse loginResponse = await response.Content.ReadAsAsync<LoginResponse>();
                     Application.Current.Properties["accessToken"] = loginResponse.accessToken;
-                    string error = " a";
                     return true;
                 }
                 else

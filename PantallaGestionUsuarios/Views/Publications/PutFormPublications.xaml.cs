@@ -26,16 +26,11 @@ namespace PantallaGestionUsuarios.Views
     /// </summary>
     public partial class PutFormPublications : Window
     {
-        private int centralImageN;
-        private int leftImageN;
-        private int rightImageN;
-        private PublicationModel publication { get; set; }
+       private PublicationModel publication { get; set; }
         public PutFormPublications(PublicationModel publication)
         {
             InitializeComponent();
             this.publication = publication;
-
-
         }
 
 
@@ -48,78 +43,19 @@ namespace PantallaGestionUsuarios.Views
         }
         private void FillData(object sender, RoutedEventArgs e)
         {
-            nombreBox.textBox.Text = publication.name;
+            
+            /*nombreBox.textBox.Text = publication.name;
             categoriaBox.textBox.Text = publication.category;
             distancaiBox.textBox.Text = publication.distance;
             dificultadBox.textBox.Text = publication.difficulty;
             duracionBox.textBox.Text = publication.duration;
             descripcionBox.textBox.Text = publication.description;
-            privacidadBox.textBox.Text = publication.privacy;
-
-            if(publication.photo.Length >= 3)
-            {
-                leftImageN = 0;
-                centralImageN = 1;
-                rightImageN = 2;
-                routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-                leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-            }
+            privacidadBox.textBox.Text = publication.privacy;*/
         }
-
-        public BitmapImage Base64ToImage(string base64String)
-        {
-            if (base64String == null)
-            {
-                leftButton.Visibility = Visibility.Collapsed;
-                rightButton.Visibility = Visibility.Collapsed;
-                return null;
-            }
-
-            byte[] binaryData = Convert.FromBase64String(base64String);
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = new MemoryStream(binaryData);
-
-            bi.EndInit();
-
-            return bi;
-        }
-
-        public FormatConvertedBitmap Base64ToImageGrey(string base64String)
-        {
-            if (base64String == null)
-            {
-                leftButton.Visibility = Visibility.Collapsed;
-                rightButton.Visibility = Visibility.Collapsed;
-                return null;
-            }
-
-            byte[] binaryData = Convert.FromBase64String(base64String);
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = new MemoryStream(binaryData);
-
-            bi.EndInit();
-
-            FormatConvertedBitmap grayBitmap = new FormatConvertedBitmap();
-
-            grayBitmap.BeginInit();
-
-            grayBitmap.Source = bi;
-
-            grayBitmap.DestinationFormat = PixelFormats.Gray8;
-
-            grayBitmap.EndInit();
-
-            return grayBitmap;  
-        }
-
 
         public async void SendPublication(object sender, RoutedEventArgs e)
         {
+            /*
             bool canUpdate = true;
             if (nombreBox.textBox.Text.Length == 0)
             {
@@ -164,152 +100,7 @@ namespace PantallaGestionUsuarios.Views
                 Utils.Utilities.GoToPublications(sender, e);
                 this.Close();
             }
-        }
-
-        private void buttonLeftClick(object sender, RoutedEventArgs e)
-        {
-
-           new CustomError("No hay fotos para mostrar").ShowDialog();
-            if (publication.photo.Length >= 2)
-            {
-                if (centralImageN == 0)
-                {
-                    leftImageN = leftImageN -1;
-                    centralImageN = publication.photo.Length - 1;
-                    rightImageN = 0;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImageGrey(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImageGrey(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == 1)
-                {
-                    leftImageN = publication.photo.Length - 1;
-                    centralImageN = centralImageN - 1;
-                    rightImageN = 1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImageGrey(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImageGrey(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == publication.photo.Length-2)
-                {
-                    leftImageN = leftImageN - 1;
-                    centralImageN = centralImageN - 1;
-                    rightImageN = rightImageN - 1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == publication.photo.Length - 1)
-                {
-                    leftImageN = leftImageN - 1;
-                    centralImageN = centralImageN - 1;
-                    rightImageN = publication.photo.Length - 1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else
-                {
-                    centralImageN = centralImageN-1;
-                    leftImageN = leftImageN - 1;
-                    rightImageN = rightImageN -1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-                }
-
-            }
-        }
-
-        private void nombreBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (nombreBox.textBox.Text.Length > 0)
-            {
-                nombreBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
-        private void distanciaBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (distancaiBox.textBox.Text.Length > 0)
-            {
-                distancaiBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
-        private void duracionBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (duracionBox.textBox.Text.Length > 0)
-            {
-                duracionBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
-
-        private void descripcionBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (descripcionBox.textBox.Text.Length > 0)
-            {
-                descripcionBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
-
-        private void buttonRightClick(object sender, RoutedEventArgs e)
-        {
-            if (publication.photo.Length >= 2)
-            {
-                if (centralImageN == 0)
-                {
-                    leftImageN = 0; // publication.foto.Length - 1;
-                    centralImageN = centralImageN+1;
-                    rightImageN = rightImageN+1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == 1)
-                {
-                    leftImageN = leftImageN+1;
-                    centralImageN = centralImageN + 1;
-                    rightImageN = rightImageN+1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == publication.photo.Length - 2)
-                {
-                    leftImageN = leftImageN + 1;
-                    centralImageN = centralImageN+1;
-                    rightImageN =0 ;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else if (centralImageN == publication.photo.Length - 1)
-                {
-                    leftImageN = publication.photo.Length - 1;
-                    centralImageN =0;
-                    rightImageN = rightImageN + 1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-
-                }
-                else
-                {
-                    centralImageN = centralImageN + 1;
-                    leftImageN = leftImageN + 1;
-                    rightImageN = rightImageN + 1;
-                    routePicture.Source = Base64ToImage(publication.photo[centralImageN]);
-                    leftImage.Source = Base64ToImage(publication.photo[leftImageN]);
-                    rightImage.Source = Base64ToImage(publication.photo[rightImageN]);
-                }
-
-            }
+            */
         }
     }
 }

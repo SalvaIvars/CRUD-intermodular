@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" 
         xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
@@ -13,8 +14,15 @@
                 WindowStartupLocation="CenterScreen"
         Title="PutFormPublications" Height="720" Width="1080"
         Loaded="FillData">
-
-    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
+    <Window.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+        </Window.Resources>
+            <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -62,55 +70,33 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-
-                                <ColumnDefinition Width="200" MaxWidth="200"/>
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="2">
+                            <TextBox Text="name"/>
+                            <ComboBox Text="Elige"
+  IsEditable="True" Margin="0 20 0 0">
+                                <ComboBoxItem
+    IsSelected="True">
+                                    Software Engineer
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    HR
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Finance
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Accountant
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
 
-                            <TextBlock Grid.Row="0" Text="Nombre" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="1" Text="Categoria" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="2" Text="Distancia" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="3" Text="Dificultad" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="4" Text="Duración" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="5" Text="Descripción" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="6" Text="Privacidad" Style="{StaticResource textPost}"/>
-
-
-                            <Controls:PersonalTextBox x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre... " TextBox.TextChanged="nombreBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="categoriaBox"  Grid.Column="1" Grid.Row="1" Hint="Categorías..."/>
-                            <Controls:PersonalTextBox x:Name="distancaiBox" Grid.Column="1" Grid.Row="2" Hint="Distancia..." TextBox.TextChanged="distanciaBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="dificultadBox"  Grid.Column="1" Grid.Row="3" Hint="Dificultad..."/>
-                            <Controls:PersonalTextBox x:Name="duracionBox"  Grid.Column="1" Grid.Row="4" Hint="Duración..." TextBox.TextChanged="duracionBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="descripcionBox"  Grid.Column="1" Grid.Row="5" Hint="Descripción..." TextBox.TextChanged="descripcionBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="privacidadBox"  Grid.Column="1" Grid.Row="6" Hint="Privacidad..."/>
-
-
-
-                            <Button Click="SendPublication" Content="Save" Margin="345,29,-345,37" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="4" Width="200" MaxWidth="200" Grid.RowSpan="2"/>
-
-                        </Grid>
-                        <Image x:Name="routePicture" HorizontalAlignment="Left" Height="182" Margin="512,32,0,0" VerticalAlignment="Top" Width="180"/>
-                        <Button x:Name="leftButton" HorizontalAlignment="Left" Margin="404,65,0,0" VerticalAlignment="Top" Click="buttonLeftClick" Height="125" Width="108" BorderThickness="0" Background="Transparent">
-                            <Image x:Name="leftImage">
-
-                            </Image>
-                        </Button>
-                        <Button x:Name="rightButton" HorizontalAlignment="Left" Margin="693,65,0,0" VerticalAlignment="Top" Click="buttonRightClick"  Height="125" Width="108" BorderThickness="0" Background="Transparent">
-                            <Image x:Name="rightImage">
-                            </Image>
-                        </Button>
+                                <Button Click="SendPublication" Content="Save" Margin="345,29,-345,37" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="4" Width="200" MaxWidth="200" Grid.RowSpan="2"/>
                     </Grid>
                 </Grid>
 
