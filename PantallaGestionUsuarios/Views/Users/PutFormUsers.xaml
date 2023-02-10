@@ -30,7 +30,7 @@
 
                 <!-- Menu Icon -->
                 <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                    <Icon:PackIconMaterial Width="15" Height="15"/>
                 </Button>
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
@@ -62,7 +62,7 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,0,0,0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,152,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="200" MaxWidth="200"/>
@@ -71,8 +71,8 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="60"/>
                                 <RowDefinition Height="auto"/>
-
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="Nombre" Style="{StaticResource textPost}"/>
@@ -84,11 +84,11 @@
                             <Controls:PersonalTextBox x:Name="apellidosBox"  Grid.Column="1" Grid.Row="1" Hint="Apellidos..."/>
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="2" Hint="Fecha..."/>
 
-                            <Button Click="SendUser" Content="Save" Margin="343,8,-303,58" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="2" Width="160" MaxWidth="160" Grid.RowSpan="2"/>
+                            <Button Click="SendUser" Content="Save" Margin="346,10,-306,56" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="3" Width="160" MaxWidth="160"/>
 
                         </Grid>
-                        <Button Click="btnOpen_Click" Height="180" Width="178" Margin="475,30,0,0" VerticalAlignment="Top" Background="Transparent" BorderThickness="0">
-                            <Image x:Name="profilePictureImage" Source="../../Images/defaultProfilePicture.png"/>
+                        <Button Click="btnOpen_Click" Height="160" Width="168" Margin="572,127,90,0" VerticalAlignment="Top" Background="Transparent" BorderThickness="0">
+                            <Image x:Name="profilePictureImage" Source="../../Images/defaultProfilePicture.png" MaxHeight="200" MaxWidth="200"/>
                         </Button>
 
                     </Grid>

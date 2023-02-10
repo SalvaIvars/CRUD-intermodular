@@ -37,7 +37,7 @@
 
                 <!-- Menu Icon -->
                 <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                    <Icon:PackIconMaterial  Width="15" Height="15"/>
                 </Button>
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
@@ -63,7 +63,6 @@
 
                 </StackPanel>
 
-
                 <!-- Separator -->
                 <Separator Height="1" Grid.Row="3" Background="#E5D9B6" Margin="0 0 0 10"/>
 
@@ -71,14 +70,16 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="220" MaxWidth="250"/>
                             <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
-                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
-                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="180" MaxWidth="250"/>
                         </Grid.ColumnDefinitions>
-                        
+
+
                         <!-- Primera columna -->
-                        <StackPanel Margin="20 20 20 0">
+                        <StackPanel Margin="0 20 0 30" VerticalAlignment="Bottom">
                             <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                 <ComboBoxItem IsSelected="True">
                                     Escalada
@@ -87,6 +88,7 @@
                                     Caminata
                                 </ComboBoxItem>
                             </ComboBox>
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <ComboBox materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                 <ComboBoxItem IsSelected="True">
                                     Fácil
@@ -102,31 +104,42 @@
                         </StackPanel>
 
                         <!-- Segunda columna -->
-                        <StackPanel Margin="20 20 20 0" Grid.Column="1">
-                            <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <StackPanel Margin="20 20 0 30" Grid.Column="1" VerticalAlignment="Bottom">
+                            <TextBox materialDesign:HintAssist.Hint="Duración" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBox materialDesign:HintAssist.Hint="Descripción" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem>
+                                    Privado
+                                </ComboBoxItem>
                                 <ComboBoxItem IsSelected="True">
-                                    Escalada
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Caminata
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <ComboBox materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                <ComboBoxItem IsSelected="True">
-                                    Fácil
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Intermedio
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Díficil
+                                    Público
                                 </ComboBoxItem>
                             </ComboBox>
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                         </StackPanel>
-                        <Button Click="SendPublication" Content="Save" Margin="132,185,-88,300" Style="{StaticResource buttonMainGreen}" Grid.Column="2" MaxWidth="200" Grid.ColumnSpan="2"/>
 
+                        <StackPanel Margin="20 20 0 24" Grid.Column="2" VerticalAlignment="Bottom">
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBox materialDesign:HintAssist.Hint="Distancia" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
+                        </StackPanel>
+                        <Button Click="SendPublication" Content="Save" Margin="148,392,-82,93" Style="{StaticResource buttonMainGreen}" Grid.Column="2" MaxWidth="200" Grid.ColumnSpan="2"/>
+                        <Image x:Name="photo1" Width="150" Height="150" Grid.Column="0" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="134,73,136,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
+                        <Image x:Name="photo2" Width="150" Height="150" Grid.Column="1" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="145,73,125,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
+                        <Image x:Name="photo3" Width="150" Height="150" Grid.Column="2" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="131,73,99,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
+                        <Button Content="Button" Click="izquierda" HorizontalAlignment="Left" Margin="49,140,0,0" VerticalAlignment="Top"/>
+                        <Button Content="Button" Click="derecha" HorizontalAlignment="Left" Margin="90,140,0,0" VerticalAlignment="Top" Grid.Column="3"/>
                     </Grid>
                 </Grid>
 

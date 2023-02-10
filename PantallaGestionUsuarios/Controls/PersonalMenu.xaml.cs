@@ -30,32 +30,15 @@ namespace PantallaGestionUsuarios.Controls
              usersButton.Click += GoToUsers;
 
         }
-
+        /*
         public async void LoadUserPhoto(object sender, RoutedEventArgs e)
         {
             UserModel userPhoto = (UserModel)Application.Current.Properties["user"];
-
             if(userPhoto.photo != null && userPhoto.photo.Length>0)
                 {
                 profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/"+ userPhoto.photo));
             }
-        }
-
-        public void Base64ToImage(string base64String)
-        {
-            if (base64String == null)
-            {
-                return;
-            }
-            byte[] binaryData = Convert.FromBase64String(base64String);
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.StreamSource = new MemoryStream(binaryData);
-            bi.EndInit();
-
-            profilePicture.ImageSource = bi;
-        }
+        }*/
 
         private void GoToPublications(object sender, RoutedEventArgs e)
         {

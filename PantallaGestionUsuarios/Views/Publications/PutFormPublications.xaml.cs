@@ -27,6 +27,7 @@ namespace PantallaGestionUsuarios.Views
     public partial class PutFormPublications : Window
     {
        private PublicationModel publication { get; set; }
+        private string[] photos { get; set; }
         public PutFormPublications(PublicationModel publication)
         {
             InitializeComponent();
@@ -41,9 +42,9 @@ namespace PantallaGestionUsuarios.Views
                 this.DragMove();
             }
         }
-        private void FillData(object sender, RoutedEventArgs e)
+        private async void FillData(object sender, RoutedEventArgs e)
         {
-            
+
             /*nombreBox.textBox.Text = publication.name;
             categoriaBox.textBox.Text = publication.category;
             distancaiBox.textBox.Text = publication.distance;
@@ -51,6 +52,48 @@ namespace PantallaGestionUsuarios.Views
             duracionBox.textBox.Text = publication.duration;
             descripcionBox.textBox.Text = publication.description;
             privacidadBox.textBox.Text = publication.privacy;*/
+            photos = await PublicationsProcessor.GetNumberOfPhotos(publication._id);
+            loadPhotos();
+        }
+
+        private void loadPhotos()
+        {
+            if(photos.Length == 1)
+            {
+               photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
+            }
+            else if (photos.Length == 2)
+            {
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[1]));
+            }
+            else if (photos.Length >= 3)
+            {
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[1]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[2]));
+            }
+        }
+
+        private void izquierda(object sender, RoutedEventArgs e)
+        {
+            if(photos.Length < 3)
+            {
+                return;
+            }
+            MessageBox.Show(photo3.Source.ToString().Substring(66));
+            MessageBox.Show(photos[photos.Length - 1]);
+
+            if (photo3.Source.ToString().Substring(66) == photos[photos.Length-1])
+            {
+                MessageBox.Show("aaaaaaaaaaaaa");
+            }
+
+        }
+
+        private void derecha(object sender, RoutedEventArgs e)
+        {
+
         }
 
         public async void SendPublication(object sender, RoutedEventArgs e)

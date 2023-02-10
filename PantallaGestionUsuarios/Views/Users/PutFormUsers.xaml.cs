@@ -66,14 +66,7 @@ namespace PantallaGestionUsuarios.Views
             {
                 if (profilePictureImage.Source.ToString() != "defaulProfilePicture.png")
                 {
-                    var ms = new MemoryStream();
-                    BitmapSource bmp = (BitmapSource)profilePictureImage.Source;
-                    Bitmap bitm = ConvertToBitmap(bmp);
-
-
-                    Image img = (Image)bitm;
-                    var imageStream = ToStream(img, ImageFormat.Png);
-                    await UserProcessor.PostPhoto(imageStream, img.RawFormat.ToString(), user.email);
+                    await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
                 }
 
                 nombreBox.textBox.BorderThickness = new Thickness(0);
@@ -90,39 +83,6 @@ namespace PantallaGestionUsuarios.Views
                 Utils.Utilities.GoToUsers(sender, e);
                 this.Close();
             }
-        }
-
-        public static ImageFormat ConvertStringToImageFormat(string imageFormat)
-        {
-            switch(imageFormat)
-            {
-                case "png":
-                    return ImageFormat.Png;
-                    break;
-                case "jpeg":
-                    return ImageFormat.Jpeg;
-                default: return ImageFormat.Bmp;
-            }
-        }
-
-        public static Stream ToStream(System.Drawing.Image image, ImageFormat format)
-        {
-            var stream = new System.IO.MemoryStream();
-            MessageBox.Show(format.ToString());
-            image.Save(stream, format);
-            stream.Position = 0;
-            return stream;
-        }
-
-        public static Bitmap ConvertToBitmap(BitmapSource bitmapSource)
-        {
-            var width = bitmapSource.PixelWidth;
-            var height = bitmapSource.PixelHeight;
-            var stride = width * ((bitmapSource.Format.BitsPerPixel + 7) / 8);
-            var memoryBlockPointer = Marshal.AllocHGlobal(height * stride);
-            bitmapSource.CopyPixels(new Int32Rect(0, 0, width, height), memoryBlockPointer, height * stride, stride);
-            var bitmap = new Bitmap(width, height, stride, PixelFormat.Format32bppPArgb, memoryBlockPointer);
-            return bitmap;
         }
 
 

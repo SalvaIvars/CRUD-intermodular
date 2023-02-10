@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PantallaGestionUsuarios.Models;
+using PantallaGestionUsuarios.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,33 @@ namespace PantallaGestionUsuarios.Api
             }
         }
 
+        public static async Task<string[]> GetNumberOfPhotos(string id)
+        {
+            string url = "http://localhost:8080/publications/photos/";
+            url += id;
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    PublicationResponseNames.Rootobject publication = await response.Content.ReadAsAsync<PublicationResponseNames.Rootobject>();
+                    string[] photos = new string[publication.data.Length];
+                    for(int i = 0; i < photos.Length; i++)
+                    {
+                        photos[i] = publication.data[i];
+                    }
+                    return photos;
+                }
+                else
+                {
+                   MessageBox.Show(response.ReasonPhrase);
+                    return null;
+                }
+            }
+        }
+
+            
+
         public static async Task<PublicationModel[]> LoadAllPublications()
         {
             string url = "http://localhost:8080/publications";
@@ -48,7 +76,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    PublicationResponse.Rootobject publicationResponse = await response.Content.ReadAsAsync<                    PublicationResponse.Rootobject>();
+                    PublicationResponse.Rootobject publicationResponse = await response.Content.ReadAsAsync<PublicationResponse.Rootobject>();
                     PublicationModel[] publications = new PublicationModel[publicationResponse.data.Length];
                     for (int i = 0; i < publications.Length; i++)
                     {

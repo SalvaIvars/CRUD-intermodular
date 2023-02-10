@@ -1,16 +1,14 @@
 ﻿using PantallaGestionUsuarios.Api;
 using PantallaGestionUsuarios.Models.Response;
 using System;
-using System.Drawing;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Text.Json;
 using Newtonsoft.Json;
-using PantallaGestionUsuarios.Views.Error;
-using Microsoft.AspNetCore.Http;
-using System.Net.NetworkInformation;
+using System.Net.Http.Headers;
+using MimeKit;
+using System.Windows.Controls;
+using System.IO;
 
 namespace PantallaGestionUsuarios
 {
@@ -40,7 +38,6 @@ namespace PantallaGestionUsuarios
 
         public static async Task<UserModel> LoadUser(string email) 
         {
-            MessageBox.Show(email);
             string url = "http://localhost:8080/users/";
 
             url += email;
@@ -98,10 +95,30 @@ namespace PantallaGestionUsuarios
             }
         }
 
-        public static async Task PostPhoto(System.IO.Stream file, string mediaType, string userEmail)
+        public static async Task PostPhoto(Image img, string fileName, string userEmail)
         {
-            string url = "http://localhost:8080/users/photo";
-            
+            string url = "http://localhost:8080/users/"+userEmail;
+            ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
+            var fileStreamContent = new StreamContent(File.OpenRead(new Uri(img.Source.ToString()).AbsolutePath));
+            string extension = MimeTypes.GetMimeType(fileName);
+
+            MultipartFormDataContent file = new MultipartFormDataContent();
+            file.Headers.ContentType.MediaType = "multipart/form-data";
+            fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue(extension);
+            file.Add(fileStreamContent, "photo", fileName);
+
+            ApiHelper.ApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Application.Current.Properties["accessToken"].ToString());
+            ApiHelper.ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("multipart/form-data"));
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, file))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("error");
+                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    MessageBox.Show(response.StatusCode.ToString());
+                }
+            }
         }
 
         public static async Task<bool> SignUp(StringContent jsonContent)
@@ -120,7 +137,7 @@ namespace PantallaGestionUsuarios
                 {
                     MessageBox.Show("error");
                     MessageBox.Show(response.ReasonPhrase.ToString());
-                    MessageBox.Show(response.RequestMessage.ToString());
+                    MessageBox.Show(response.Content.ToString());
                     return false;
                 }
             }
