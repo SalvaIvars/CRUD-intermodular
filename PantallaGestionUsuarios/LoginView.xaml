@@ -3,125 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views"
-        
-        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-   WindowStartupLocation="CenterScreen" 
+        Title="Login" Height="760" Width="450"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}"
+        AllowsTransparency="True"
         WindowStyle="None"
-        AllowsTransparency="True" 
-        ResizeMode="NoResize"
-        Height="720" Width="1080">
+        WindowStartupLocation="CenterScreen">
 
-    <Window.Background>
-        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#3AA9AD" Offset="0" />
-            <GradientStop Color="#3AADA1" Offset="1" />
-        </LinearGradientBrush>
-    </Window.Background>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <materialDesign:Card UniformCornerRadius="15" Background="{DynamicResource MaterialDesignPaper}" Margin="25" materialDesign:ShadowAssist.ShadowDepth="Depth4">
+        <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
+            <StackPanel>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+                <materialDesign:PopupBox HorizontalAlignment="Right" Margin="0 20 20 0" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Height="25">
+                    <StackPanel>
+                        <Button ToolTip="Having Troubles in Logging In?" Margin="0 8 0 0" Content="Help Me" />
+                        <Button x:Name="Btn_Exit" ToolTip="Close Application" Content="Exit Application" Click="exitApp"/>
 
-        <Border Grid.Column="0" Margin="0,0,0,0">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#3AA9AD" Offset="0" />
-                    <GradientStop Color="#3AADA1" Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
-            <Canvas>
-                <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" />
-                <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" />
-                <Ellipse Margin="250 450 0 0" Width="40" Height="40" Fill="#4EB1B6" />
-                <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6" />
-            </Canvas>
-
-        </Border>
-
-        <Border Grid.Column="2" Margin="0,0,0,0">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="#3AA9AD" Offset="0" />
-                    <GradientStop Color="#3AADA1" Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
-            <Canvas>
-                <Polygon Points="0,20 230,140 0,270" Fill="#4EB1B6" />
-                <Polygon Points="100,400 200,370 180,470" Fill="#4EB1B6" />
-                <Ellipse Margin="250 450 0 0" Width="40" Height="40" Fill="#4EB1B6" />
-                <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6" />
-            </Canvas>
-
-        </Border>
-
-        <Border Grid.Column="1" BorderThickness="5" BorderBrush="DarkSeaGreen" Background="AliceBlue" CornerRadius="0" Margin="0,50,0,50">
-            <StackPanel Grid.Column="1" Margin="20,60,20,0" Background="AliceBlue">
-
-                <Border Height="150" Width="150" Margin="15">
-                    <Image Height="150" Width="150" HorizontalAlignment="Center" Source="./Images/logo.png"></Image>
-                </Border>
-
-                <Border Name ="bordeCampoUsuario" Height="50" BorderBrush="Silver" BorderThickness="2" CornerRadius="4" Margin="0,25,0,10">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Button Width="25" Height="25" Background="Transparent" BorderThickness="0">
-                            <Icon:PackIconMaterial Kind="Head" Width="15" Height="15"/>
-                        </Button>
+                    </StackPanel>
+                </materialDesign:PopupBox>
 
 
-                        <TextBox x:Name="emailBox" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold" BorderThickness="0" ></TextBox>
+                <Image Margin="0,60,0,5" Source="/Images/logo.png" Height="100"></Image>
 
-                    </Grid>
+                <TextBlock Margin="0,25,0,5" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" Text="Welcome Back!" />
 
-                </Border>
+                <TextBlock FontSize="17" FontWeight="SemiBold" HorizontalAlignment="Center" Text="Log in to your existing account"></TextBlock>
 
-                <Border Name ="bordeCampoPassword" Height="50" BorderBrush="Silver" BorderThickness="2" CornerRadius="4" Margin="0,0,0,5">
+                <TextBox Margin="0,50,0,0" Text="" x:Name="emailBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Email" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}"  Style="{StaticResource MaterialDesignOutlinedTextBox}" />
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="50"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                <PasswordBox Margin="0,20,0,0" x:Name="passwordBox" Width="300" FontSize="18" materialDesign:HintAssist.Hint="Enter Password" BorderThickness="2" BorderBrush="{DynamicResource MaterialDesignDivider}" Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
 
+                <Button  Margin="0,20,0,0" x:Name="loginBtn" Style="{StaticResource MaterialDesignFlatMidBgButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="Login" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="LOG IN"></Button>
 
-
-                        <Button Width="25" Height="25" Background="Transparent" BorderThickness="0">
-                            <Icon:PackIconMaterial Kind="Lock" Width="15" Height="15"/>
-                        </Button>
-
-                        <Button Cursor="Hand" x:Name="BotonMostrarContra" Grid.Column="2" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Height="25" Width="25" Click="showPassword">
-                            <Icon:PackIconMaterial Kind="Eye" Width="15" Height="15"/>
-                        </Button>
-                        <PasswordBox x:Name="passwordBox" BorderThickness="0" Background="AliceBlue" Foreground="Black" Grid.Column="1"  VerticalAlignment="Center" FontWeight="SemiBold"></PasswordBox>
-
-                     </Grid>
-                </Border>
-
-                <Label x:Name="MensajeError" Content= "" FontStyle="Italic" FontStretch="ExtraCondensed" Foreground="Red" HorizontalAlignment="Center" Visibility="Collapsed"></Label>
-
-                <Button Cursor="Hand" Background="DodgerBlue" BorderThickness="0" Content="Iniciar Sesion" Foreground="White" Height="50" Margin="0,5,0,0" Click="Login"/>
-
-                <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
-            <Hyperlink TextDecorations="None">
-                Olvidaste tu Contraseña?
-            </Hyperlink>
-                </TextBlock>
-
-                <TextBlock Margin="0,5,0,0" HorizontalAlignment="Center"> 
-                </TextBlock>
+                <Button Margin="0,20,0,0" x:Name="signupBtn" Style="{StaticResource MaterialDesignFlatButton}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Click="Login" Height="53" Width="300" materialDesign:ButtonAssist.CornerRadius="10" FontSize="18" Content="Create Account"></Button>
 
             </StackPanel>
-        </Border>
-    </Grid>
+        </materialDesign:DialogHost>
+    </materialDesign:Card>
 </Window>

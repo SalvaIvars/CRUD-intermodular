@@ -47,9 +47,9 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        public void showPassword(object sender, RoutedEventArgs e)
+        public void exitApp(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
