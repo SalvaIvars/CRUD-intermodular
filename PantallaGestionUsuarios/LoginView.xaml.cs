@@ -1,4 +1,5 @@
 ﻿using PantallaGestionUsuarios.Utils;
+using PantallaGestionUsuarios.Views.Error;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -22,7 +23,7 @@ namespace PantallaGestionUsuarios.Views
         {
 
             if (emailBox.Text.Length == 0 || passwordBox.Password.Length == 0) {
-                MessageBox.Show("Escriba su nombre de usuario y contraseña");
+                new CustomError("Escriba su nombre de usuario y contraseña").ShowDialog();
                 return;
             }
 

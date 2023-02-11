@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using MimeKit;
 using System.Windows.Controls;
 using System.IO;
+using PantallaGestionUsuarios.Views.Error;
 
 namespace PantallaGestionUsuarios
 {
@@ -29,8 +30,7 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    var error = response.Content.ReadAsStringAsync().Result;
-                    MessageBox.Show(error);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                     return false;
                 }
             }
@@ -51,7 +51,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    return null;
                 }
             }
         }
@@ -75,7 +76,7 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    MessageBox.Show(response.ReasonPhrase);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                     return null;
                 }
             }
@@ -89,8 +90,7 @@ namespace PantallaGestionUsuarios
             {
                 if (! response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
             }
         }
@@ -114,9 +114,7 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
-                    MessageBox.Show(response.StatusCode.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
             }
         }
@@ -135,9 +133,7 @@ namespace PantallaGestionUsuarios
                 }
                 else 
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
-                    MessageBox.Show(response.Content.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                     return false;
                 }
             }
@@ -154,8 +150,7 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }
@@ -172,8 +167,7 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }

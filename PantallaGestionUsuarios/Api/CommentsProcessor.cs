@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PantallaGestionUsuarios.Models;
+using PantallaGestionUsuarios.Views.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,8 +75,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
             }
         }
@@ -92,8 +92,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }
@@ -113,8 +112,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }

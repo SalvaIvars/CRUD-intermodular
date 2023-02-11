@@ -31,14 +31,14 @@ namespace PantallaGestionUsuarios.Controls
 
         }
         
-        /*public async void LoadUserPhoto(object sender, RoutedEventArgs e)
+        public async void LoadUserPhoto(object sender, RoutedEventArgs e)
         {
             UserModel userPhoto = (UserModel)Application.Current.Properties["user"];
             if(userPhoto.photo != null && userPhoto.photo.Length>0)
                 {
                 profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/"+ userPhoto.photo));
             }
-        }*/
+        }
 
         private void GoToPublications(object sender, RoutedEventArgs e)
         {

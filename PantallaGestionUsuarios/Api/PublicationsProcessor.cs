@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PantallaGestionUsuarios.Models;
 using PantallaGestionUsuarios.Models.Response;
+using PantallaGestionUsuarios.Views.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,7 @@ namespace PantallaGestionUsuarios.Api
         {
             string url = "http://localhost:8080/publications/";
 
-            if (id.Length != 0)
-            {
-                url += id;
-            }
-            else
-            {
-                url += "63c7a9b8ba57368e8e332ef8";
-            }
+            url += id;
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
@@ -36,7 +30,8 @@ namespace PantallaGestionUsuarios.Api
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    return null;
                 }
             }
         }
@@ -62,7 +57,7 @@ namespace PantallaGestionUsuarios.Api
                 }
                 else
                 {
-                   MessageBox.Show(response.ReasonPhrase);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                     return null;
                 }
             }
@@ -89,7 +84,8 @@ namespace PantallaGestionUsuarios.Api
                 }
                 else
                 {
-                    throw new Exception(response.ReasonPhrase);
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    return null;
                 }
             }
         }
@@ -102,10 +98,9 @@ namespace PantallaGestionUsuarios.Api
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                if (!response.IsSuccessStatusCode) { 
+
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
             }
         }
@@ -121,8 +116,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }
@@ -143,8 +137,7 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("error");
-                    MessageBox.Show(response.ReasonPhrase.ToString());
+                    new CustomError(response.ReasonPhrase).ShowDialog();
                 }
 
             }
