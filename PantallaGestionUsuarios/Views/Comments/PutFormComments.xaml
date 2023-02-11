@@ -28,7 +28,7 @@
 
                 <!-- Menu Icon -->
                 <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                    <Icon:PackIconMaterial  Width="15" Height="15"/>
                 </Button>
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
@@ -50,8 +50,13 @@
                 <TextBlock Text="Update Comment" Grid.Row="2" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- Add Button -->
-                <StackPanel Orientation="Horizontal" Height="71">
-
+                <StackPanel Orientation="Horizontal" Height="21" HorizontalAlignment="Right">
+                    <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                        <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
                 </StackPanel>
 
 
@@ -60,7 +65,7 @@
 
                 <Grid Grid.Row="5">
                     <Grid>
-                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100 100 0 0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="92,202,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150"/>
                                 <ColumnDefinition Width="200" MaxWidth="200"/>
@@ -75,16 +80,12 @@
 
                             <TextBlock Grid.Row="0" Text="Fecha" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="1" Text="Mensaje" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="2" Text="id_usuario" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="3" Text="id_publicacion" Style="{StaticResource textPost}"/>
 
                             <Controls:PersonalTextBox x:Name="fechaBox" Grid.Column="1" Grid.Row="0" Hint="Fecha... " TextBox.TextChanged="fechaBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="mensajeBox"  Grid.Column="1" Grid.Row="1" Hint="Mensaje..." TextBox.TextChanged="mensajeBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="idusuarioBox" Grid.Column="1" Grid.Row="2" Hint="Id_usuario..." TextBox.TextChanged="idUsuarioBoxTextChange"/>
-                            <Controls:PersonalTextBox x:Name="idpublicacionBox"  Grid.Column="1" Grid.Row="3" Hint="Id_publicacion..." TextBox.TextChanged="idPublicacionBoxTextChange"/>
 
 
-                            <Button Click="SendComment" Content="Save" Margin="316,8,-276,116" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Width="160" MaxWidth="160"/>
+                            <Button Click="SendComment" Content="Save" Margin="330,26,-290,40" Style="{StaticResource buttonMainGreen}" Grid.Column="1" Grid.RowSpan="2" Width="160" MaxWidth="160"/>
 
                         </Grid>
                     </Grid>

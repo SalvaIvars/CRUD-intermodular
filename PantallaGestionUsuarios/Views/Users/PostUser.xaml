@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
                         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -27,7 +28,7 @@
 
                 <!-- Menu Icon -->
                 <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                    <Icon:PackIconMaterial  Width="15" Height="15"/>
                 </Button>
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
@@ -49,8 +50,13 @@
                 <TextBlock Text="Create User" Grid.Row="2" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- Add Button -->
-                <StackPanel Orientation="Horizontal" Height="11">
-
+                <StackPanel Orientation="Horizontal" Height="21" HorizontalAlignment="Right">
+                    <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                        <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
                 </StackPanel>
 
 
@@ -82,7 +88,6 @@
                             <TextBlock Grid.Row="3" Text="Nick" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="4" Text="Fecha" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="5" Text="Rol" Style="{StaticResource textPost}"/>
-                            <TextBlock Grid.Row="6" Text="Foto" Style="{StaticResource textPost}"/>
                             <TextBlock Grid.Row="7" Text="Contraseña" Style="{StaticResource textPost}"/>
 
                             <Controls:PersonalTextBox  x:Name="nombreBox" Grid.Column="1" Grid.Row="0" Hint="Nombre... " TextBox.TextChanged="nombreBoxTextChange"/>
@@ -90,8 +95,14 @@
                             <Controls:PersonalTextBox x:Name="emailBox" Grid.Column="1" Grid.Row="2" Hint="Email..." TextBox.TextChanged="emailBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="nickBox"  Grid.Column="1" Grid.Row="3" Hint="Nick..."/>
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..."/>
-                            <Controls:PersonalTextBox x:Name="rolBox"  Grid.Column="1" Grid.Row="5" Hint="Rol..."/>
-                            <Controls:PersonalTextBox x:Name="fotoBox"  Grid.Column="1" Grid.Row="6" Hint="Foto..."/>
+                            <ComboBox x:Name="rolBox" materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Grid.Column="1" Grid.Row="5" Margin="0 20 0 0">
+                                <ComboBoxItem IsSelected="True">
+                                    user
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    admin
+                                </ComboBoxItem>
+                            </ComboBox>
                             <Controls:PersonalPasswordBox x:Name="passwordBox"  Grid.Column="1" Grid.Row="7" HintPassword="Contraseña..." PasswordBox.PasswordChanged="passwordBoxTextChange" MaxWidth="158" MaxHeight="165"/>
 
                             <Button Background="Transparent" Grid.Column="1" Margin="322,9,-282,9" Grid.RowSpan="3" BorderThickness="0" Click="btnLoad_Click">

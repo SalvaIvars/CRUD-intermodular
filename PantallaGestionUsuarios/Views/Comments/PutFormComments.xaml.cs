@@ -32,12 +32,19 @@ namespace PantallaGestionUsuarios.Views
 
         }
 
+        private void minimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void FillData(object sender, RoutedEventArgs e)
         {
             fechaBox.textBox.Text = comment.date;
             mensajeBox.textBox.Text = comment.message;
-            idusuarioBox.textBox.Text = comment.id_user.ToString();
-            idpublicacionBox.textBox.Text = comment.id_publication.ToString();
         }
 
         public async void SendComment(object sender, RoutedEventArgs e)
@@ -56,18 +63,6 @@ namespace PantallaGestionUsuarios.Views
                 mensajeBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
                 mensajeBox.textBox.BorderThickness = new Thickness(1.5f);
             }
-             if (idusuarioBox.textBox.Text.Length == 0)
-            {
-                canUpdate = false;
-                idusuarioBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                idusuarioBox.textBox.BorderThickness = new Thickness(1.5f);
-            }
-             if (idpublicacionBox.textBox.Text.Length == 0)
-            {
-                canUpdate = false;
-                idpublicacionBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                idpublicacionBox.textBox.BorderThickness = new Thickness(1.5f);
-            }
             if(canUpdate)
             {
                 using StringContent jsonContent = new(
@@ -76,8 +71,6 @@ namespace PantallaGestionUsuarios.Views
 
                         fecha = fechaBox.textBox.Text,
                         mensaje = mensajeBox.textBox.Text,
-                        id_usuario = int.Parse(idusuarioBox.textBox.Text),
-                        id_publicacion = int.Parse(idpublicacionBox.textBox.Text),
                     }),
                     Encoding.UTF8,
                     "application/json");
@@ -103,20 +96,5 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
-        private void idUsuarioBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (idusuarioBox.textBox.Text.Length > 0)
-            {
-                idusuarioBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
-
-        private void idPublicacionBoxTextChange(object sender, TextChangedEventArgs args)
-        {
-            if (idpublicacionBox.textBox.Text.Length > 0)
-            {
-                idpublicacionBox.textBox.BorderThickness = new Thickness(0);
-            }
-        }
     }
 }

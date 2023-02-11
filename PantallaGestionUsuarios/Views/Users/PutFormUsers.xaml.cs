@@ -29,6 +29,15 @@ namespace PantallaGestionUsuarios.Views
             this.user = user;
         }
 
+        private void minimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         public async void LoadUserPhoto()
         {
             if (user.photo != null && user.photo.Length > 0)
@@ -64,7 +73,7 @@ namespace PantallaGestionUsuarios.Views
 
             if (canUpdate)
             {
-                if (profilePictureImage.Source.ToString() != "defaulProfilePicture.png")
+                if (!profilePictureImage.Source.ToString().Contains("defaulProfilePicture.png"))
                 {
                     await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
                 }

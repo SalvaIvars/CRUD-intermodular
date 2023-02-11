@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.IconPacks;
 using PantallaGestionUsuarios.Utils;
 namespace PantallaGestionUsuarios.Views
 {
@@ -33,21 +34,16 @@ namespace PantallaGestionUsuarios.Views
                 this.DragMove();
             }
         }
-        private void GoToPublications(object sender, RoutedEventArgs e)
+
+        private void minimizeWindow(object sender, RoutedEventArgs e)
         {
-            Utilities.GoToPublications(sender, e);
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
-        private void GoToComments(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToComments(sender, e);
-            this.Close();
-        }
-        private void GoToUsers(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToUsers(sender, e);
-            this.Close();
-        }
+
 
         private void logOut(object sender, RoutedEventArgs e)
         {
@@ -85,7 +81,7 @@ namespace PantallaGestionUsuarios.Views
         public async void DeleteUser(object sender, RoutedEventArgs e)
         {
             UserModel user = (UserModel)dataGrid.SelectedItem;
-            await UserProcessor.DeleteUser(user._id);
+            await UserProcessor.DeleteUser(user.email);
             CreateTable(sender, e);
         }
 

@@ -33,7 +33,7 @@
 
                 <!-- Menu Icon -->
                 <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
-                    <Icon:PackIconMaterial Kind="Menu" Width="15" Height="15"/>
+                    <Icon:PackIconMaterial Width="15" Height="15"/>
                 </Button>
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
@@ -55,6 +55,15 @@
 
                 <!-- Page Title -->
                 <TextBlock Text="Users" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
+                
+                <StackPanel Orientation="Horizontal" Height="21" HorizontalAlignment="Right">
+                    <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                        <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
+                </StackPanel>
 
                 <!-- Add Button -->
                 <Button Style="{StaticResource addButton}" Click="CreateUser">

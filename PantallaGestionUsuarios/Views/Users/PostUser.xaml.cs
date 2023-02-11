@@ -37,9 +37,17 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
+        private void minimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         private async void CreateUser(object sender, RoutedEventArgs e)
         {
-            // nombre, email, password
+
             bool canUpdate = true;
             if (nombreBox.textBox.Text.Length == 0)
             {
@@ -62,21 +70,28 @@ namespace PantallaGestionUsuarios.Views
             }
             if (canUpdate)
             {
+
                 using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
                     password = passwordBox.passwordBox.Password,
-                    nombre = nombreBox.textBox.Text,
+                    name = nombreBox.textBox.Text,
                     email = emailBox.textBox.Text,
-                    apellidos = apellidosBox.textBox.Text,
-                    fecha = fechaBox.textBox.Text,
+                    lastname = apellidosBox.textBox.Text,
+                    date = fechaBox.textBox.Text,
                     nick = nickBox.textBox.Text,
-                    rol = rolBox.textBox.Text,
+                    rol = rolBox.Text,
                 }),
                 Encoding.UTF8,
                 "application/json");
 
                 await UserProcessor.PostUser(jsonContent);
+
+                if (!profilePicture.Source.ToString().Contains("defaulProfilePicture.png"))
+                {
+                    await UserProcessor.PostPhoto(profilePicture, profilePicture.Source.ToString(), emailBox.textBox.Text);
+                }
+
                 Utils.Utilities.GoToUsers(sender, e);
                 this.Close();
             }

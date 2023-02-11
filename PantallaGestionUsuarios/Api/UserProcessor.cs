@@ -162,11 +162,11 @@ namespace PantallaGestionUsuarios
         }
 
 
-        public static async Task DeleteUser(string id="")
+        public static async Task DeleteUser(string email)
         {
             string url = "http://localhost:8080/users/";
 
-            url += id;
+            url += email;
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.DeleteAsync(url))
             {

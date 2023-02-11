@@ -59,8 +59,13 @@
                 <TextBlock Text="Update Publication" Grid.Row="2" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
                 <!-- Add Button -->
-                <StackPanel Orientation="Horizontal" Height="71">
-
+                <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Right">
+                    <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                        <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
+                    <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                        <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                    </Button>
                 </StackPanel>
 
                 <!-- Separator -->

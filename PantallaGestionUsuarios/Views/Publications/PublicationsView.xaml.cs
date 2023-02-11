@@ -35,6 +35,14 @@ namespace PantallaGestionUsuarios.Views
             }
         }
 
+        private void minimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private async void CreateTable(object sender, RoutedEventArgs e)
         {

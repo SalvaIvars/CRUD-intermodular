@@ -35,20 +35,12 @@ namespace PantallaGestionUsuarios.Views
                 this.DragMove();
             }
         }
-
-        private void GoToPublications(object sender, RoutedEventArgs e)
+        private void minimizeWindow(object sender, RoutedEventArgs e)
         {
-            Utilities.GoToPublications(sender, e);
-            this.Close();
+            this.WindowState = WindowState.Minimized;
         }
-        private void GoToComments(object sender, RoutedEventArgs e)
+        private void closeWindow(object sender, RoutedEventArgs e)
         {
-            Utilities.GoToComments(sender, e);
-            this.Close();
-        }
-        private void GoToUsers(object sender, RoutedEventArgs e)
-        {
-            Utilities.GoToUsers(sender, e);
             this.Close();
         }
 

@@ -30,8 +30,8 @@ namespace PantallaGestionUsuarios.Controls
              usersButton.Click += GoToUsers;
 
         }
-        /*
-        public async void LoadUserPhoto(object sender, RoutedEventArgs e)
+        
+        /*public async void LoadUserPhoto(object sender, RoutedEventArgs e)
         {
             UserModel userPhoto = (UserModel)Application.Current.Properties["user"];
             if(userPhoto.photo != null && userPhoto.photo.Length>0)

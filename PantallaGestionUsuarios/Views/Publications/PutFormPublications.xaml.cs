@@ -37,6 +37,14 @@ namespace PantallaGestionUsuarios.Views
             this.publication = publication;
         }
 
+        private void minimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -202,7 +210,6 @@ namespace PantallaGestionUsuarios.Views
             bool canUpdate = true;
             if (nombreBox.Text.Length == 0)
             {
-                MessageBox.Show(dificultadBox.Text);
                 canUpdate = false;
                 nombreBox.BorderBrush = System.Windows.Media.Brushes.Red;
                 nombreBox.BorderThickness = new Thickness(1.5f);
