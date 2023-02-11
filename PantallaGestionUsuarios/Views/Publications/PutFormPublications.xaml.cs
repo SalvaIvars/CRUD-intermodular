@@ -26,8 +26,11 @@ namespace PantallaGestionUsuarios.Views
     /// </summary>
     public partial class PutFormPublications : Window
     {
-       private PublicationModel publication { get; set; }
+        private PublicationModel publication { get; set; }
         private string[] photos { get; set; }
+        private int photo1Number { get; set; }
+        private int photo2Number { get; set; }
+        private int photo3Number { get; set; }
         public PutFormPublications(PublicationModel publication)
         {
             InitializeComponent();
@@ -44,31 +47,47 @@ namespace PantallaGestionUsuarios.Views
         }
         private async void FillData(object sender, RoutedEventArgs e)
         {
-
-            /*nombreBox.textBox.Text = publication.name;
-            categoriaBox.textBox.Text = publication.category;
-            distancaiBox.textBox.Text = publication.distance;
-            dificultadBox.textBox.Text = publication.difficulty;
-            duracionBox.textBox.Text = publication.duration;
-            descripcionBox.textBox.Text = publication.description;
-            privacidadBox.textBox.Text = publication.privacy;*/
+            nombreBox.Text = publication.name;
+            categoriaBox.Text = publication.category;   
+            distanciaBox.Text = publication.distance;
+            dificultadBox.Text = publication.difficulty;
+            duracionBox.Text = publication.duration;
+            descripcionBox.Text = publication.description;
+            privacidadBox.Text = publication.privacy;
             photos = await PublicationsProcessor.GetNumberOfPhotos(publication._id);
             loadPhotos();
         }
 
         private void loadPhotos()
         {
+            if(photos == null)
+            {
+                photo1.Visibility = Visibility.Collapsed;
+                photo2.Visibility = Visibility.Collapsed;
+                photo3.Visibility = Visibility.Collapsed;
+                botonDerecho.Visibility = Visibility.Collapsed;
+                botonIzquierda.Visibility = Visibility.Collapsed;
+                return;
+            }
+ 
             if(photos.Length == 1)
             {
                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
             }
             else if (photos.Length == 2)
             {
+                photo3.Visibility= Visibility.Collapsed;
+                botonDerecho.Visibility = Visibility.Collapsed;
+                botonIzquierda.Visibility = Visibility.Collapsed;
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[1]));
             }
             else if (photos.Length >= 3)
             {
+                photo1Number = 0;
+                photo2Number = 1; 
+                photo3Number = 2;
+
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[0]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[1]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[2]));
@@ -77,65 +96,159 @@ namespace PantallaGestionUsuarios.Views
 
         private void izquierda(object sender, RoutedEventArgs e)
         {
-            if(photos.Length < 3)
+            if (photos == null || photos.Length < 3)
             {
                 return;
             }
-            MessageBox.Show(photo3.Source.ToString().Substring(66));
-            MessageBox.Show(photos[photos.Length - 1]);
 
-            if (photo3.Source.ToString().Substring(66) == photos[photos.Length-1])
+            if (photo2Number == 0)
             {
-                MessageBox.Show("aaaaaaaaaaaaa");
+                photo1Number--;
+                photo2Number = photos.Length -1;
+                photo3Number = 0;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+
+            }
+            else if (photo2Number == 1)
+            {
+                photo1Number = photos.Length - 1;
+                photo2Number--;
+                photo3Number = 1;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
+            else if (photo2Number == photos.Length - 1)
+            {
+                photo1Number--;
+                photo2Number--;
+                photo3Number = photos.Length - 1;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
+            else
+            {
+                photo1Number--;
+                photo2Number--;
+                photo3Number--;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
             }
 
         }
 
         private void derecha(object sender, RoutedEventArgs e)
         {
+            if (photos == null)
+            {
+                return;
+            }
 
+            if (photo2Number == 0)
+            {
+                photo1Number = 0;
+                photo2Number++;
+                photo3Number++;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+
+            }
+            else if (photo2Number == 1)
+            {
+                photo1Number =1;
+                photo2Number++;
+                photo3Number++;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
+            else if (photo2Number == photos.Length - 2)
+            {
+                photo1Number++;
+                photo2Number = photos.Length - 1;
+                photo3Number = 0;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
+            else if (photo2Number == photos.Length - 1)
+            {
+                photo1Number = photos.Length - 1;
+                photo2Number=0;
+                photo3Number=1;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
+            else
+            {
+                photo1Number++;
+                photo2Number++;
+                photo3Number++;
+                photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+                photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+                photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            }
         }
 
         public async void SendPublication(object sender, RoutedEventArgs e)
         {
-            /*
+            
             bool canUpdate = true;
-            if (nombreBox.textBox.Text.Length == 0)
+            if (nombreBox.Text.Length == 0)
+            {
+                MessageBox.Show(dificultadBox.Text);
+                canUpdate = false;
+                nombreBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                nombreBox.BorderThickness = new Thickness(1.5f);
+            }
+             if (distanciaBox.Text.Length == 0)
             {
                 canUpdate = false;
-                nombreBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                nombreBox.textBox.BorderThickness = new Thickness(1.5f);
+                distanciaBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                distanciaBox.BorderThickness = new Thickness(1.5f);
             }
-             if (distancaiBox.textBox.Text.Length == 0)
+             if (duracionBox.Text.Length == 0)
             {
                 canUpdate = false;
-                distancaiBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                distancaiBox.textBox.BorderThickness = new Thickness(1.5f);
+                duracionBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                duracionBox.BorderThickness = new Thickness(1.5f);
             }
-             if (duracionBox.textBox.Text.Length == 0)
+            if (descripcionBox.Text.Length == 0)
             {
                 canUpdate = false;
-                duracionBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                duracionBox.textBox.BorderThickness = new Thickness(1.5f);
+                descripcionBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                descripcionBox.BorderThickness = new Thickness(1.5f);
             }
-            if (descripcionBox.textBox.Text.Length == 0)
+            if (dificultadBox.Text.Length == 0)
             {
                 canUpdate = false;
-                descripcionBox.textBox.BorderBrush = System.Windows.Media.Brushes.Red;
-                descripcionBox.textBox.BorderThickness = new Thickness(1.5f);
+                dificultadBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                dificultadBox.BorderThickness = new Thickness(1.5f);
             }
-            if(canUpdate)
+            if (privacidadBox.Text.Length == 0)
+            {
+                canUpdate = false;
+                privacidadBox.BorderBrush = System.Windows.Media.Brushes.Red;
+                privacidadBox.BorderThickness = new Thickness(1.5f);
+            }
+            if (canUpdate)
             {
                 using StringContent jsonContent = new(
                     JsonSerializer.Serialize(new
                     {
-                        name = nombreBox.textBox.Text,
-                        category = categoriaBox.textBox.Text,
-                        distance = distancaiBox.textBox.Text,
-                        difficulty = dificultadBox.textBox.Text,
-                        duration = duracionBox.textBox.Text,
-                        description = descripcionBox.textBox.Text,
-                        privacy = privacidadBox.textBox.Text,
+                        name = nombreBox.Text,
+                        category = categoriaBox.Text,
+                        distance = distanciaBox.Text,
+                        difficulty = dificultadBox.Text,
+                        duration = duracionBox.Text,
+                        description = descripcionBox.Text,
+                        privacy = privacidadBox.Text,
                     }),
                     Encoding.UTF8,
                     "application/json");
@@ -143,7 +256,6 @@ namespace PantallaGestionUsuarios.Views
                 Utils.Utilities.GoToPublications(sender, e);
                 this.Close();
             }
-            */
         }
     }
 }

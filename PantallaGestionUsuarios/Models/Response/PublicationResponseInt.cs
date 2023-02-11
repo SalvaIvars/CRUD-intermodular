@@ -17,7 +17,7 @@ namespace PantallaGestionUsuarios.Models.Response
 
         public class Datum
         {
-            public string[] namePhoto { get; set; }  
+            public string namePhoto { get; set; }  
 
         }
     }

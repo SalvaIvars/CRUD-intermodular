@@ -52,9 +52,11 @@ namespace PantallaGestionUsuarios.Api
                 {
                     PublicationResponseNames.Rootobject publication = await response.Content.ReadAsAsync<PublicationResponseNames.Rootobject>();
                     string[] photos = new string[publication.data.Length];
-                    for(int i = 0; i < photos.Length; i++)
+
+                    for(int i = 0; i < publication.data.Length; i++)
                     {
                         photos[i] = publication.data[i];
+        
                     }
                     return photos;
                 }

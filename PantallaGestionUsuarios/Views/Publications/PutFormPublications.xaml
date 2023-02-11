@@ -69,18 +69,18 @@
                 <Grid Grid.Row="5">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
-                            <ColumnDefinition Width="auto" MinWidth="220" MaxWidth="250"/>
-                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="250"/>
-                            <ColumnDefinition Width="auto" MinWidth="180" MaxWidth="250"/>
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="200"/>
+                            <ColumnDefinition Width="auto" MinWidth="220" MaxWidth="200"/>
+                            <ColumnDefinition Width="auto" MinWidth="200" MaxWidth="200"/>
+                            <ColumnDefinition Width="auto" MinWidth="180" MaxWidth="200"/>
                         </Grid.ColumnDefinitions>
 
 
                         <!-- Primera columna -->
                         <StackPanel Margin="0 20 0 30" VerticalAlignment="Bottom">
-                            <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="nombreBox" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox x:Name="categoriaBox" materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                 <ComboBoxItem IsSelected="True">
                                     Escalada
                                 </ComboBoxItem>
@@ -89,9 +89,9 @@
                                 </ComboBoxItem>
                             </ComboBox>
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <ComboBox materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                                <ComboBoxItem IsSelected="True">
-                                    Fácil
+                            <ComboBox x:Name="dificultadBox" materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                                <ComboBoxItem>
+                                    Facil
                                 </ComboBoxItem>
                                 <ComboBoxItem>
                                     Intermedio
@@ -105,12 +105,12 @@
 
                         <!-- Segunda columna -->
                         <StackPanel Margin="20 20 0 30" Grid.Column="1" VerticalAlignment="Bottom">
-                            <TextBox materialDesign:HintAssist.Hint="Duración" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="duracionBox" materialDesign:HintAssist.Hint="Duración" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <TextBox materialDesign:HintAssist.Hint="Descripción" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="descripcionBox" materialDesign:HintAssist.Hint="Descripción" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <ComboBox materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                            <ComboBox x:Name="privacidadBox" materialDesign:HintAssist.Hint="Privacidad"  IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                                 <ComboBoxItem>
                                     Privado
                                 </ComboBoxItem>
@@ -123,7 +123,7 @@
 
                         <StackPanel Margin="20 20 0 24" Grid.Column="2" VerticalAlignment="Bottom">
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
-                            <TextBox materialDesign:HintAssist.Hint="Distancia" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <TextBox x:Name="distanciaBox" materialDesign:HintAssist.Hint="Distancia" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
@@ -135,11 +135,16 @@
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                         </StackPanel>
                         <Button Click="SendPublication" Content="Save" Margin="148,392,-82,93" Style="{StaticResource buttonMainGreen}" Grid.Column="2" MaxWidth="200" Grid.ColumnSpan="2"/>
-                        <Image x:Name="photo1" Width="150" Height="150" Grid.Column="0" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="134,73,136,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
-                        <Image x:Name="photo2" Width="150" Height="150" Grid.Column="1" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="145,73,125,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
-                        <Image x:Name="photo3" Width="150" Height="150" Grid.Column="2" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="131,73,99,312" Source="../../Images/defaultProfilePicture.png" Grid.ColumnSpan="2"/>
-                        <Button Content="Button" Click="izquierda" HorizontalAlignment="Left" Margin="49,140,0,0" VerticalAlignment="Top"/>
-                        <Button Content="Button" Click="derecha" HorizontalAlignment="Left" Margin="90,140,0,0" VerticalAlignment="Top" Grid.Column="3"/>
+                        <Image x:Name="photo1" Width="150" Height="150" Grid.Column="0" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="134,73,136,312" Grid.ColumnSpan="2"/>
+                        <Image x:Name="photo2" Width="150" Height="150" Grid.Column="1" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="145,73,125,312" Grid.ColumnSpan="2"/>
+                        <Image x:Name="photo3" Width="150" Height="150" Grid.Column="2" MaxHeight="150" MaxWidth="150" Stretch="Fill" Margin="131,73,99,312" Grid.ColumnSpan="2"/>
+
+                        <Button x:Name="botonIzquierda" Click="izquierda" HorizontalAlignment="Left" Margin="49,140,0,0" VerticalAlignment="Top">
+                            <Icon:PackIconMaterial Kind="ArrowLeft" Width="15" Height="15"/>
+                        </Button>
+                        <Button  x:Name="botonDerecho" Click="derecha" HorizontalAlignment="Left" Margin="90,140,0,0" VerticalAlignment="Top" Grid.Column="3">
+                            <Icon:PackIconMaterial Kind="ArrowRight" Width="15" Height="25"/>
+                        </Button>
                     </Grid>
                 </Grid>
 
