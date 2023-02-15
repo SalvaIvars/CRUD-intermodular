@@ -20,7 +20,7 @@ namespace PantallaGestionUsuarios.Controls
 
         }
         
-        public void LoadUserName (object sender, RoutedEventArgs e)
+       public void LoadUserName (object sender, RoutedEventArgs e)
         {
             UserModel user = (UserModel)Application.Current.Properties["user"];
             textProfileButton.Text = user.name;

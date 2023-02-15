@@ -46,18 +46,29 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
-            <materialDesign:Card x:Name="routesUser" Background="#c4f1c0"  Grid.Column="1" Margin="49,267,373,61" />
+            <materialDesign:Card Background="#c4f1c0"  Grid.Column="1" Margin="49,267,373,61">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="routesUser">
 
-            <materialDesign:Card x:Name="followingUser" Background="#c4f1c0"  Grid.Column="1" Margin="566,267,41,61" />
+                    </StackPanel>
+                </ScrollViewer>
+            </materialDesign:Card>
 
-            <materialDesign:Card x:Name="followersCard" Background="#c4f1c0"  Grid.Column="1" Margin="49,70,631,550">
-                <TextBlock Text="Seguidores" FontSize="25"/>
+            <materialDesign:Card Background="#c4f1c0"  Grid.Column="1" Margin="566,267,41,61">
+                <StackPanel x:Name="followingUser">
+                    <TextBlock FontSize="20">Siguiendo</TextBlock>
+                    
+                </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="followingCard" Background="#c4f1c0" Grid.Column="1" Margin="624,70,41,550">
-                <TextBlock Text="Siguiendo" FontSize="25"/>
+
+            <materialDesign:Card  Background="#c4f1c0"  Grid.Column="1" Margin="49,70,631,550">
+                <TextBlock Text="Seguidores" x:Name="followersCard" FontSize="25"/>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="routesCard" Background="#c4f1c0" Grid.Column="1" Margin="340,70,340,550">
-                <TextBlock Text="Rutas" FontSize="25"/>
+            <materialDesign:Card Background="#c4f1c0" Grid.Column="1" Margin="624,70,41,550">
+                <TextBlock x:Name="followingCard" Text="Siguiendo" FontSize="25"/>
+            </materialDesign:Card>
+            <materialDesign:Card Background="#c4f1c0" Grid.Column="1" Margin="340,70,340,550">
+                <TextBlock Text="Rutas" x:Name="routesCard" FontSize="25"/>
             </materialDesign:Card>
         </Grid>
     </Border>

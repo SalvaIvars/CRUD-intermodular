@@ -49,5 +49,20 @@ namespace PantallaGestionUsuarios.Utils
             PostUser win = new PostUser();
             win.Show();
         }
+
+        public static string ActivityToImage(string activity)
+        {
+            switch (activity)
+            {
+                case "escalada":
+                    return "../Images/Activities/escalada.png";
+                case "caminata":
+                    return "../Images/Activities/caminata.png";
+                case "bicicleta":
+                    return "../Images/Activities/bicicleta.png";
+                default:
+                    return "../images/defaultProfilePicture.png";
+            }
+        }
     }
 }

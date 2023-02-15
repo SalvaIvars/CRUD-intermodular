@@ -173,5 +173,32 @@ namespace PantallaGestionUsuarios
             }
         }
 
+        public static async Task<UserModel[]> GetFollowers(string email)
+        {
+            string url = "http://localhost:8080/users/followers/";
+            url += email;
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    UserResponse.Rootobject userResponse = await response.Content.ReadAsAsync<UserResponse.Rootobject>();
+                    UserModel[] users = new UserModel[userResponse.data.Length];
+
+                    for (int i = 0; i < users.Length; i++)
+                    {
+                        users[i] = JsonConvert.DeserializeObject<UserModel>(JsonConvert.SerializeObject(userResponse.data[i]));
+                    }
+
+                    return users;
+                }
+                else
+                {
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    return null;
+                }
+            }
+        }
+
     }
 }

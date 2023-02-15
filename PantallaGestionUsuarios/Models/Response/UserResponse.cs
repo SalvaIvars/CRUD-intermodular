@@ -26,6 +26,7 @@ namespace PantallaGestionUsuarios.Api
             public string password { get; set; }
             public string photo { get; set; }
             public string rol { get; set; }
+            public string[] following { get; set; }
 
         }
 

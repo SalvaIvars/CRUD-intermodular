@@ -15,6 +15,32 @@ namespace PantallaGestionUsuarios.Api
 {
     public class PublicationsProcessor
     {
+
+        public static async Task<PublicationModel[]> GetUserPublications(string email)
+        {
+            string url = "http://localhost:8080/publications/user/" + email;
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    PublicationResponse.Rootobject publicationResponse = await response.Content.ReadAsAsync<PublicationResponse.Rootobject>();
+                    PublicationModel[] publications = new PublicationModel[publicationResponse.data.Length];
+                    for (int i = 0; i < publications.Length; i++)
+                    {
+                        publications[i] = JsonConvert.DeserializeObject<PublicationModel>(JsonConvert.SerializeObject(publicationResponse.data[i]));
+                    }
+
+                    return publications;
+                }
+                else
+                {
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    return null;
+                }
+            }
+        }
+
         public static async Task<PublicationModel> LoadPublication(string id = "") 
         {
             string url = "http://localhost:8080/publications/";
@@ -57,7 +83,6 @@ namespace PantallaGestionUsuarios.Api
                 }
                 else
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
                     return null;
                 }
             }
