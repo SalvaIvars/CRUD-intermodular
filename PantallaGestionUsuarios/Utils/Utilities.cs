@@ -1,4 +1,5 @@
 ﻿using PantallaGestionUsuarios.Views;
+using PantallaGestionUsuarios.Views.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ namespace PantallaGestionUsuarios.Utils
         public static void GoToPublications(object sender, RoutedEventArgs e)
         {
             PublicationsView win = new PublicationsView();
+            win.Show();
+        }
+
+        public static void GoToUserProfile(object sender, RoutedEventArgs e)
+        {
+            UserProfile win = new UserProfile();
             win.Show();
         }
 

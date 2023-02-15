@@ -1,0 +1,64 @@
+﻿<Window x:Class="PantallaGestionUsuarios.Views.Users.UserProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PantallaGestionUsuarios.Views.Users"
+        mc:Ignorable="d"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="UserProfile" Height="720" Width="1080">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Menu -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Menu Icon #bfb5ff -->
+                <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
+                    <Icon:PackIconMaterial Width="15" Height="15"/>
+                </Button>
+
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
+            </Grid>
+
+            <materialDesign:Card x:Name="routesUser" Background="#c4f1c0"  Grid.Column="1" Margin="49,267,373,61" />
+
+            <materialDesign:Card x:Name="followingUser" Background="#c4f1c0"  Grid.Column="1" Margin="566,267,41,61" />
+
+            <materialDesign:Card x:Name="followersCard" Background="#c4f1c0"  Grid.Column="1" Margin="49,70,631,550">
+                <TextBlock Text="Seguidores" FontSize="25"/>
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="followingCard" Background="#c4f1c0" Grid.Column="1" Margin="624,70,41,550">
+                <TextBlock Text="Siguiendo" FontSize="25"/>
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="routesCard" Background="#c4f1c0" Grid.Column="1" Margin="340,70,340,550">
+                <TextBlock Text="Rutas" FontSize="25"/>
+            </materialDesign:Card>
+        </Grid>
+    </Border>
+</Window>

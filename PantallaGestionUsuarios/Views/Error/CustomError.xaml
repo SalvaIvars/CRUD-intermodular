@@ -13,8 +13,32 @@
         Topmost="True"
         ShowInTaskbar="False"
         Title="CustomError" Height="200" Width="300">
-    
-    <Border Background="White"  BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
+<Window.Resources>
+<Style x:Key="MyButtonStyle" TargetType="Button">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" 
+                        BorderThickness="0"
+                        Padding="4,2" 
+                        BorderBrush="DarkGray" 
+                        CornerRadius="3" 
+                        Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+     
+                        </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Window.Resources>
+
+
+<Border Background="White"  BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -30,9 +54,12 @@
                 Se ha producido un error de red desconocido.
             </TextBlock>
 
-            <Button Grid.Row="2" Click="btn_Click" Background="Transparent" Foreground="#1b95d6" FontFamily="Helvetica" FontWeight="SemiBold" FontSize="20" BorderThickness="0">
+
+            <Border CornerRadius="30 30 30 30" Grid.Row="2" >
+                <Button  Grid.Row="2" Click="btn_Click" Style="{StaticResource MyButtonStyle}" Background="Transparent" Foreground="#1b95d6" FontFamily="Helvetica" FontWeight="SemiBold" FontSize="20" BorderThickness="0" >
                 Cerrar
             </Button>
+              </Border>
         </Grid>
     </Border>
 </Window>
