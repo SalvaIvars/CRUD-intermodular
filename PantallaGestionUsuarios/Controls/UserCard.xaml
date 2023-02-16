@@ -14,7 +14,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <materialDesign:Card>
+    <materialDesign:Card x:Name="card" MouseDown="loadUser"  >
         <StackPanel Orientation="Horizontal">
             <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100">
                 <Ellipse>

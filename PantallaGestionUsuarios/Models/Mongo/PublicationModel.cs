@@ -18,5 +18,19 @@ namespace PantallaGestionUsuarios.Models
         public string description { get; set; }
         public string[] photo { get; set; }
         public string privacy { get; set; }
+
+        public PublicationModel(string _id, string date, string name, string category, string distance, string difficulty, string duration, string description, string[] photo, string privacy) { 
+            this._id = _id;
+            this.date = date;
+            this.name = name;
+            this.category = category;
+            this.distance = distance;
+            this.difficulty = difficulty;
+            this.duration = duration;
+            this.description = description;
+            this.photo = photo;
+            this.privacy = privacy;
+        }
     }
+
 }

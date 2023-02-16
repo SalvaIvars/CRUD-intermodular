@@ -14,7 +14,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <materialDesign:Card>
+    <materialDesign:Card MouseDown="loadPublication">
         <StackPanel Orientation="Horizontal">
             <Image x:Name="imageActivity" Source="../Images/defaultProfilePicture.png" Height="84" Width="59"></Image>
             <StackPanel>

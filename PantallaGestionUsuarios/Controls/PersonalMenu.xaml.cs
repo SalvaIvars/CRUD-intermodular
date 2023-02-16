@@ -32,7 +32,7 @@ namespace PantallaGestionUsuarios.Controls
 
         private void GoToUserProfile(object sender, RoutedEventArgs e)
         {
-            Utilities.GoToUserProfile(sender, e);
+            Utilities.GoToUserProfile(sender, e, (UserModel)Application.Current.Properties["user"]);
             var myWindow = Window.GetWindow(this);
             myWindow.Close();
         }

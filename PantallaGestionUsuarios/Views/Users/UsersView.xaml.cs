@@ -65,7 +65,7 @@ namespace PantallaGestionUsuarios.Views
 
             foreach (DataGridColumn col in dataGrid.Columns)
             {
-                if (col.Header.ToString() == "_id" || col.Header.ToString() == "lastname" || col.Header.ToString() == "password" || col.Header.ToString() == "photo" )
+                if (col.Header.ToString() == "_id" || col.Header.ToString() == "following" || col.Header.ToString() == "lastname" || col.Header.ToString() == "password" || col.Header.ToString() == "photo" )
                 {
                     col.Visibility = Visibility.Collapsed;
                 }

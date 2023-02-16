@@ -29,10 +29,10 @@ namespace PantallaGestionUsuarios.Views.Users
         List<UserModel> following { get; set; }
         List<PublicationModel> publications { get; set; }
         string[] photos { get; set; }
-        public UserProfile()
+        public UserProfile(UserModel user)
         {
             InitializeComponent();
-            user = (UserModel)Application.Current.Properties["user"];
+            this.user = user;
             GetFollowers();
             GetFollowing();
             GetUserPublications();
@@ -40,10 +40,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                this.DragMove();
-            }
+
         }
 
         private async void GetFollowers()
@@ -93,8 +90,8 @@ namespace PantallaGestionUsuarios.Views.Users
                     margin.Bottom = 5;
                     uc.Margin = margin;
                 }
+                uc.userEmail = following[i].email;
                 followingUser.Children.Add(uc);
-
             }
 
         }
@@ -149,6 +146,7 @@ namespace PantallaGestionUsuarios.Views.Users
                     margin.Bottom = 5;
                     cd.Margin = margin;
                 }
+                cd.id = publications[i]._id;
                 routesUser.Children.Add(cd);
             }
         }

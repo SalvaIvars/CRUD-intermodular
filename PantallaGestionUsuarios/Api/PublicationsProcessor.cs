@@ -41,7 +41,11 @@ namespace PantallaGestionUsuarios.Api
             }
         }
 
-        public static async Task<PublicationModel> LoadPublication(string id = "") 
+
+
+
+
+        public static async Task<PublicationModel> LoadPublication(string id = "")
         {
             string url = "http://localhost:8080/publications/";
 
@@ -51,8 +55,9 @@ namespace PantallaGestionUsuarios.Api
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    PublicationModel publication = await response.Content.ReadAsAsync<PublicationModel>();
-                    return publication;
+                    PublicationResponse.RootobjectSingle publicationResponse = await response.Content.ReadAsAsync<PublicationResponse.RootobjectSingle>();
+                    PublicationModel publicationReturn = new PublicationModel(publicationResponse.data._id, publicationResponse.data.date, publicationResponse.data.name, publicationResponse.data.category, publicationResponse.data.distance, publicationResponse.data.difficulty, publicationResponse.data.duration, publicationResponse.data.description, publicationResponse.data.photo, publicationResponse.data.privacy);
+                    return publicationReturn;
                 }
                 else
                 {
@@ -74,10 +79,10 @@ namespace PantallaGestionUsuarios.Api
                     PublicationResponseNames.Rootobject publication = await response.Content.ReadAsAsync<PublicationResponseNames.Rootobject>();
                     string[] photos = new string[publication.data.Length];
 
-                    for(int i = 0; i < publication.data.Length; i++)
+                    for (int i = 0; i < publication.data.Length; i++)
                     {
                         photos[i] = publication.data[i];
-        
+
                     }
                     return photos;
                 }
@@ -88,7 +93,7 @@ namespace PantallaGestionUsuarios.Api
             }
         }
 
-            
+
 
         public static async Task<PublicationModel[]> LoadAllPublications()
         {
@@ -123,7 +128,8 @@ namespace PantallaGestionUsuarios.Api
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
             {
-                if (!response.IsSuccessStatusCode) { 
+                if (!response.IsSuccessStatusCode)
+                {
 
                     new CustomError(response.ReasonPhrase).ShowDialog();
                 }

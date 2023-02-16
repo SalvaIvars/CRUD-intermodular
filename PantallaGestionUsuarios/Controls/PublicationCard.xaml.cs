@@ -1,4 +1,8 @@
-﻿using System;
+﻿using PantallaGestionUsuarios.Api;
+using PantallaGestionUsuarios.Models;
+using PantallaGestionUsuarios.Utils;
+using PantallaGestionUsuarios.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +24,27 @@ namespace PantallaGestionUsuarios.Controls
     /// </summary>
     public partial class PublicationCard : UserControl
     {
+        public string id { get; set; }
         public PublicationCard(string routeName, string difficultyRoute, string distanceRoute)
         {
             InitializeComponent();
             distance.Text = distanceRoute;
             difficulty.Text = difficultyRoute;
             name.Text = routeName;
+        }
+
+        private async void loadPublication(object sender, MouseButtonEventArgs e)
+        {
+            PublicationModel publication = await PublicationsProcessor.LoadPublication(id);
+            PutFormPublications win = new PutFormPublications(publication);
+            win.Show();
+            Window parentWindow = Window.GetWindow(this);
+            parentWindow.Close();
+        }
+
+        private void Card_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

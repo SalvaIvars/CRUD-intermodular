@@ -3,6 +3,7 @@ using PantallaGestionUsuarios.Views.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,9 +22,9 @@ namespace PantallaGestionUsuarios.Utils
             win.Show();
         }
 
-        public static void GoToUserProfile(object sender, RoutedEventArgs e)
+        public static void GoToUserProfile(object sender, RoutedEventArgs e, UserModel user)
         {
-            UserProfile win = new UserProfile();
+            UserProfile win = new UserProfile(user);
             win.Show();
         }
 
