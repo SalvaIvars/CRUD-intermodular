@@ -181,7 +181,14 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private void GetUserFavRoutes()
         {
-            favCardText.Text += user.fav_routes.Length.ToString();
+            if (user.fav_routes == null)
+            {
+                favCardText.Text += "0";
+            }
+            else
+            {
+                favCardText.Text += user.fav_routes.Length.ToString();
+            }
         }
 
         private async void GetUserPublications()
@@ -242,6 +249,10 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private async void LoadUserFavPublications()
         {
+            if(user.fav_routes == null)
+            {
+                return;
+            }
             string photo = "";
             for (int i = 0; i < publications.Count; i++)
             {
