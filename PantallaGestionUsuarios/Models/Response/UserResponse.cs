@@ -27,6 +27,8 @@ namespace PantallaGestionUsuarios.Api
             public string photo { get; set; }
             public string rol { get; set; }
             public string[] following { get; set; }
+            public string[] fav_routes { get; set; }
+            public string description { get; set; }
 
         }
 

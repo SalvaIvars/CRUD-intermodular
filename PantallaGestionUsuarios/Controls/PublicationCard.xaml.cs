@@ -41,10 +41,5 @@ namespace PantallaGestionUsuarios.Controls
             Window parentWindow = Window.GetWindow(this);
             parentWindow.Close();
         }
-
-        private void Card_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
     }
 }

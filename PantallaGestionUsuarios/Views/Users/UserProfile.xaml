@@ -23,7 +23,7 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
+    <Border Background="#eff2f7" CornerRadius="30">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -45,31 +45,89 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
 
                 <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
-
-            <materialDesign:Card Background="#c4f1c0"  Grid.Column="1" Margin="49,267,373,61">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <StackPanel x:Name="routesUser">
-
-                    </StackPanel>
-                </ScrollViewer>
-            </materialDesign:Card>
-
-            <materialDesign:Card Background="#c4f1c0"  Grid.Column="1" Margin="566,267,41,61">
-                <StackPanel x:Name="followingUser">
-                    <TextBlock FontSize="20">Siguiendo</TextBlock>
+            
+            <!-- Content -->
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Rutas y Usuarios -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
                     
-                </StackPanel>
-            </materialDesign:Card>
+                    <!-- Botones -->
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card MouseDown="changeToRoutes" x:Name="routesCard" Background="Gray" Width="100" Height="70" Margin="60 0 20 0">
+                            <TextBlock x:Name="routesCardText" Text="Rutas"></TextBlock>
+                        </materialDesign:Card>
 
-            <materialDesign:Card  Background="#c4f1c0"  Grid.Column="1" Margin="49,70,631,550">
-                <TextBlock Text="Seguidores" x:Name="followersCard" FontSize="25"/>
-            </materialDesign:Card>
-            <materialDesign:Card Background="#c4f1c0" Grid.Column="1" Margin="624,70,41,550">
-                <TextBlock x:Name="followingCard" Text="Siguiendo" FontSize="25"/>
-            </materialDesign:Card>
-            <materialDesign:Card Background="#c4f1c0" Grid.Column="1" Margin="340,70,340,550">
-                <TextBlock Text="Rutas" x:Name="routesCard" FontSize="25"/>
-            </materialDesign:Card>
+                        <materialDesign:Card  MouseDown="changeToFav" x:Name="favCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
+                            <TextBlock x:Name="favCardText" Text="Rutas favoritas"></TextBlock>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card MouseDown="changeToFollowers" x:Name="followersCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
+                            <TextBlock  x:Name="followersCardText"  Text="Seguidores"></TextBlock>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card MouseDown="changeToFollowing" x:Name="followingCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
+                            <TextBlock x:Name="followingCardText" Text="Siguiendo"></TextBlock>
+                        </materialDesign:Card>
+                    </StackPanel>
+
+
+                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="routesMainCard">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="routesUser">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="followingMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="followingUser">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="favMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="favRoutes">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="followersMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="followersMain">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                </Grid>
+                
+                <!-- Perfil Usuario -->
+                <Grid Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock x:Name="userName" Text="Nombre Uusario"></TextBlock>
+                        <TextBlock x:Name="userNick" Text="Nick"></TextBlock>
+                        <Image x:Name="userImage" Height="250" Width="250"></Image>
+                        <Button x:Name="userFollowButton" Content="Seguir" Click="userClickButton"></Button>
+                        <TextBlock x:Name="userDescription" Text="dESCRIPTCION"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+
         </Grid>
     </Border>
 </Window>

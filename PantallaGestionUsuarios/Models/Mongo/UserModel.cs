@@ -18,8 +18,10 @@ namespace PantallaGestionUsuarios
         public string photo { get; set; }
         public string rol { get; set; }
         public string[] following { get; set; }
+        public string[] fav_routes { get; set; }
+        public string description { get; set; }
 
-        public UserModel(string _id, string name, string lastname, string email, string date, string nick, string password, string photo, string rol, string[] following)
+        public UserModel(string _id, string name, string lastname, string email, string date, string nick, string password, string photo, string rol, string[] following, string[] fav_routes, string description)
         {
             this._id = _id;
             this.name = name;
@@ -31,6 +33,8 @@ namespace PantallaGestionUsuarios
             this.photo = photo;
             this.rol = rol;
             this.following = following;
+            this.fav_routes = fav_routes;
+            this.description = description;
         }
 
     }
