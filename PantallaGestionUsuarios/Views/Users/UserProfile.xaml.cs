@@ -304,7 +304,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != publications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
-                    margin.Bottom = 2;
+                    margin.Bottom = 2 ;
                     cd.Margin = margin;
                 }
                 cd.id = publications[i]._id;
