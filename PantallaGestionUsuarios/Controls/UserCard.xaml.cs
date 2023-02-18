@@ -23,10 +23,11 @@ namespace PantallaGestionUsuarios.Controls
     public partial class UserCard : UserControl
     {
         public string userEmail { get; set; }   
-        public UserCard(string name)
+        public UserCard(string name, string nick)
         {
             InitializeComponent();
             userName.Text = name;
+            userNick.Text = nick;
         }
 
         private async void loadUser(object sender, MouseButtonEventArgs e)

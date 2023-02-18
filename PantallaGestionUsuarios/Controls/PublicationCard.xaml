@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PantallaGestionUsuarios.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="120" d:DesignWidth="400">
+             d:DesignHeight="120" d:DesignWidth="480">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,13 +18,13 @@
         <StackPanel Orientation="Horizontal">
             <Image x:Name="imageActivity" Source="../Images/defaultProfilePicture.png" Height="84" Width="59"></Image>
             <StackPanel>
-                <TextBlock x:Name="name" VerticalAlignment="Top" Width="150" MaxWidth="150" Height="40" MaxHeight="50" TextWrapping="Wrap"><Run Text="hola adios hola adios jesus ibai"/></TextBlock>
-                <TextBlock x:Name="distance" Width="150" MaxWidth="150" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">11,12 kilómetros</TextBlock>
-                <TextBlock x:Name="difficulty" Width="150" MaxWidth="150" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">Fácil</TextBlock>
+                <TextBlock x:Name="name" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Top" Width="150" MaxWidth="150" Height="40" MaxHeight="50" TextWrapping="Wrap"><Run Text="hola adios hola adios jesus ibai"/></TextBlock>
+                <TextBlock x:Name="distance" Width="150" MaxWidth="150" FontSize="13" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">11,12 kilómetros</TextBlock>
+                <TextBlock x:Name="difficulty" Width="150" MaxWidth="150" FontSize="13" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">Fácil</TextBlock>
             </StackPanel>
-            <Image x:Name="photo1" Stretch="UniformToFill" MaxWidth="59" MaxHeight="84" Source="../images/defaultProfilePicture.png" Height="84" Width="59" Margin="5 0 0 0"></Image>
-            <Image x:Name="photo2" Stretch="UniformToFill" MaxWidth="59" MaxHeight="84" Source="../images/defaultProfilePicture.png" Height="84" Width="59"></Image>
-            <Image x:Name="photo3" Stretch="UniformToFill" MaxWidth="59" MaxHeight="84" Source="../images/defaultProfilePicture.png" Height="84" Width="59"></Image>
+            <Image x:Name="photo1" Stretch="UniformToFill" MaxWidth="100" MaxHeight="84" Source="../images/defaultProfilePicture.png" Height="84" Width="80" Margin="5 0 0 0"></Image>
+            <Image x:Name="photo2" Stretch="UniformToFill" MaxWidth="100" MaxHeight="84" Margin="10 0 10 0" Source="../images/defaultProfilePicture.png" Height="84" Width="80"></Image>
+            <Image x:Name="photo3" Stretch="UniformToFill" MaxWidth="100" MaxHeight="84" Source="../images/defaultProfilePicture.png" Height="84" Width="80"></Image>
 
         </StackPanel>
     </materialDesign:Card>

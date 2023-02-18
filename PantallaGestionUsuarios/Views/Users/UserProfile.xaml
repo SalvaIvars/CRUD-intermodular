@@ -62,25 +62,37 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                     
                     <!-- Botones -->
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:Card MouseDown="changeToRoutes" x:Name="routesCard" Background="Gray" Width="100" Height="70" Margin="60 0 20 0">
-                            <TextBlock x:Name="routesCardText" Text="Rutas"></TextBlock>
+                        <materialDesign:Card MouseDown="changeToRoutes" x:Name="routesButton" Background="#497800" Width="100" Height="70" Margin="60 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Rutas" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="routesCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
                         </materialDesign:Card>
 
-                        <materialDesign:Card  MouseDown="changeToFav" x:Name="favCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
-                            <TextBlock x:Name="favCardText" Text="Rutas favoritas"></TextBlock>
+                        <materialDesign:Card  MouseDown="changeToFav" x:Name="favButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Favoritas" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="favCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
                         </materialDesign:Card>
 
-                        <materialDesign:Card MouseDown="changeToFollowers" x:Name="followersCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
-                            <TextBlock  x:Name="followersCardText"  Text="Seguidores"></TextBlock>
+                        <materialDesign:Card MouseDown="changeToFollowers" x:Name="followersButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Seguidores" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="followersCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
                         </materialDesign:Card>
 
-                        <materialDesign:Card MouseDown="changeToFollowing" x:Name="followingCard" Background="Gray" Width="100" Height="70" Margin="0 0 20 0">
-                            <TextBlock x:Name="followingCardText" Text="Siguiendo"></TextBlock>
+                        <materialDesign:Card MouseDown="changeToFollowing" x:Name="followingButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Siguiendo" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="followingCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
                         </materialDesign:Card>
                     </StackPanel>
 
 
-                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="routesMainCard">
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="routesMainCard">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <StackPanel x:Name="routesUser">
 
@@ -88,7 +100,7 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                         </ScrollViewer>
                     </materialDesign:Card>
 
-                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="followingMainCard" Visibility="Hidden">
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="followingMainCard" Visibility="Hidden">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <StackPanel x:Name="followingUser">
 
@@ -96,7 +108,7 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                         </ScrollViewer>
                     </materialDesign:Card>
 
-                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="favMainCard" Visibility="Hidden">
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="favMainCard" Visibility="Hidden">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <StackPanel x:Name="favRoutes">
 
@@ -104,7 +116,7 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                         </ScrollViewer>
                     </materialDesign:Card>
 
-                    <materialDesign:Card Background="#c4f1c0" Grid.Row="1" Width="500" Margin="30 30" x:Name="followersMainCard" Visibility="Hidden">
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="followersMainCard" Visibility="Hidden">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <StackPanel x:Name="followersMain">
 
@@ -117,11 +129,11 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                 <!-- Perfil Usuario -->
                 <Grid Grid.Column="1">
                     <StackPanel>
-                        <TextBlock x:Name="userName" Text="Nombre Uusario"></TextBlock>
-                        <TextBlock x:Name="userNick" Text="Nick"></TextBlock>
-                        <Image x:Name="userImage" Height="250" Width="250"></Image>
-                        <Button x:Name="userFollowButton" Content="Seguir" Click="userClickButton"></Button>
-                        <TextBlock x:Name="userDescription" Text="dESCRIPTCION"></TextBlock>
+                        <TextBlock x:Name="userName" TextAlignment="Center" FontSize="24" Margin="0 100 0 0" FontWeight="SemiBold" Text="Nombre Uusario"></TextBlock>
+                        <TextBlock x:Name="userNick" Text="Nick" Margin="0 10 0 20" TextAlignment="Center" FontSize="20" FontWeight="SemiBold"></TextBlock>
+                        <Image x:Name="userImage" Height="250" Width="250" Source="../../Images/defaultProfilePicture.png"></Image>
+                        <Button x:Name="userFollowButton" Background="#93b858" Margin="10 0 10 0" Content="Seguir" Click="userClickButton"></Button>
+                        <TextBlock x:Name="userDescription" TextWrapping="Wrap" Height="180" MaxHeight="180" Margin="10 30 10 0" FontSize="16"  Text="Descripcion Descripcion DescripcionDescripcionDescripcion Descripcion v Descripcion Descripcion Descripcion v v v DescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcion"></TextBlock>
                     </StackPanel>
                 </Grid>
 

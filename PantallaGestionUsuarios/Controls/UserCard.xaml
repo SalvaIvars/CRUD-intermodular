@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PantallaGestionUsuarios.Controls" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="200">
+             d:DesignHeight="100" d:DesignWidth="500">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,14 +16,17 @@
     </UserControl.Resources>
     <materialDesign:Card x:Name="card" MouseDown="loadUser"  >
         <StackPanel Orientation="Horizontal">
-            <Border Width="80" Height="80" Padding="3" Background="White" CornerRadius="100">
+            <Border Width="100" Height="100" Padding="3" Background="White" CornerRadius="100" Margin="0 0 30 0">
                 <Ellipse>
                     <Ellipse.Fill>
                         <ImageBrush x:Name="imageUser" ImageSource="../Images/defaultProfilePicture.png"/>
                     </Ellipse.Fill>
                 </Ellipse>
             </Border>
-            <TextBlock FontSize="15" FontWeight="SemiBold" x:Name="userName" MaxWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10 0 0 0">asdfasd</TextBlock>
+            <StackPanel>
+                <TextBlock Margin="0 20 0 10" FontSize="20" FontWeight="SemiBold" x:Name="userName" MaxWidth="350" >asdfasd</TextBlock>
+                <TextBlock FontSize="15" FontWeight="SemiBold" x:Name="userNick" MaxWidth="350"  >asdfasd</TextBlock>
+            </StackPanel>
         </StackPanel>
     </materialDesign:Card>
 </UserControl>

@@ -47,6 +47,10 @@ namespace PantallaGestionUsuarios.Views.Users
             followingMainCard.Visibility = Visibility.Collapsed;
             followersMainCard.Visibility = Visibility.Collapsed;
             favMainCard.Visibility = Visibility.Collapsed;
+            routesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#497800");
+            followingButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followersButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            favButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
         }
 
         private void changeToFollowers(object sender, MouseButtonEventArgs e)
@@ -55,6 +59,10 @@ namespace PantallaGestionUsuarios.Views.Users
             followingMainCard.Visibility = Visibility.Collapsed;
             followersMainCard.Visibility = Visibility.Visible;
             favMainCard.Visibility = Visibility.Collapsed;
+            routesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followingButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followersButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#497800");
+            favButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
         }
 
         private void changeToFollowing(object sender, MouseButtonEventArgs e)
@@ -63,6 +71,10 @@ namespace PantallaGestionUsuarios.Views.Users
             followingMainCard.Visibility = Visibility.Visible;
             followersMainCard.Visibility = Visibility.Collapsed;
             favMainCard.Visibility = Visibility.Collapsed;
+            routesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followingButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#497800");
+            followersButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            favButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
         }
 
         private void changeToFav(object sender, MouseButtonEventArgs e)
@@ -71,6 +83,10 @@ namespace PantallaGestionUsuarios.Views.Users
             followingMainCard.Visibility = Visibility.Collapsed;
             followersMainCard.Visibility = Visibility.Collapsed;
             favMainCard.Visibility = Visibility.Visible;
+            routesButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followingButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            followersButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#A4BE7B");
+            favButton.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#497800");
         }
 
         private void LoadUserInformation()
@@ -83,7 +99,6 @@ namespace PantallaGestionUsuarios.Views.Users
             {
                 userImage.Source = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
-
             if (user == Application.Current.Properties["user"])
             {
                 userFollowButton.Content = "Editar usuario";
@@ -137,7 +152,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
             for(int i = 0; i < following.Count; i++)
             {
-                UserCard uc = new UserCard(following[i].nick);
+                UserCard uc = new UserCard(following[i].name, following[i].nick);
 
                 if (following[i].photo != null && following[i].photo.Length > 0)
                 {
@@ -161,7 +176,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
             for (int i = 0; i < followers.Count; i++)
             {
-                UserCard uc = new UserCard(followers[i].nick);
+                UserCard uc = new UserCard(followers[i].name, followers[i].nick);
 
                 if (followers[i].photo != null && followers[i].photo.Length > 0)
                 {
@@ -239,7 +254,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != publications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
-                    margin.Bottom = 5;
+                    margin.Bottom = 2;
                     cd.Margin = margin;
                 }
                 cd.id = publications[i]._id;
@@ -289,7 +304,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != publications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
-                    margin.Bottom = 5;
+                    margin.Bottom = 2;
                     cd.Margin = margin;
                 }
                 cd.id = publications[i]._id;
