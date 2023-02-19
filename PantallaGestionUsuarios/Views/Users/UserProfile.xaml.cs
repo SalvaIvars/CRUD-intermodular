@@ -28,6 +28,7 @@ namespace PantallaGestionUsuarios.Views.Users
         List<UserModel> followers { get; set; }
         List<UserModel> following { get; set; }
         List<PublicationModel> publications { get; set; }
+        List<PublicationModel> allPublications { get; set; }
         string[] photos { get; set; }
 
         public UserProfile(UserModel user)
@@ -36,6 +37,7 @@ namespace PantallaGestionUsuarios.Views.Users
             this.user = user;
             GetFollowers();
             GetFollowing();
+            GetPublications();
             GetUserPublications();
             GetUserFavRoutes();
             LoadUserInformation();
@@ -221,6 +223,17 @@ namespace PantallaGestionUsuarios.Views.Users
             LoadUserFavPublications();
         }
 
+        private async void GetPublications()
+        {
+            var pubs = await PublicationsProcessor.LoadAllPublications();
+            allPublications = new List<PublicationModel>();
+
+            foreach (var pub in pubs)
+            {
+                allPublications.Add(pub);
+            }
+        }
+
         private async void LoadUserPublications()
         {
             string photo = "";
@@ -264,20 +277,16 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private async void LoadUserFavPublications()
         {
-            if(user.fav_routes == null)
-            {
-                return;
-            }
             string photo = "";
-            for (int i = 0; i < publications.Count; i++)
+            for (int i = 0; i < allPublications.Count; i++)
             {
-                if (!user.fav_routes.Contains(publications[i]._id))
+                if (!user.fav_routes.Contains(allPublications[i]._id))
                 {
                     continue;
                 }
 
-                PublicationCard cd = new PublicationCard(publications[i].name, publications[i].difficulty, publications[i].distance.ToString());
-                photos = await PublicationsProcessor.GetNumberOfPhotos(publications[i]._id);
+                PublicationCard cd = new PublicationCard(allPublications[i].name, allPublications[i].difficulty, allPublications[i].distance.ToString());
+                photos = await PublicationsProcessor.GetNumberOfPhotos(allPublications[i]._id);
 
                 if (photos != null)
                 {
@@ -298,17 +307,18 @@ namespace PantallaGestionUsuarios.Views.Users
                     }
                 }
 
-                photo = Utilities.ActivityToImage(publications[i].category);
+                photo = Utilities.ActivityToImage(allPublications[i].category);
                 cd.imageActivity.Source = new BitmapImage(new Uri(photo, UriKind.Relative));
 
-                if (i != publications.Count - 1)
+                if (i != allPublications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
                     margin.Bottom = 2 ;
                     cd.Margin = margin;
                 }
-                cd.id = publications[i]._id;
-                routesUser.Children.Add(cd);
+                cd.id = allPublications[i]._id;
+                favRoutes.Children.Add(cd);
+
             }
         }
 

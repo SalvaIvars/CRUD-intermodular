@@ -27,7 +27,7 @@ namespace PantallaGestionUsuarios.Models
             public string[] photo { get; set; }
             public string privacy { get; set; }
             public object[] rec_movement { get; set; }
-
+            public string[] fav_routes { get; set; }
         }
 
         public class RootobjectSingle
@@ -49,7 +49,7 @@ namespace PantallaGestionUsuarios.Models
             public string[] photo { get; set; }
             public string privacy { get; set; }
             public object[] rec_movement { get; set; }
-
+            public string[] fav_routes { get; set; }
             public string date { get; set; }
         }
     }

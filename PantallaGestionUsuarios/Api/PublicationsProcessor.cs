@@ -42,9 +42,6 @@ namespace PantallaGestionUsuarios.Api
         }
 
 
-
-
-
         public static async Task<PublicationModel> LoadPublication(string id = "")
         {
             string url = "http://localhost:8080/publications/";
@@ -56,7 +53,7 @@ namespace PantallaGestionUsuarios.Api
                 if (response.IsSuccessStatusCode)
                 {
                     PublicationResponse.RootobjectSingle publicationResponse = await response.Content.ReadAsAsync<PublicationResponse.RootobjectSingle>();
-                    PublicationModel publicationReturn = new PublicationModel(publicationResponse.data._id, publicationResponse.data.date, publicationResponse.data.name, publicationResponse.data.category, publicationResponse.data.distance, publicationResponse.data.difficulty, publicationResponse.data.duration, publicationResponse.data.description, publicationResponse.data.photo, publicationResponse.data.privacy, publicationResponse.data.rec_movement);
+                    PublicationModel publicationReturn = new PublicationModel(publicationResponse.data._id, publicationResponse.data.date, publicationResponse.data.name, publicationResponse.data.category, publicationResponse.data.distance, publicationResponse.data.difficulty, publicationResponse.data.duration, publicationResponse.data.description, publicationResponse.data.photo, publicationResponse.data.privacy, publicationResponse.data.rec_movement, publicationResponse.data.fav_routes);
                     return publicationReturn;
                 }
                 else
