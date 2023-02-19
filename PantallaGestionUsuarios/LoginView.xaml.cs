@@ -1,5 +1,6 @@
 ﻿using PantallaGestionUsuarios.Utils;
 using PantallaGestionUsuarios.Views.Error;
+using PantallaGestionUsuarios.Views.Publications;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -17,6 +18,7 @@ namespace PantallaGestionUsuarios.Views
         {
             InitializeComponent();
             ApiHelper.InitializeClient();
+
         }
 
         public async void Login(object sender, RoutedEventArgs e)

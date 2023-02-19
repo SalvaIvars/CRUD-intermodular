@@ -56,7 +56,7 @@ namespace PantallaGestionUsuarios.Api
                 if (response.IsSuccessStatusCode)
                 {
                     PublicationResponse.RootobjectSingle publicationResponse = await response.Content.ReadAsAsync<PublicationResponse.RootobjectSingle>();
-                    PublicationModel publicationReturn = new PublicationModel(publicationResponse.data._id, publicationResponse.data.date, publicationResponse.data.name, publicationResponse.data.category, publicationResponse.data.distance, publicationResponse.data.difficulty, publicationResponse.data.duration, publicationResponse.data.description, publicationResponse.data.photo, publicationResponse.data.privacy);
+                    PublicationModel publicationReturn = new PublicationModel(publicationResponse.data._id, publicationResponse.data.date, publicationResponse.data.name, publicationResponse.data.category, publicationResponse.data.distance, publicationResponse.data.difficulty, publicationResponse.data.duration, publicationResponse.data.description, publicationResponse.data.photo, publicationResponse.data.privacy, publicationResponse.data.rec_movement);
                     return publicationReturn;
                 }
                 else

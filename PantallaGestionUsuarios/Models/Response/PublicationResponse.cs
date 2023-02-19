@@ -26,6 +26,7 @@ namespace PantallaGestionUsuarios.Models
             public string description { get; set; }
             public string[] photo { get; set; }
             public string privacy { get; set; }
+            public object[] rec_movement { get; set; }
 
         }
 

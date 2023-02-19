@@ -150,6 +150,7 @@
                         <Button  x:Name="botonDerecho" Click="derecha" HorizontalAlignment="Left" Margin="90,140,0,0" VerticalAlignment="Top" Grid.Column="3">
                             <Icon:PackIconMaterial Kind="ArrowRight" Width="15" Height="25"/>
                         </Button>
+                        <Button Click="ViewRouteMap" Content="View Route" Margin="148,288,-82,238" Style="{StaticResource buttonMainGreen}" Grid.Column="2" MaxWidth="200" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Grid>
 

@@ -2,6 +2,7 @@
 using PantallaGestionUsuarios.Models;
 using PantallaGestionUsuarios.Utils;
 using PantallaGestionUsuarios.Views.Error;
+using PantallaGestionUsuarios.Views.Publications;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -44,6 +45,16 @@ namespace PantallaGestionUsuarios.Views
         private void closeWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ViewRouteMap(object sender, RoutedEventArgs e)
+        {
+            if(publication.rec_movement == null)
+            {
+                return;
+            }
+            PruebaMapa map = new PruebaMapa(publication.rec_movement);
+            map.Show();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

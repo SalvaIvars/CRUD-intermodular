@@ -18,8 +18,9 @@ namespace PantallaGestionUsuarios.Models
         public string description { get; set; }
         public string[] photo { get; set; }
         public string privacy { get; set; }
+        public object[] rec_movement { get; set; }
 
-        public PublicationModel(string _id, string date, string name, string category, string distance, string difficulty, string duration, string description, string[] photo, string privacy) { 
+        public PublicationModel(string _id, string date, string name, string category, string distance, string difficulty, string duration, string description, string[] photo, string privacy, object[] rec_movement) { 
             this._id = _id;
             this.date = date;
             this.name = name;
@@ -30,6 +31,7 @@ namespace PantallaGestionUsuarios.Models
             this.description = description;
             this.photo = photo;
             this.privacy = privacy;
+            this.rec_movement = rec_movement;
         }
     }
 
