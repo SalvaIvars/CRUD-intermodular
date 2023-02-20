@@ -6,7 +6,9 @@ using PantallaGestionUsuarios.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,16 +33,23 @@ namespace PantallaGestionUsuarios.Views.Users
         List<PublicationModel> allPublications { get; set; }
         string[] photos { get; set; }
 
-        public UserProfile(UserModel user)
+        public UserProfile(UserModel userL)
         {
             InitializeComponent();
-            this.user = user;
+            this.user = userL;
+            ReloadUser();
+
+        }
+
+        private async void ReloadUser()
+        {
+            this.user = await UserProcessor.LoadUser(user.email);
             GetFollowers();
             GetFollowing();
             GetPublications();
             GetUserPublications();
             GetUserFavRoutes();
-            LoadUserInformation();
+
         }
 
         private void changeToRoutes(object sender, MouseButtonEventArgs e)
@@ -101,7 +110,7 @@ namespace PantallaGestionUsuarios.Views.Users
             {
                 userImage.Source = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
-            if (user == Application.Current.Properties["user"])
+            if (user.nick == ((UserModel)Application.Current.Properties["user"]).nick)
             {
                 userFollowButton.Content = "Editar usuario";
             }
@@ -175,6 +184,10 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private async void LoadFollowers()
         {
+            if (followers == null)
+            {
+                return;
+            }
 
             for (int i = 0; i < followers.Count; i++)
             {
@@ -198,6 +211,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private void GetUserFavRoutes()
         {
+            LoadUserInformation();
             if (user.fav_routes == null)
             {
                 favCardText.Text += "0";
@@ -236,6 +250,10 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private async void LoadUserPublications()
         {
+            if(publications == null)
+            {
+                return;
+            }
             string photo = "";
             for(int i = 0; i <  publications.Count; i++)
             {
@@ -277,6 +295,10 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private async void LoadUserFavPublications()
         {
+            if(allPublications == null)
+            {
+                return;
+            }
             string photo = "";
             for (int i = 0; i < allPublications.Count; i++)
             {
@@ -322,9 +344,9 @@ namespace PantallaGestionUsuarios.Views.Users
             }
         }
 
-        private void userClickButton(object sender, RoutedEventArgs e)
+        private async void userClickButton(object sender, RoutedEventArgs e)
         {
-            if (user == Application.Current.Properties["user"])
+            if (user.nick == ((UserModel)Application.Current.Properties["user"]).nick)
             {
                 UserModel userUpdate = (UserModel)Application.Current.Properties["user"];
 
@@ -332,7 +354,38 @@ namespace PantallaGestionUsuarios.Views.Users
                 win.Show();
                 this.Close();
             }
-
+            else if(userFollowButton.Content == "Siguiendo")
+            {
+                using StringContent jsonContent = new(
+                JsonSerializer.Serialize(new
+                {
+                    email = ((UserModel)Application.Current.Properties["user"]).email,
+                    emailToUnfollow = user.email,
+                }),
+                Encoding.UTF8,
+                "application/json");
+                await UserProcessor.UnfollowUser(jsonContent);
+                userFollowButton.Content = "Seguir";
+                UserProfile a = new UserProfile(user);
+                a.Show();
+                this.Close();
+            }
+            else if (userFollowButton.Content == "Seguir")
+            {
+                using StringContent jsonContent = new(
+                JsonSerializer.Serialize(new
+                {
+                    email = ((UserModel)Application.Current.Properties["user"]).email,
+                    emailToFollow = user.email,
+                }),
+                Encoding.UTF8,
+                "application/json");
+                await UserProcessor.FollowUser(jsonContent);
+                userFollowButton.Content = "Siguiendo";
+                UserProfile a = new UserProfile(user);
+                a.Show();
+                this.Close();
+            }
             // Funcionalidad seguir
         }
     }

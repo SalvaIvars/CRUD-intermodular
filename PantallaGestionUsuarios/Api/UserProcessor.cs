@@ -36,6 +36,7 @@ namespace PantallaGestionUsuarios
             }
         }
 
+
         public static async Task<UserModel> LoadUser(string email) 
         {
             string url = "http://localhost:8080/users/";
@@ -82,6 +83,32 @@ namespace PantallaGestionUsuarios
             }
         }
 
+        public static async Task FollowUser(StringContent jsonContent)
+        {
+            string url = "http://localhost:8080/users/follow";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                }
+            }
+        }
+
+        public static async Task UnfollowUser(StringContent jsonContent)
+        {
+            string url = "http://localhost:8080/users/unfollow";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.PostAsync(url, jsonContent))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    new CustomError(response.ReasonPhrase).ShowDialog();
+                }
+            }
+        }
+        
         public static async Task PostUser(StringContent jsonContent)
         {
             string url = "http://localhost:8080/auth/signup";
