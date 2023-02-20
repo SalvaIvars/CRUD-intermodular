@@ -110,6 +110,8 @@ namespace PantallaGestionUsuarios.Views.Users
             {
                 userImage.Source = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
+
+
             if (user.nick == ((UserModel)Application.Current.Properties["user"]).nick)
             {
                 userFollowButton.Content = "Editar usuario";
@@ -117,6 +119,10 @@ namespace PantallaGestionUsuarios.Views.Users
             else
             {
                 UserModel actualUser = (UserModel)Application.Current.Properties["user"];
+                foreach(var a in actualUser.following)
+                {
+                    MessageBox.Show(a);
+                }
                 if (actualUser.following.Contains(user.email))
                 {
                     userFollowButton.Content = "Siguiendo";
@@ -211,7 +217,6 @@ namespace PantallaGestionUsuarios.Views.Users
 
         private void GetUserFavRoutes()
         {
-            LoadUserInformation();
             if (user.fav_routes == null)
             {
                 favCardText.Text += "0";
@@ -220,6 +225,7 @@ namespace PantallaGestionUsuarios.Views.Users
             {
                 favCardText.Text += user.fav_routes.Length.ToString();
             }
+            LoadUserInformation();
         }
 
         private async void GetUserPublications()
@@ -366,6 +372,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 "application/json");
                 await UserProcessor.UnfollowUser(jsonContent);
                 userFollowButton.Content = "Seguir";
+                LoadUserInformation();
                 UserProfile a = new UserProfile(user);
                 a.Show();
                 this.Close();
@@ -382,6 +389,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 "application/json");
                 await UserProcessor.FollowUser(jsonContent);
                 userFollowButton.Content = "Siguiendo";
+                LoadUserInformation();
                 UserProfile a = new UserProfile(user);
                 a.Show();
                 this.Close();
