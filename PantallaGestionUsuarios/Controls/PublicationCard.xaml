@@ -18,7 +18,7 @@
         <StackPanel Orientation="Horizontal">
             <Image x:Name="imageActivity" Source="../Images/defaultProfilePicture.png" Height="84" Width="59"></Image>
             <StackPanel>
-                <TextBlock x:Name="name" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Top" Width="150" MaxWidth="150" Height="40" MaxHeight="50" TextWrapping="Wrap"><Run Text="hola adios hola adios jesus ibai"/></TextBlock>
+                <TextBlock x:Name="name" FontWeight="SemiBold" FontSize="15" VerticalAlignment="Top" Width="150" MaxWidth="150" Height="40" MaxHeight="50" TextWrapping="Wrap"><Run Text="hola hola hola hola hola hola"/></TextBlock>
                 <TextBlock x:Name="distance" Width="150" MaxWidth="150" FontSize="13" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">11,12 kilómetros</TextBlock>
                 <TextBlock x:Name="difficulty" Width="150" MaxWidth="150" FontSize="13" Height="40" MaxHeight="50" VerticalAlignment="Center" Padding="0 10 0 0">Fácil</TextBlock>
             </StackPanel>

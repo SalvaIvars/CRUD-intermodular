@@ -42,7 +42,7 @@ namespace PantallaGestionUsuarios.Views
             bool result = await UserProcessor.SingIn(jsonContent);
 
             if (result) {
-                ApiHelper.addTokens();
+                ApiHelper.AddToken();
                 UserModel user = await UserProcessor.LoadUser(emailBox.Text);
                 Application.Current.Properties["user"] = user;
                 Utilities.GoToUsers(sender, e);
