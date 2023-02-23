@@ -17,6 +17,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -125,6 +126,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number--;
                 photo2Number = photos.Length -1;
                 photo3Number = 0;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -135,6 +147,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number = photos.Length - 1;
                 photo2Number--;
                 photo3Number = 1;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -144,6 +167,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number--;
                 photo2Number--;
                 photo3Number = photos.Length - 1;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -153,6 +187,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number--;
                 photo2Number--;
                 photo3Number--;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -172,6 +217,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number = 0;
                 photo2Number++;
                 photo3Number++;
+                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -182,6 +238,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number =1;
                 photo2Number++;
                 photo3Number++;
+                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -191,6 +258,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number++;
                 photo2Number = photos.Length - 1;
                 photo3Number = 0;
+                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -200,6 +278,17 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number = photos.Length - 1;
                 photo2Number=0;
                 photo3Number=1;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
@@ -209,11 +298,38 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number++;
                 photo2Number++;
                 photo3Number++;
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
+                photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
                 photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
                 photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
             }
         }
+
+        private void imgFadeOut_Completed1(object? sender, EventArgs e)
+        {
+            photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
+            photo2.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo2Number]));
+            photo3.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo3Number]));
+            Image img1 = photo1;
+            Image img2 = photo2;
+            Image img3 = photo3;
+            var ObjAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.4));
+            img1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+            img2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+            img3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
+        }
+
 
         public async void SendPublication(object sender, RoutedEventArgs e)
         {

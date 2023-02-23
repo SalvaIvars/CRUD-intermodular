@@ -12,9 +12,23 @@
         AllowsTransparency="True"
         Background="Transparent"
         Title="MainWindow" Height="720" Width="1080">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Border Background="#eff2f7" CornerRadius="30" MouseDown="Border_MouseDown">
@@ -54,7 +68,7 @@
                 <!-- Page Title -->
                 <TextBlock Text="Comments" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0" HorizontalAlignment="Left" Foreground="#121518"/>
 
-                <StackPanel Orientation="Horizontal" Height="21" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Height="31" HorizontalAlignment="Right">
                     <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
                         <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
                     </Button>

@@ -6,14 +6,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System;
 using Microsoft.Win32;
-using static System.Net.Mime.MediaTypeNames;
-using System.Runtime.InteropServices;
-using Image = System.Drawing.Image;
 
 namespace PantallaGestionUsuarios.Views
 {
@@ -33,6 +27,7 @@ namespace PantallaGestionUsuarios.Views
         {
             this.WindowState = WindowState.Minimized;
         }
+
         private void closeWindow(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -41,7 +36,7 @@ namespace PantallaGestionUsuarios.Views
         public async void LoadUserPhoto()
         {
             if (user.photo != null && user.photo.Length > 0)
-            {
+           {
                 profilePictureImage.Source = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
         }
@@ -53,6 +48,7 @@ namespace PantallaGestionUsuarios.Views
                 this.DragMove();
             }
         }
+        
         private void FillData(object sender, RoutedEventArgs e)
         {
             nombreBox.textBox.Text = user.name;
@@ -93,8 +89,6 @@ namespace PantallaGestionUsuarios.Views
                 this.Close();
             }
         }
-
-
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {

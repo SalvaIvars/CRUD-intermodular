@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks">
     <Grid>
-
         <!--  Loaded="LoadUserPhoto" -->
         <Border Grid.Row="1" Background="#A4BE7B" CornerRadius="0 50 0 30">
             <DockPanel>

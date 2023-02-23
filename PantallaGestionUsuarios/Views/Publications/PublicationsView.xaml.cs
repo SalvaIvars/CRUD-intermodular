@@ -59,7 +59,7 @@ namespace PantallaGestionUsuarios.Views
 
             foreach (DataGridColumn col in publicationsDataGrid.Columns)
             {
-                if (col.Header.ToString() == "_id" || col.Header.ToString() == "id_user" || col.Header.ToString() == "photo" || col.Header.ToString() == "description")
+                if (col.Header.ToString() == "_id" || col.Header.ToString() == "fav_routes" || col.Header.ToString() == "rec_movement" || col.Header.ToString() == "id_user" || col.Header.ToString() == "photo" || col.Header.ToString() == "description")
                 {
                     col.Visibility = Visibility.Collapsed;
                 }

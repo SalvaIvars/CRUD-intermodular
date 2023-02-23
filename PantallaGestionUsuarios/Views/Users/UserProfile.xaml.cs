@@ -37,13 +37,21 @@ namespace PantallaGestionUsuarios.Views.Users
         {
             InitializeComponent();
             this.user = userL;
-            ReloadUser();
+            ReloadAll();
 
         }
 
-        private async void ReloadUser()
+        private void minimizeWindow(object sender, RoutedEventArgs e)
         {
-            this.user = await UserProcessor.LoadUser(user.email);
+            this.WindowState = WindowState.Minimized;
+        }
+        private void closeWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private async void ReloadAll()
+        {
             GetFollowers();
             GetFollowing();
             GetPublications();
@@ -119,10 +127,6 @@ namespace PantallaGestionUsuarios.Views.Users
             else
             {
                 UserModel actualUser = (UserModel)Application.Current.Properties["user"];
-                foreach(var a in actualUser.following)
-                {
-                    MessageBox.Show(a);
-                }
                 if (actualUser.following.Contains(user.email))
                 {
                     userFollowButton.Content = "Siguiendo";
@@ -179,7 +183,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != following.Count - 1)
                 {
                     Thickness margin = uc.Margin;
-                    margin.Bottom = 5;
+                    margin.Bottom = 2;
                     uc.Margin = margin;
                 }
                 uc.userEmail = following[i].email;
@@ -207,7 +211,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != followers.Count - 1)
                 {
                     Thickness margin = uc.Margin;
-                    margin.Bottom = 5;
+                    margin.Bottom = 2;
                     uc.Margin = margin;
                 }
                 uc.userEmail = followers[i].email;

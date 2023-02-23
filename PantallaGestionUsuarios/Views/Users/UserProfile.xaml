@@ -30,6 +30,14 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="31" HorizontalAlignment="Right">
+                <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                    <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                </Button>
+            </StackPanel>
 
             <!-- Left Menu -->
             <Grid>
