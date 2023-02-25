@@ -12,15 +12,6 @@
         AllowsTransparency="True"
         Background="Transparent"
         Title="MainWindow" Height="720" Width="1080">
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -82,6 +73,15 @@
 
                 <!-- Datagrid -->
                 <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="commentsDataGrid">
+                    <DataGrid.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </DataGrid.Triggers>
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="*">
                             <DataGridTemplateColumn.CellTemplate>

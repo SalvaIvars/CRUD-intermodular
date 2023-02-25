@@ -19,8 +19,8 @@ namespace PantallaGestionUsuarios.Models
             public string _id { get; set; }
             public string date { get; set; }
             public string message { get; set; }
-            public int id_user { get; set; }
-            public int id_publication { get; set; }
+            public string email { get; set; }
+            public string id_publication { get; set; }
 
         }
     }
