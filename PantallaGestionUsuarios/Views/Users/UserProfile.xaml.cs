@@ -116,7 +116,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
             if (user.photo != null && user.photo.Length > 0)
             {
-                userImage.Source = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
+                userImage.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
 
 
@@ -183,7 +183,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != following.Count - 1)
                 {
                     Thickness margin = uc.Margin;
-                    margin.Bottom = 2;
+                    margin.Bottom = 1;
                     uc.Margin = margin;
                 }
                 uc.userEmail = following[i].email;
@@ -211,7 +211,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != followers.Count - 1)
                 {
                     Thickness margin = uc.Margin;
-                    margin.Bottom = 2;
+                    margin.Bottom = 1;
                     uc.Margin = margin;
                 }
                 uc.userEmail = followers[i].email;
@@ -295,7 +295,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != publications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
-                    margin.Bottom = 2;
+                    margin.Bottom = 1;
                     cd.Margin = margin;
                 }
                 cd.id = publications[i]._id;
@@ -345,7 +345,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 if (i != allPublications.Count - 1)
                 {
                     Thickness margin = cd.Margin;
-                    margin.Bottom = 2 ;
+                    margin.Bottom = 1 ;
                     cd.Margin = margin;
                 }
                 cd.id = allPublications[i]._id;
@@ -366,6 +366,7 @@ namespace PantallaGestionUsuarios.Views.Users
             }
             else if(userFollowButton.Content == "Siguiendo")
             {
+                userFollowButton.Content = "Seguir";
                 using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
@@ -375,7 +376,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 Encoding.UTF8,
                 "application/json");
                 await UserProcessor.UnfollowUser(jsonContent);
-                userFollowButton.Content = "Seguir";
+
                 LoadUserInformation();
                 UserProfile a = new UserProfile(user);
                 a.Show();
@@ -383,6 +384,7 @@ namespace PantallaGestionUsuarios.Views.Users
             }
             else if (userFollowButton.Content == "Seguir")
             {
+                userFollowButton.Content = "Siguiendo";
                 using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
@@ -392,13 +394,12 @@ namespace PantallaGestionUsuarios.Views.Users
                 Encoding.UTF8,
                 "application/json");
                 await UserProcessor.FollowUser(jsonContent);
-                userFollowButton.Content = "Siguiendo";
+
                 LoadUserInformation();
                 UserProfile a = new UserProfile(user);
                 a.Show();
                 this.Close();
             }
-            // Funcionalidad seguir
         }
     }
 }

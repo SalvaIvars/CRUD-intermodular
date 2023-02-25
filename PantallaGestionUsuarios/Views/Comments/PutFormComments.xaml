@@ -6,7 +6,7 @@
        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         mc:Ignorable="d"
                 WindowStyle="None"
-        AllowsTransparency="True"
+        AllowsTransparency="True"        ResizeMode="NoResize"
         Background="Transparent"
                 WindowStartupLocation="CenterScreen"
         Title="PutFormUsers" Height="720" Width="1080"

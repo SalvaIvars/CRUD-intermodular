@@ -55,7 +55,7 @@ namespace PantallaGestionUsuarios.Views.Publications
             Wb.CoreWebView2.Navigate("file:///C:/Users/Salva/source/repos/SalvaIvars/CRUDPorfavor/PantallaGestionUsuarios/bin/Debug/net6.0-windows/index.html");
 
         }
-
+        
         private async void RemoveRoute()
         {
             List<string> quotelist = File.ReadAllLines(@"C:/Users/Salva/source/repos/SalvaIvars/CRUDPorfavor/PantallaGestionUsuarios/bin/Debug/net6.0-windows/script.js").ToList();

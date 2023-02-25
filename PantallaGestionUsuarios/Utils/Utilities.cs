@@ -53,14 +53,20 @@ namespace PantallaGestionUsuarios.Utils
 
         public static string ActivityToImage(string activity)
         {
-            switch (activity)
+            switch (activity.ToLower())
             {
                 case "escalada":
                     return "../Images/Activities/escalada.png";
-                case "caminata":
+                case "senderimos":
                     return "../Images/Activities/caminata.png";
-                case "bicicleta":
+                case "ciclismo":
                     return "../Images/Activities/bicicleta.png";
+                case "alpinismo":
+                    return "../Images/Activities/alpinismo.png";
+                case "kayak":
+                    return "../Images/Activities/kayak.png";
+                case "carrera":
+                    return "../Images/Activities/carrera.png";
                 default:
                     return "../images/defaultProfilePicture.png";
             }

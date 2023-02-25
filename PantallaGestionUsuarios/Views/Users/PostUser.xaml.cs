@@ -115,6 +115,7 @@ namespace PantallaGestionUsuarios.Views
 
         private void passwordBoxTextChange(Object sender, RoutedEventArgs argss)
         {
+            passwordBox.HintPassword = "";
             if (passwordBox.passwordBox.Password.Length > 0)
             {
                 passwordBox.passwordBox.BorderThickness = new Thickness(0);

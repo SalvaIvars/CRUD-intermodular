@@ -9,7 +9,7 @@
 xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
+        WindowStyle="None"         ResizeMode="NoResize"
         AllowsTransparency="True"
         Background="Transparent"
         Title="UserProfile" Height="720" Width="1080">
@@ -56,6 +56,15 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
             
             <!-- Content -->
             <Grid Grid.Column="1">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
@@ -137,11 +146,17 @@ xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
                 <!-- Perfil Usuario -->
                 <Grid Grid.Column="1">
                     <StackPanel>
-                        <TextBlock x:Name="userName" TextAlignment="Center" FontSize="24" Margin="0 100 0 0" FontWeight="SemiBold" Text="Nombre Uusario"></TextBlock>
-                        <TextBlock x:Name="userNick" Text="Nick" Margin="0 10 0 20" TextAlignment="Center" FontSize="20" FontWeight="SemiBold"></TextBlock>
-                        <Image x:Name="userImage" Height="250" Width="250" Source="../../Images/defaultProfilePicture.png"></Image>
+                        <TextBlock x:Name="userName" TextAlignment="Center" HorizontalAlignment="Center" FontSize="24" Margin="0 80 10 0" FontWeight="SemiBold" Text="Nombre Uusario"></TextBlock>
+                        <TextBlock x:Name="userNick" Text="Nick" Margin="0 10 10 20" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" ></TextBlock>
+                        <Border Height="250" Width="250" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 0 0 25">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="userImage" ImageSource="../../Images/defaultProfilePicture.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
                         <Button x:Name="userFollowButton" Background="#93b858" Margin="10 0 10 0" Content="Seguir" Click="userClickButton"></Button>
-                        <TextBlock x:Name="userDescription" TextWrapping="Wrap" Height="180" MaxHeight="180" Margin="10 30 10 0" FontSize="16"  Text="Descripcion Descripcion DescripcionDescripcionDescripcion Descripcion v Descripcion Descripcion Descripcion v v v DescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcion"></TextBlock>
+                        <TextBlock x:Name="userDescription" TextWrapping="Wrap" Height="180" MaxHeight="180" HorizontalAlignment="Center"  Margin="10 30 10 0" FontSize="16"  Text="Descripcion Descripcion DescripcionDescripcionDescripcion Descripcion v Descripcion Descripcion Descripcion v v v DescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcion"></TextBlock>
                     </StackPanel>
                 </Grid>
 

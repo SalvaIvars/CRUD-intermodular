@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
-        
+        ResizeMode="NoResize"
        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         Title="PutFormPublications" Height="550" Width="800">
     <Border Background="#eff2f7" CornerRadius="30">

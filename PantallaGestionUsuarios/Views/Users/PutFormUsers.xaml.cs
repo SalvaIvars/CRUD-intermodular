@@ -16,6 +16,7 @@ namespace PantallaGestionUsuarios.Views
     /// </summary>
     public partial class PutFormUsers : Window
     {
+        bool imageChanged = false;
         private UserModel user { get; set; }
         public PutFormUsers(UserModel user)
         {
@@ -69,8 +70,10 @@ namespace PantallaGestionUsuarios.Views
 
             if (canUpdate)
             {
-                if (!profilePictureImage.Source.ToString().Contains("defaulProfilePicture.png"))
+                var imagen = user.photo;
+                if (!profilePictureImage.Source.ToString().Contains("defaulProfilePicture.png") && imageChanged)
                 {
+                    imagen = profilePictureImage.Source.ToString();
                     await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
                 }
 
@@ -78,13 +81,21 @@ namespace PantallaGestionUsuarios.Views
                 using StringContent jsonContent = new(
                     JsonSerializer.Serialize(new
                     {
-                        nombre = nombreBox.textBox.Text,
-                        apellidos = apellidosBox.textBox.Text,
-                        fecha = fechaBox.textBox.Text,
+                        name = nombreBox.textBox.Text,
+                        lastname = apellidosBox.textBox.Text,
+                        date = fechaBox.textBox.Text,
+                        email = user.email,
+                        nick = user.nick,
+                        password = user.password,
+                        following = user.following,
+                        photo = user.photo,
+                        rol = user.rol,
+                        fav_routes = user.fav_routes,
+                        description = user.description,
                     }),
                     Encoding.UTF8,
                     "application/json");
-                await UserProcessor.UpdateUser(user._id, jsonContent);
+                await UserProcessor.UpdateUser(jsonContent);
                 Utils.Utilities.GoToUsers(sender, e);
                 this.Close();
             }
@@ -99,6 +110,7 @@ namespace PantallaGestionUsuarios.Views
               "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
             {
+                imageChanged = true;
                 profilePictureImage.Source = new BitmapImage(new Uri(op.FileName));
             }
         }

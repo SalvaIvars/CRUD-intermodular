@@ -166,11 +166,9 @@ namespace PantallaGestionUsuarios
             }
         }
 
-        public static async Task UpdateUser(string id, StringContent jsonConent)
+        public static async Task UpdateUser(StringContent jsonConent)
         {
             string url = "http://localhost:8080/users/";
-
-            url += id;
 
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.PutAsync(url, jsonConent))

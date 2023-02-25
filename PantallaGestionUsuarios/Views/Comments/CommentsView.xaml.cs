@@ -51,6 +51,10 @@ namespace PantallaGestionUsuarios.Views
 
             foreach (var comment in comments)
             {
+                var nombreUsuario = await UserProcessor.LoadUser(comment.email);
+                var nombreRuta = await PublicationsProcessor.LoadPublication(comment.id_publication);
+                comment.id_publication = nombreRuta.name;
+                comment.email = nombreUsuario.email;
                 commentsList.Add(comment);
             }
 
@@ -62,6 +66,13 @@ namespace PantallaGestionUsuarios.Views
                 if (col.Header.ToString() == "_id")
                 {
                     col.Visibility = Visibility.Collapsed;
+                }
+                if (col.Header.ToString() == "email")
+                {
+                    col.Header = "name";
+                }else if(col.Header.ToString() == "id_publication")
+                {
+                    col.Header = "publication";
                 }
             }
         }

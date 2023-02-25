@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PantallaGestionUsuarios.Views" xmlns:Controls="clr-namespace:PantallaGestionUsuarios.Controls"
         Loaded="CreateTable"
         mc:Ignorable="d"
-        
+                ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"

@@ -96,7 +96,15 @@
                             <Controls:PersonalTextBox x:Name="emailBox" Grid.Column="1" Grid.Row="2" Hint="Email..." TextBox.TextChanged="emailBoxTextChange"/>
                             <Controls:PersonalTextBox x:Name="nickBox"  Grid.Column="1" Grid.Row="3" Hint="Nick..."/>
                             <Controls:PersonalTextBox x:Name="fechaBox"  Grid.Column="1" Grid.Row="4" Hint="Fecha..."/>
-                            <ComboBox x:Name="rolBox" materialDesign:HintAssist.Hint="Categoría" IsEditable="True" Grid.Column="1" Grid.Row="5" Margin="0 20 0 0">
+                            <ComboBox x:Name="rolBox"  IsEditable="True" Grid.Column="1" Grid.Row="5" Margin="15 10 0 15">
+                                <ComboBox.Resources>
+                                    <ResourceDictionary>
+                                        <ResourceDictionary.MergedDictionaries>
+                                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                                            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                                        </ResourceDictionary.MergedDictionaries>
+                                    </ResourceDictionary>
+                                </ComboBox.Resources>
                                 <ComboBoxItem IsSelected="True">
                                     user
                                 </ComboBoxItem>
@@ -104,7 +112,8 @@
                                     admin
                                 </ComboBoxItem>
                             </ComboBox>
-                            <Controls:PersonalPasswordBox x:Name="passwordBox"  Grid.Column="1" Grid.Row="7" HintPassword="Contraseña..." PasswordBox.PasswordChanged="passwordBoxTextChange" MaxWidth="158" MaxHeight="165"/>
+                            <Controls:PersonalPasswordBox x:Name="passwordBox" HintPassword="Password" Grid.Column="1" Grid.Row="7"  PasswordBox.PasswordChanged="passwordBoxTextChange" MaxWidth="158" MaxHeight="165" Margin="0 0 32 0"/>
+
 
                             <Button Background="Transparent" Grid.Column="1" Margin="322,9,-282,9" Grid.RowSpan="3" BorderThickness="0" Click="btnLoad_Click">
                                 <Image  MaxWidth="158" MaxHeight="165" x:Name="profilePicture" Source="../../Images/defaultProfilePicture.png"/>

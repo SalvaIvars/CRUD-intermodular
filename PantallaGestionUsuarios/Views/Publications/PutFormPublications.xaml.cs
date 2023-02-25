@@ -324,7 +324,7 @@ namespace PantallaGestionUsuarios.Views
             Image img1 = photo1;
             Image img2 = photo2;
             Image img3 = photo3;
-            var ObjAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.4));
+            var ObjAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.5));
             img1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
             img2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
             img3.BeginAnimation(Image.OpacityProperty, ObjAnimation);

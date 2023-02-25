@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent"
+        Background="Transparent"         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="PutFormPublications" Height="720" Width="1080"
         Loaded="FillData">
@@ -90,8 +90,21 @@
                                     Escalada
                                 </ComboBoxItem>
                                 <ComboBoxItem>
-                                    Caminata
+                                    Senderismo
                                 </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Alpinismo
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Kayak
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Ciclismo
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    Carrera
+                                </ComboBoxItem>
+
                             </ComboBox>
                             <Separator Style="{StaticResource MaterialDesignLightSeparator}" />
                             <ComboBox x:Name="dificultadBox" materialDesign:HintAssist.Hint="Dificultad" IsEditable="True" Margin="0 20 0 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}">

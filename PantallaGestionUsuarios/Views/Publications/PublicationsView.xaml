@@ -9,7 +9,7 @@
         Loaded="CreateTable"
         mc:Ignorable="d"
                 WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
+        WindowStyle="None"        ResizeMode="NoResize"
         AllowsTransparency="True"
         Background="Transparent"
         Title="MainWindow" Height="720" Width="1080">
