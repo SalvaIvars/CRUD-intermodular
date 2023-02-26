@@ -10,6 +10,7 @@ using MimeKit;
 using System.Windows.Controls;
 using System.IO;
 using PantallaGestionUsuarios.Views.Error;
+using CRUD.Models.Response;
 
 namespace PantallaGestionUsuarios
 {
@@ -30,7 +31,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                     return false;
                 }
             }
@@ -52,7 +54,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                     return null;
                 }
             }
@@ -77,7 +80,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                     return null;
                 }
             }
@@ -91,7 +95,8 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
             }
         }
@@ -104,7 +109,8 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
             }
         }
@@ -117,7 +123,8 @@ namespace PantallaGestionUsuarios
             {
                 if (! response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
             }
         }
@@ -141,7 +148,8 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
             }
         }
@@ -160,7 +168,8 @@ namespace PantallaGestionUsuarios
                 }
                 else 
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                     return false;
                 }
             }
@@ -175,7 +184,8 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
 
             }
@@ -192,7 +202,8 @@ namespace PantallaGestionUsuarios
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                 }
 
             }
@@ -219,7 +230,8 @@ namespace PantallaGestionUsuarios
                 }
                 else
                 {
-                    new CustomError(response.ReasonPhrase).ShowDialog();
+                    ErrorResponse error = await response.Content.ReadAsAsync<ErrorResponse>();
+                    new CustomError(error.message).ShowDialog();
                     return null;
                 }
             }

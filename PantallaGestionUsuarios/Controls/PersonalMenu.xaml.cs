@@ -20,7 +20,7 @@ namespace PantallaGestionUsuarios.Controls
             usersButton.Click += GoToUsers;
 
         }
-        
+
         public async Task<string> Refresh()
         {
             Application.Current.Properties["user"] = await UserProcessor.LoadUser(((UserModel)Application.Current.Properties["user"]).email);
@@ -31,6 +31,10 @@ namespace PantallaGestionUsuarios.Controls
                 profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
 
             }
+            else
+            {
+                profilePicture.ImageSource = new BitmapImage(new Uri("../images/defaultProfilePicture.png"));
+            }
             return "";
         }
         
@@ -40,6 +44,7 @@ namespace PantallaGestionUsuarios.Controls
             textProfileButton.Text = user.name;
             if (user.photo != null && user.photo.Length > 0)
             {
+
                 profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
         }

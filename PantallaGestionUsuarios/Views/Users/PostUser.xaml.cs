@@ -87,8 +87,10 @@ namespace PantallaGestionUsuarios.Views
 
                 await UserProcessor.PostUser(jsonContent);
 
-                if (!profilePicture.Source.ToString().Contains("defaulProfilePicture.png"))
+                if (!profilePicture.Source.ToString().ToUpper().Contains("DEFAULTPROFILEPICTURE.PNG"))
                 {
+                    MessageBox.Show(profilePicture.Source.ToString());
+                    MessageBox.Show(profilePicture.Source.ToString().ToUpper().Contains("DEFAULTPROFILEPICTURE.PNG").ToString());
                     await UserProcessor.PostPhoto(profilePicture, profilePicture.Source.ToString(), emailBox.textBox.Text);
                 }
 

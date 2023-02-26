@@ -76,9 +76,13 @@ namespace PantallaGestionUsuarios.Views
                     imagen = profilePictureImage.Source.ToString();
                     await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
                 }
-                var contador = imagen.IndexOf('.');
-                string ext = imagen.Substring(contador, imagen.Length - contador);
-                imagen = user.email + ext;
+                if(user.photo!= null)
+                {
+                    var contador = imagen.IndexOf('.');
+                    string ext = imagen.Substring(contador, imagen.Length - contador);
+                    imagen = user.email + ext;
+                }
+
                 nombreBox.textBox.BorderThickness = new Thickness(0);
                 using StringContent jsonContent = new(
                     JsonSerializer.Serialize(new
@@ -99,8 +103,6 @@ namespace PantallaGestionUsuarios.Views
                     "application/json");
                 await UserProcessor.UpdateUser(jsonContent);
                 await menu.Refresh();
-                Utils.Utilities.GoToUsers(sender, e);
-                this.Close();
             }
         }
 
