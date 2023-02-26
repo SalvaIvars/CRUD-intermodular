@@ -116,6 +116,7 @@ namespace PantallaGestionUsuarios.Views.Users
 
             if (user.photo != null && user.photo.Length > 0)
             {
+
                 userImage.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
             }
 
@@ -206,9 +207,9 @@ namespace PantallaGestionUsuarios.Views.Users
             for (int i = 0; i < followers.Count; i++)
             {
                 UserCard uc = new UserCard(followers[i].name, followers[i].nick);
-
                 if (followers[i].photo != null && followers[i].photo.Length > 0)
                 {
+
                     uc.imageUser.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + followers[i].photo));
                 }
 
