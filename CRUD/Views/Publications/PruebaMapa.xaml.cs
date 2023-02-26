@@ -45,10 +45,12 @@ namespace CRUD.Views.Publications
 
         private void EditScript(string jsonLista)
         {
-            string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @".\";
+            string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
             string filter = "*.js";
+            string output = folder.Substring(0,folder.IndexOf("CRUD"));
+            output += "CRUDFINAL\\CRUD\\Views\\Publications\\script.js";
             string[] files = Directory.GetFiles(folder, filter);
-            File.AppendAllText(files[0], "var flightPlanCoordinates = " + jsonLista + "\r\nvar prueba = [];\r\nfor(let i = 0;  i < flightPlanCoordinates.length; i++){\r\n  prueba[i] = new google.maps.LatLng(flightPlanCoordinates[i][0], flightPlanCoordinates[i][1])\r\n}\r\n loadPosition(prueba[0])\r\nvar flightPath = new google.maps.Polyline({\r\n    map:map,\r\n    path: prueba,\r\n    strokeColor: \"#FF0000\",\r\n    strokeOpacity: 1.0,\r\n    strokeWeight: 2\r\n  })}" + Environment.NewLine);
+            File.AppendAllText(@output, "var flightPlanCoordinates = " + jsonLista + "\r\nvar prueba = [];\r\nfor(let i = 0;  i < flightPlanCoordinates.length; i++){\r\n  prueba[i] = new google.maps.LatLng(flightPlanCoordinates[i][0], flightPlanCoordinates[i][1])\r\n}\r\n loadPosition(prueba[0])\r\nvar flightPath = new google.maps.Polyline({\r\n    map:map,\r\n    path: prueba,\r\n    strokeColor: \"#FF0000\",\r\n    strokeOpacity: 1.0,\r\n    strokeWeight: 2\r\n  })}" + Environment.NewLine);
         }
 
         private async void LoadMap(object sender, Microsoft.Web.WebView2.Core.CoreWebView2InitializationCompletedEventArgs e)
@@ -56,8 +58,10 @@ namespace CRUD.Views.Publications
              LoadLatLng();
             string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @".\";
             string filter = "*.html";
+            string output = folder.Substring(0, folder.IndexOf("CRUD"));
+            output += "CRUDFINAL\\CRUD\\Views\\Publications\\index.html";
             string[] files = Directory.GetFiles(folder, filter);
-            Wb.CoreWebView2.Navigate(files[0]);
+            Wb.CoreWebView2.Navigate(@output);
         }
         
         private async void RemoveRoute()
@@ -65,14 +69,16 @@ namespace CRUD.Views.Publications
             string folder = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @".\";
             string filter = "*.js";
             string[] files = Directory.GetFiles(folder, filter);
-            List<string> quotelist = File.ReadAllLines(files[0]).ToList();
+            string output = folder.Substring(0, folder.IndexOf("CRUD"));
+            output += "CRUDFINAL\\CRUD\\Views\\Publications\\script.js";
+            List<string> quotelist = File.ReadAllLines(@output).ToList();
             for(int i = 36; i > 23; i--)
             {
                 string firstItem = quotelist[i];
                 quotelist.RemoveAt(i);
             }
 
-            File.WriteAllLines(files[0], quotelist.ToArray());
+            File.WriteAllLines(@output, quotelist.ToArray());
         }
 
         private async void LoadLatLng()

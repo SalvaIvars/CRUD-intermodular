@@ -21,4 +21,4 @@ function loadPosition(coord){
 }
 
 
-function loadRoute(){
+function loadRoute() {
