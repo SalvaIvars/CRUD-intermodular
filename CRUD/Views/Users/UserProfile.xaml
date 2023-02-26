@@ -1,0 +1,168 @@
+﻿<Window x:Class="CRUD.Views.Users.UserProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRUD.Views.Users"
+        mc:Ignorable="d"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+xmlns:Controls="clr-namespace:CRUD.Controls"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"         ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="UserProfile" Height="720" Width="1080">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Border Background="#eff2f7" CornerRadius="30">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Orientation="Horizontal" Height="31" HorizontalAlignment="Right">
+                <Button Background="Transparent" BorderThickness="0" Click="minimizeWindow">
+                    <Icon:PackIconMaterial Kind="WindowMinimize" Style="{StaticResource menuButtonIcon}"/>
+                </Button>
+                <Button Background="Transparent" BorderThickness="0" Click="closeWindow">
+                    <Icon:PackIconMaterial Kind="Close" Style="{StaticResource menuButtonIcon}"/>
+                </Button>
+            </StackPanel>
+
+            <!-- Left Menu -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Menu Icon #bfb5ff -->
+                <Button Margin="20,28,0,35" Width="15" Style="{StaticResource topButton}">
+                    <Icon:PackIconMaterial Width="15" Height="15"/>
+                </Button>
+
+                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
+            </Grid>
+            
+            <!-- Content -->
+            <Grid Grid.Column="1">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="00:00:01" Storyboard.TargetProperty="Opacity" From="0" To="1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Rutas y Usuarios -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Botones -->
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card MouseDown="changeToRoutes" x:Name="routesButton" Background="#497800" Width="100" Height="70" Margin="60 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Rutas" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="routesCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card  MouseDown="changeToFav" x:Name="favButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Favoritas" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="favCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card MouseDown="changeToFollowers" x:Name="followersButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Seguidores" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="followersCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card MouseDown="changeToFollowing" x:Name="followingButton" Background="#A4BE7B" Width="100" Height="70" Margin="0 0 20 0">
+                            <StackPanel>
+                                <TextBlock Text="Siguiendo" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                                <TextBlock x:Name="followingCardText" TextWrapping="Wrap" TextAlignment="Center" FontSize="20"></TextBlock>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </StackPanel>
+
+
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="routesMainCard">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="routesUser">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="followingMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="followingUser">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="favMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="favRoutes">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Background="#A4BE7B" Grid.Row="1" Width="500" Margin="30 30" x:Name="followersMainCard" Visibility="Hidden">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="followersMain">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                </Grid>
+                
+                <!-- Perfil Usuario -->
+                <Grid Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock x:Name="userName" TextAlignment="Center" HorizontalAlignment="Center" FontSize="24" Margin="0 80 10 0" FontWeight="SemiBold" Text="Nombre Uusario"></TextBlock>
+                        <TextBlock x:Name="userNick" Text="Nick" Margin="0 10 10 20" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" ></TextBlock>
+                        <Border Height="250" Width="250" Padding="3" Background="White" CornerRadius="100" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0 0 0 25">
+                            <Ellipse>
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="userImage" ImageSource="../../Images/defaultProfilePicture.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <Button x:Name="userFollowButton" Background="#93b858" Margin="10 0 10 0" Content="Seguir" Click="userClickButton"></Button>
+                        <TextBlock x:Name="userDescription" TextWrapping="Wrap" Height="180" MaxHeight="180" HorizontalAlignment="Center"  Margin="10 30 10 0" FontSize="16"  Text="Descripcion Descripcion DescripcionDescripcionDescripcion Descripcion v Descripcion Descripcion Descripcion v v v DescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcionDescripcion"></TextBlock>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+
+        </Grid>
+    </Border>
+</Window>
