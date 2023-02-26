@@ -82,6 +82,12 @@ namespace CRUD.Views
                     string ext = imagen.Substring(contador, imagen.Length - contador);
                     imagen = user.email + ext;
                 }
+                else
+                {
+                    var contador = imagen.IndexOf('.');
+                    string ext = imagen.Substring(contador, profilePictureImage.Source.ToString().Length - contador);
+                    imagen = user.email + ext;
+                }
 
                 nombreBox.textBox.BorderThickness = new Thickness(0);
                 using StringContent jsonContent = new(
