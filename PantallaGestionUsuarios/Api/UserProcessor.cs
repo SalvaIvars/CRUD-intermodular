@@ -126,7 +126,7 @@ namespace PantallaGestionUsuarios
         {
             string url = "http://localhost:8080/users/"+userEmail;
             ApiHelper.ApiClient.DefaultRequestHeaders.Clear();
-            var fileStreamContent = new StreamContent(File.OpenRead(new Uri(img.Source.ToString()).AbsolutePath));
+                var fileStreamContent = new StreamContent(File.OpenRead(new Uri(img.Source.ToString()).AbsolutePath));
             string extension = MimeTypes.GetMimeType(fileName);
 
             MultipartFormDataContent file = new MultipartFormDataContent();

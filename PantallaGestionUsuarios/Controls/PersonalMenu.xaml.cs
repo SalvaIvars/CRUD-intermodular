@@ -1,5 +1,6 @@
 ﻿using PantallaGestionUsuarios.Utils;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -15,9 +16,22 @@ namespace PantallaGestionUsuarios.Controls
         {
             InitializeComponent();
             publicationsButton.Click += GoToPublications;
-             commentsButton.Click += GoToComments;
-             usersButton.Click += GoToUsers;
+            commentsButton.Click += GoToComments;
+            usersButton.Click += GoToUsers;
 
+        }
+        
+        public async Task<string> Refresh()
+        {
+            Application.Current.Properties["user"] = await UserProcessor.LoadUser(((UserModel)Application.Current.Properties["user"]).email);
+            UserModel user = (UserModel)Application.Current.Properties["user"];
+            textProfileButton.Text = user.name;
+            if (user.photo != null && user.photo.Length > 0)
+            {
+                profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/" + user.photo));
+
+            }
+            return "";
         }
         
        public void LoadUserName (object sender, RoutedEventArgs e)

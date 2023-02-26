@@ -76,7 +76,9 @@ namespace PantallaGestionUsuarios.Views
                     imagen = profilePictureImage.Source.ToString();
                     await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
                 }
-
+                var contador = imagen.IndexOf('.');
+                string ext = imagen.Substring(contador, imagen.Length - contador);
+                imagen = user.email + ext;
                 nombreBox.textBox.BorderThickness = new Thickness(0);
                 using StringContent jsonContent = new(
                     JsonSerializer.Serialize(new
@@ -88,7 +90,7 @@ namespace PantallaGestionUsuarios.Views
                         nick = user.nick,
                         password = user.password,
                         following = user.following,
-                        photo = user.photo,
+                        photo = imagen,
                         rol = user.rol,
                         fav_routes = user.fav_routes,
                         description = user.description,
@@ -96,6 +98,7 @@ namespace PantallaGestionUsuarios.Views
                     Encoding.UTF8,
                     "application/json");
                 await UserProcessor.UpdateUser(jsonContent);
+                await menu.Refresh();
                 Utils.Utilities.GoToUsers(sender, e);
                 this.Close();
             }

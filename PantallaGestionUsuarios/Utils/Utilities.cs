@@ -51,6 +51,13 @@ namespace PantallaGestionUsuarios.Utils
             win.Show();
         }
 
+        public static void ChangeToUserAgain()
+        {
+            PublicationsView win = new PublicationsView();
+            win.Show();
+
+        }
+
         public static string ActivityToImage(string activity)
         {
             switch (activity.ToLower())

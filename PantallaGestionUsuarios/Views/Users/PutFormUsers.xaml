@@ -34,7 +34,7 @@
                     <Icon:PackIconMaterial Width="15" Height="15"/>
                 </Button>
 
-                <Controls:PersonalMenu Grid.Row="1"></Controls:PersonalMenu>
+                <Controls:PersonalMenu x:Name="menu"  Grid.Row="1"></Controls:PersonalMenu>
             </Grid>
 
             <!-- Main Section -->

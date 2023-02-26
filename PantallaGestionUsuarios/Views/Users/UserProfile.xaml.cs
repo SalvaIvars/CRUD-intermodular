@@ -127,13 +127,17 @@ namespace PantallaGestionUsuarios.Views.Users
             else
             {
                 UserModel actualUser = (UserModel)Application.Current.Properties["user"];
-                if (actualUser.following.Contains(user.email))
+
+                for(int i = 0; i < actualUser.following.Length; i++)
                 {
-                    userFollowButton.Content = "Siguiendo";
-                }
-                else
-                {
-                    userFollowButton.Content = "Seguir";
+                    if (actualUser.following[i] == user.email){
+                        userFollowButton.Content = "Siguiendo";
+                        break;
+                    }
+                    else
+                    {
+                        userFollowButton.Content = "Seguir";
+                    }
                 }
             }
         }
@@ -377,6 +381,7 @@ namespace PantallaGestionUsuarios.Views.Users
                 "application/json");
                 await UserProcessor.UnfollowUser(jsonContent);
 
+                await Task.Delay(2000);
                 LoadUserInformation();
                 UserProfile a = new UserProfile(user);
                 a.Show();
@@ -395,7 +400,9 @@ namespace PantallaGestionUsuarios.Views.Users
                 "application/json");
                 await UserProcessor.FollowUser(jsonContent);
 
+                await Task.Delay(2000);
                 LoadUserInformation();
+
                 UserProfile a = new UserProfile(user);
                 a.Show();
                 this.Close();

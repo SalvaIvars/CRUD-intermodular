@@ -217,15 +217,15 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number = 0;
                 photo2Number++;
                 photo3Number++;
-                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
@@ -238,15 +238,15 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number =1;
                 photo2Number++;
                 photo3Number++;
-                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
@@ -258,15 +258,15 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number++;
                 photo2Number = photos.Length - 1;
                 photo3Number = 0;
-                var ObjAnimation = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation1 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation2 = new DoubleAnimation(0.8, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
@@ -278,15 +278,15 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number = photos.Length - 1;
                 photo2Number=0;
                 photo3Number=1;
-                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
                 photo1.Source = new BitmapImage(new Uri("http://localhost:8080/publicationPicture/" + publication._id + "/" + photos[photo1Number]));
@@ -298,15 +298,15 @@ namespace PantallaGestionUsuarios.Views
                 photo1Number++;
                 photo2Number++;
                 photo3Number++;
-                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation1 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
-                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.4));
+                var ObjAnimation2 = new DoubleAnimation(0.4, TimeSpan.FromSeconds(0.33));
                 ObjAnimation.Completed += new EventHandler(imgFadeOut_Completed1);
                 photo3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
 
@@ -324,7 +324,7 @@ namespace PantallaGestionUsuarios.Views
             Image img1 = photo1;
             Image img2 = photo2;
             Image img3 = photo3;
-            var ObjAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.5));
+            var ObjAnimation = new DoubleAnimation(1, TimeSpan.FromSeconds(1));
             img1.BeginAnimation(Image.OpacityProperty, ObjAnimation);
             img2.BeginAnimation(Image.OpacityProperty, ObjAnimation);
             img3.BeginAnimation(Image.OpacityProperty, ObjAnimation);
