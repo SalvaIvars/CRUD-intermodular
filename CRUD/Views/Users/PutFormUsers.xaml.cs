@@ -71,7 +71,7 @@ namespace CRUD.Views
             if (canUpdate)
             {
                 var imagen = user.photo;
-                if (!profilePictureImage.Source.ToString().Contains("defaulProfilePicture.png") && imageChanged)
+                if (!profilePictureImage.Source.ToString().ToUpper().Contains("DEFAULTPROFILEPICTURE.PNG") && imageChanged)
                 {
                     imagen = profilePictureImage.Source.ToString();
                     await UserProcessor.PostPhoto(profilePictureImage, profilePictureImage.Source.ToString(), user.email);
@@ -81,6 +81,12 @@ namespace CRUD.Views
                     var contador = imagen.IndexOf('.');
                     string ext = imagen.Substring(contador, imagen.Length - contador);
                     imagen = user.email + ext;
+                }
+
+                if (user.photo == null)
+                {
+                    //MessageBox.Show(user.photo);
+                    
                 }
                 else
                 {

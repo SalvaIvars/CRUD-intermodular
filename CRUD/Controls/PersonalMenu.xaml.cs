@@ -33,7 +33,8 @@ namespace CRUD.Controls
             }
             else
             {
-                profilePicture.ImageSource = new BitmapImage(new Uri("../images/defaultProfilePicture.png"));
+
+                profilePicture.ImageSource = new BitmapImage(new Uri("http://localhost:8080/profilePicture/defaultProfilePicture.png")); ;
             }
             return "";
         }
